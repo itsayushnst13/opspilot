@@ -1,0 +1,367 @@
+[
+  {
+    "id": "COA-001",
+    "file": "coas/COA-001.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X01",
+        "batch_no": "B26-0565",
+        "params": {
+          "purity": 99.34,
+          "moisture": 0.08,
+          "color_apha": 21.0,
+          "residual_solvent_ppm": 299.0
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-002",
+    "file": "coas/COA-002.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X02",
+        "batch_no": "B26-0626",
+        "params": {
+          "purity": 99.36,
+          "moisture": 0.05,
+          "color_apha": 12.0,
+          "residual_solvent_ppm": 266.0
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-003",
+    "file": "coas/COA-003.pdf",
+    "layout": "kv",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X03",
+        "batch_no": "B26-0292",
+        "params": {
+          "purity": 98.69,
+          "moisture": 0.03,
+          "color_apha": 18.0,
+          "ph": 5.5
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "ph": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-004",
+    "file": "coas/COA-004.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X04",
+        "batch_no": "B26-0308",
+        "params": {
+          "purity": 99.38,
+          "moisture": 0.14,
+          "color_apha": 6.0,
+          "residual_solvent_ppm": 692.0
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-005",
+    "file": "coas/COA-005.pdf",
+    "layout": "sentence",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X05",
+        "batch_no": "B26-0224",
+        "params": {
+          "purity": 98.47,
+          "moisture": 0.38,
+          "color_apha": 5.0,
+          "heavy_metals_ppm": 13.0
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "heavy_metals_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-006",
+    "file": "coas/COA-006.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X07",
+        "batch_no": "B26-0664",
+        "params": {
+          "purity": 98.69,
+          "moisture": 0.03,
+          "color_apha": 7.0,
+          "residual_solvent_ppm": 211.0
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-007",
+    "file": "coas/COA-007.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X09",
+        "batch_no": "B26-0220",
+        "params": {
+          "purity": 99.48,
+          "moisture": 0.2,
+          "color_apha": 16.0,
+          "ph": 6.2,
+          "heavy_metals_ppm": 6.0
+        }
+      },
+      "verdict": "PASS",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "ph": "PASS",
+        "heavy_metals_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-008",
+    "file": "coas/COA-008.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X01",
+        "batch_no": "B26-0379",
+        "params": {
+          "purity": 98.7,
+          "moisture": 0.06,
+          "color_apha": 20.0,
+          "residual_solvent_ppm": 289.0
+        }
+      },
+      "verdict": "FAIL",
+      "statuses": {
+        "purity": "FAIL",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-009",
+    "file": "coas/COA-009.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X08",
+        "batch_no": "B26-0492",
+        "params": {
+          "purity": 98.62,
+          "moisture": 0.4,
+          "color_apha": 5.0,
+          "residual_solvent_ppm": 598.0
+        }
+      },
+      "verdict": "FAIL",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "FAIL",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-010",
+    "file": "coas/COA-010.pdf",
+    "layout": "kv",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X10",
+        "batch_no": "B26-0908",
+        "params": {
+          "purity": 99.16,
+          "moisture": 0.12,
+          "color_apha": 7.0,
+          "ph": 6.4,
+          "heavy_metals_ppm": 40.0
+        }
+      },
+      "verdict": "FAIL",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "ph": "PASS",
+        "heavy_metals_ppm": "FAIL"
+      }
+    }
+  },
+  {
+    "id": "COA-011",
+    "file": "coas/COA-011.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X13",
+        "batch_no": "B26-0389",
+        "params": {
+          "purity": 97.9,
+          "moisture": 0.04,
+          "color_apha": 12.0,
+          "heavy_metals_ppm": 7.0
+        }
+      },
+      "verdict": "FAIL",
+      "statuses": {
+        "purity": "FAIL",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "heavy_metals_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-012",
+    "file": "coas/COA-012.pdf",
+    "layout": "sentence",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X14",
+        "batch_no": "B26-0252",
+        "params": {
+          "purity": 99.35,
+          "moisture": 0.03,
+          "color_apha": 12.0,
+          "residual_solvent_ppm": 700.0
+        }
+      },
+      "verdict": "FAIL",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "residual_solvent_ppm": "FAIL"
+      }
+    }
+  },
+  {
+    "id": "COA-013",
+    "file": "coas/COA-013.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X16",
+        "batch_no": "B26-0566",
+        "params": {
+          "purity": 98.45,
+          "moisture": 0.1,
+          "color_apha": 9.0,
+          "ph": 6.3
+        }
+      },
+      "verdict": "REVIEW REQUIRED",
+      "statuses": {
+        "purity": "REVIEW REQUIRED",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "ph": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-014",
+    "file": "coas/COA-014.pdf",
+    "layout": "table",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X18",
+        "batch_no": "B26-0520",
+        "params": {
+          "purity": 99.63,
+          "moisture": 0.08,
+          "color_apha": 7.0,
+          "heavy_metals_ppm": 4.0
+        }
+      },
+      "verdict": "REVIEW REQUIRED",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "PASS",
+        "ph": "REVIEW REQUIRED",
+        "heavy_metals_ppm": "PASS"
+      }
+    }
+  },
+  {
+    "id": "COA-015",
+    "file": "coas/COA-015.pdf",
+    "layout": "kv",
+    "expected": {
+      "extracted": {
+        "product_code": "CHEM-X06",
+        "batch_no": "B26-0779",
+        "params": {
+          "purity": 99.36,
+          "moisture": 0.11,
+          "color_apha": 70.0,
+          "heavy_metals_ppm": 3.0
+        }
+      },
+      "verdict": "REVIEW REQUIRED",
+      "statuses": {
+        "purity": "PASS",
+        "moisture": "PASS",
+        "color_apha": "REVIEW REQUIRED",
+        "heavy_metals_ppm": "PASS"
+      }
+    }
+  }
+]

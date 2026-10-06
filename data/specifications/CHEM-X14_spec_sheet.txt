@@ -1,0 +1,25 @@
+Ixaprene Monomer (CHEM-X14) - Specification Sheet
+=================================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Product code: CHEM-X14
+Product name: Ixaprene Monomer
+Category: Intermediates
+HS code (synthetic): 290129
+Transport classification: Class 3
+
+Description: Flammable specialty monomer for resin manufacture.
+Typical applications: personal-care formulations, industrial coatings.
+
+Specification limits:
+- purity: >= 99.0 % (critical, review margin 0.1)
+- moisture: <= 0.05 % (critical, review margin 0.02)
+- color_apha: <= 15 APHA (non-critical, review margin 5)
+- residual_solvent_ppm: <= 500 ppm (critical, review margin 50)
+
+Storage: Store below 25 C in a dry, ventilated area.
+Standard packaging: 1000 kg IBC totes.
+Shelf life: 24 months in unopened original packaging.
+Incompatible with: strong oxidizers.
+Handling note for Ixaprene Monomer (CHEM-X14): use appropriate PPE and follow the SDS.

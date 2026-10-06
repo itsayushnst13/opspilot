@@ -1,0 +1,10 @@
+.env
+*.db
+storage/
+__pycache__/
+.pytest_cache/
+node_modules/
+frontend/dist/
+.venv/
+*.pyc
+evals/results/latest_llm.json

@@ -1,0 +1,14 @@
+Supplier profile - Red Sea Specialty Co
+=======================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Supplier code: S08
+Supplier name: Red Sea Specialty Co
+Location: Jubail, Saudi Arabia
+Certifications: REACH pre-registered, ISO 45001, Responsible Care member.
+Standard lead time: 21 days from purchase order to ex-works readiness.
+Minimum order quantity: 2000 kg.
+Internal rating: 4.2 / 5.
+Products supplied: CHEM-X01, CHEM-X03, CHEM-X04, CHEM-X07, CHEM-X09.
+Notes: Limited capacity in Q4; confirm early.

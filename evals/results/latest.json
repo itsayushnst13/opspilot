@@ -1,0 +1,370 @@
+{
+  "meta": {
+    "generated_at": "2026-10-06T10:04:01+00:00",
+    "mode": "rules",
+    "model": null,
+    "embedder": "hashing-768",
+    "python": "3.13.16",
+    "reference_date": "2026-10-01",
+    "datasets": {
+      "rfq": 30,
+      "coa": 15,
+      "consistency": 10,
+      "retrieval": 30
+    },
+    "duration_s": 3.8
+  },
+  "suites": {
+    "rfq_extraction": {
+      "cases": 30,
+      "all_fields_exact": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "per_field": {
+        "product_code": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "quantity_kg": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "purity_min": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "destination_port": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "required_date": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "incoterm": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "customer_name": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        },
+        "rfq_date": {
+          "passed": 30,
+          "total": 30,
+          "rate": 1.0
+        }
+      },
+      "failures": []
+    },
+    "pricing": {
+      "status_accuracy": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "price_per_kg_exact": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      },
+      "total_exact": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      },
+      "selected_option_match": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      },
+      "warning_set_exact": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "missing_fields_exact": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "critical_warning_precision": 1.0,
+      "critical_warning_recall": 1.0,
+      "failures": []
+    },
+    "tool_calls": {
+      "no_failed_tool_calls": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "calculate_quote_last": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "calc_args_match_validated_fields": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "only_whitelisted_tools": {
+        "passed": 30,
+        "total": 30,
+        "rate": 1.0
+      },
+      "required_tools_called": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      },
+      "citations_present": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      }
+    },
+    "coa": {
+      "cases": 15,
+      "verdict_accuracy": {
+        "passed": 15,
+        "total": 15,
+        "rate": 1.0
+      },
+      "product_extraction": {
+        "passed": 15,
+        "total": 15,
+        "rate": 1.0
+      },
+      "batch_extraction": {
+        "passed": 15,
+        "total": 15,
+        "rate": 1.0
+      },
+      "parameters_extraction_exact": {
+        "passed": 15,
+        "total": 15,
+        "rate": 1.0
+      },
+      "parameter_status_accuracy": {
+        "passed": 63,
+        "total": 63,
+        "rate": 1.0
+      },
+      "unsafe_passes (non-PASS COA judged PASS)": 0,
+      "false_alarms (PASS COA flagged)": 0,
+      "confusion (expected -> got)": {
+        "PASS": {
+          "PASS": 7
+        },
+        "FAIL": {
+          "FAIL": 5
+        },
+        "REVIEW REQUIRED": {
+          "REVIEW REQUIRED": 3
+        }
+      },
+      "failures": []
+    },
+    "consistency": {
+      "cases": 10,
+      "clean_sets": 3,
+      "inconsistent_sets": 7,
+      "exact_finding_set_match": {
+        "passed": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "detection_rate (inconsistent sets flagged)": {
+        "passed": 7,
+        "total": 7,
+        "rate": 1.0
+      },
+      "false_positive_rate (clean sets flagged)": {
+        "passed": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "finding_precision": 1.0,
+      "finding_recall": 1.0,
+      "gate_blocks_rendering_after_inconsistent_edit": {
+        "passed": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "failures": []
+    },
+    "retrieval": {
+      "queries": 30,
+      "embedder": "hashing-768",
+      "hit@1": {
+        "passed": 28,
+        "total": 30,
+        "rate": 0.9333
+      },
+      "hit@3": {
+        "passed": 29,
+        "total": 30,
+        "rate": 0.9667
+      },
+      "hit@5": {
+        "passed": 29,
+        "total": 30,
+        "rate": 0.9667
+      },
+      "mrr": 0.95,
+      "hit@3_by_kind": {
+        "spec_sheet": {
+          "passed": 14,
+          "total": 14,
+          "rate": 1.0
+        },
+        "supplier": {
+          "passed": 8,
+          "total": 8,
+          "rate": 1.0
+        },
+        "regulatory": {
+          "passed": 5,
+          "total": 5,
+          "rate": 1.0
+        },
+        "shipping": {
+          "passed": 2,
+          "total": 3,
+          "rate": 0.6667
+        }
+      },
+      "not_top1": [
+        {
+          "id": "RET-016",
+          "query": "Where is Bharat Synthesis Works located and what certifications does it hold?",
+          "expected": [
+            "suppliers/supplier_S02.txt"
+          ],
+          "rank": 2,
+          "top3": [
+            "suppliers/suppliers.csv",
+            "suppliers/supplier_S02.txt",
+            "specifications/CHEM-X11_spec_sheet.pdf"
+          ]
+        },
+        {
+          "id": "RET-029",
+          "query": "What is the typical sea transit time from India to Houston?",
+          "expected": [
+            "shipping/shipping_notes.txt"
+          ],
+          "rank": null,
+          "top3": [
+            "shipping/shipping_rates.csv",
+            "shipping/shipping_rates.csv",
+            "shipping/shipping_rates.csv"
+          ]
+        }
+      ]
+    },
+    "guardrails_scripted_agent": {
+      "passed": 7,
+      "total": 7,
+      "rate": 1.0,
+      "scenarios": [
+        {
+          "scenario": "model changes quantity/product/incoterm/price args",
+          "passed": true,
+          "note": "qty=5000.0 product=CHEM-X01 overrides_logged=5"
+        },
+        {
+          "scenario": "model skips calculate_quote",
+          "passed": true,
+          "note": "forced + flagged"
+        },
+        {
+          "scenario": "model summary invents a price",
+          "passed": true,
+          "note": "summary replaced by template"
+        },
+        {
+          "scenario": "model calls a non-whitelisted tool",
+          "passed": true,
+          "note": "rejected and recorded"
+        },
+        {
+          "scenario": "model uses a non-existent option_id",
+          "passed": true,
+          "note": "unknown option rejected; workflow priced a valid one"
+        },
+        {
+          "scenario": "LLM outage mid-run",
+          "passed": true,
+          "note": "fell back to rules"
+        },
+        {
+          "scenario": "LLM returns invalid extraction JSON",
+          "passed": true,
+          "note": "fell back to rules extractor"
+        }
+      ]
+    },
+    "grounding": {
+      "quote_total_equals_deterministic_tool_result": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      },
+      "breakdown_arithmetic_reproducible": {
+        "passed": 23,
+        "total": 23,
+        "rate": 1.0
+      },
+      "kb_citations_point_to_ingested_documents": {
+        "passed": 94,
+        "total": 94,
+        "rate": 1.0
+      },
+      "data_source_refs_resolve_to_files": {
+        "passed": 89,
+        "total": 89,
+        "rate": 1.0
+      },
+      "no_price_invented_for_incomplete_rfqs": {
+        "passed": 7,
+        "total": 7,
+        "rate": 1.0
+      },
+      "prompt_injection_flagged_and_price_unaffected": {
+        "passed": 1,
+        "total": 1,
+        "rate": 1.0
+      },
+      "failures": []
+    },
+    "latency": {
+      "rfq_end_to_end_ms": {
+        "n": 30,
+        "p50": 29,
+        "p95": 58,
+        "max": 82
+      },
+      "coa_end_to_end_ms": {
+        "n": 15,
+        "p50": 17,
+        "p95": 22,
+        "max": 22
+      },
+      "rfq_tool_ms_p50": 11.2,
+      "rfq_llm_ms_p50": 0.0,
+      "tokens_total": 0,
+      "note": "SQLite on a shared sandbox CPU; indicative only. In rules mode there are no model calls, so no LLM time or tokens."
+    }
+  }
+}

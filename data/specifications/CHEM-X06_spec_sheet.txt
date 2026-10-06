@@ -1,0 +1,25 @@
+Lumivane Antioxidant (CHEM-X06) - Specification Sheet
+=====================================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Product code: CHEM-X06
+Product name: Lumivane Antioxidant
+Category: Polymer Additives
+HS code (synthetic): 293090
+Transport classification: Not regulated for transport
+
+Description: Hindered phenolic antioxidant powder for plastics.
+Typical applications: industrial coatings, agrochemical synthesis.
+
+Specification limits:
+- purity: >= 99.0 % (critical, review margin 0.1)
+- moisture: <= 0.2 % (non-critical, review margin 0.02)
+- color_apha: <= 50 APHA (non-critical, review margin 5)
+- heavy_metals_ppm: <= 5 ppm (non-critical, review margin 1)
+
+Storage: Store below 20 C under nitrogen blanket.
+Standard packaging: 20 kg pails.
+Shelf life: 12 months in unopened original packaging.
+Incompatible with: strong bases.
+Handling note for Lumivane Antioxidant (CHEM-X06): use appropriate PPE and follow the SDS.

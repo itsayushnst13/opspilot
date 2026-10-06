@@ -1,0 +1,242 @@
+[
+  {
+    "id": "RET-001",
+    "query": "What are the storage conditions and shelf life of Valtrane Ethyl Ester?",
+    "expected_paths": [
+      "specifications/CHEM-X01_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-002",
+    "query": "What packaging and incompatibilities apply to Norphex Solvent A (CHEM-X02)?",
+    "expected_paths": [
+      "specifications/CHEM-X02_spec_sheet.txt"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-003",
+    "query": "Show the specification limits for CHEM-X03 Cyrolite Surfactant.",
+    "expected_paths": [
+      "specifications/CHEM-X03_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-004",
+    "query": "What are the storage conditions and shelf life of Brevanol Alcohol?",
+    "expected_paths": [
+      "specifications/CHEM-X04_spec_sheet.txt"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-005",
+    "query": "What packaging and incompatibilities apply to Tessamide Additive (CHEM-X05)?",
+    "expected_paths": [
+      "specifications/CHEM-X05_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-006",
+    "query": "Show the specification limits for CHEM-X06 Lumivane Antioxidant.",
+    "expected_paths": [
+      "specifications/CHEM-X06_spec_sheet.txt"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-007",
+    "query": "What are the storage conditions and shelf life of Orpentil Acid?",
+    "expected_paths": [
+      "specifications/CHEM-X07_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-008",
+    "query": "What packaging and incompatibilities apply to Kelvane Amine (CHEM-X08)?",
+    "expected_paths": [
+      "specifications/CHEM-X08_spec_sheet.txt"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-009",
+    "query": "Show the specification limits for CHEM-X09 Drovex Preservative.",
+    "expected_paths": [
+      "specifications/CHEM-X09_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-010",
+    "query": "What are the storage conditions and shelf life of Marlonate Emollient?",
+    "expected_paths": [
+      "specifications/CHEM-X10_spec_sheet.txt"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-011",
+    "query": "What packaging and incompatibilities apply to Quindrel Chloride (CHEM-X11)?",
+    "expected_paths": [
+      "specifications/CHEM-X11_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-012",
+    "query": "Show the specification limits for CHEM-X13 Haldoran Stabilizer.",
+    "expected_paths": [
+      "specifications/CHEM-X13_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-013",
+    "query": "What are the storage conditions and shelf life of Zenthalic Anhydride?",
+    "expected_paths": [
+      "specifications/CHEM-X15_spec_sheet.pdf"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-014",
+    "query": "What packaging and incompatibilities apply to Aulmeric Acid (CHEM-X18)?",
+    "expected_paths": [
+      "specifications/CHEM-X18_spec_sheet.txt"
+    ],
+    "kind": "spec_sheet"
+  },
+  {
+    "id": "RET-015",
+    "query": "Where is Aravali Fine Chemicals Pvt Ltd located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S01.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-016",
+    "query": "Where is Bharat Synthesis Works located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S02.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-017",
+    "query": "Where is Cauvery Organics Ltd located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S03.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-018",
+    "query": "Where is Deccan Specialty Intermediates located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S04.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-019",
+    "query": "Where is Eastern Ghats Chemicals located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S05.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-020",
+    "query": "Where is Ganga Process Industries located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S06.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-021",
+    "query": "Where is Najd Petrochemical Derivatives located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S07.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-022",
+    "query": "Where is Red Sea Specialty Co located and what certifications does it hold?",
+    "expected_paths": [
+      "suppliers/supplier_S08.txt"
+    ],
+    "kind": "supplier"
+  },
+  {
+    "id": "RET-023",
+    "query": "What packaging is required for corrosive Class 8 products?",
+    "expected_paths": [
+      "regulatory/hazmat_class8_corrosives.txt"
+    ],
+    "kind": "regulatory"
+  },
+  {
+    "id": "RET-024",
+    "query": "When is a certificate of analysis marked REVIEW REQUIRED instead of FAIL?",
+    "expected_paths": [
+      "regulatory/coa_acceptance_policy.pdf"
+    ],
+    "kind": "regulatory"
+  },
+  {
+    "id": "RET-025",
+    "query": "How long is a quote valid and when does the approver need to write a reason?",
+    "expected_paths": [
+      "regulatory/quote_approval_policy.txt"
+    ],
+    "kind": "regulatory"
+  },
+  {
+    "id": "RET-026",
+    "query": "What incoterm is assumed when the customer does not state one?",
+    "expected_paths": [
+      "regulatory/incoterms_policy.txt"
+    ],
+    "kind": "regulatory"
+  },
+  {
+    "id": "RET-027",
+    "query": "Which fields must match across invoice, packing list and certificate of origin?",
+    "expected_paths": [
+      "regulatory/export_documentation_requirements.pdf"
+    ],
+    "kind": "regulatory"
+  },
+  {
+    "id": "RET-028",
+    "query": "How is the hazmat surcharge calculated and what is the minimum freight charge?",
+    "expected_paths": [
+      "shipping/shipping_notes.txt"
+    ],
+    "kind": "shipping"
+  },
+  {
+    "id": "RET-029",
+    "query": "What is the typical sea transit time from India to Houston?",
+    "expected_paths": [
+      "shipping/shipping_notes.txt"
+    ],
+    "kind": "shipping"
+  },
+  {
+    "id": "RET-030",
+    "query": "What is the freight rate per kg and transit days from India to Rotterdam?",
+    "expected_paths": [
+      "shipping/shipping_rates.csv"
+    ],
+    "kind": "shipping"
+  }
+]

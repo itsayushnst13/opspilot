@@ -1,0 +1,18 @@
+# Local full stack: Postgres + the app (UI and API on http://localhost:8000)
+services:
+  db:
+    image: postgres:16
+    environment: { POSTGRES_USER: opspilot, POSTGRES_PASSWORD: opspilot, POSTGRES_DB: opspilot }
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U opspilot"], interval: 3s, retries: 20 }
+    volumes: [pgdata:/var/lib/postgresql/data]
+  app:
+    build: .
+    depends_on: { db: { condition: service_healthy } }
+    ports: ["8000:8000"]
+    environment:
+      DATABASE_URL: postgresql://opspilot:opspilot@db:5432/opspilot
+      JWT_SECRET: ${JWT_SECRET:-local-compose-secret-please-change-0123456789}
+      REFERENCE_DATE: "2026-10-01"
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+volumes:
+  pgdata:

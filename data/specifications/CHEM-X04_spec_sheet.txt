@@ -1,0 +1,25 @@
+Brevanol Alcohol (CHEM-X04) - Specification Sheet
+=================================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Product code: CHEM-X04
+Product name: Brevanol Alcohol
+Category: Solvents
+HS code (synthetic): 290549
+Transport classification: Class 3
+
+Description: Medium-chain alcohol solvent for coatings and adhesives.
+Typical applications: plastics compounding, detergent formulations.
+
+Specification limits:
+- purity: >= 99.0 % (critical, review margin 0.1)
+- moisture: <= 0.2 % (non-critical, review margin 0.02)
+- color_apha: <= 10 APHA (non-critical, review margin 5)
+- residual_solvent_ppm: <= 1000 ppm (non-critical, review margin 50)
+
+Storage: Store below 30 C away from ignition sources.
+Standard packaging: 20 kg pails.
+Shelf life: 24 months in unopened original packaging.
+Incompatible with: mineral acids.
+Handling note for Brevanol Alcohol (CHEM-X04): use appropriate PPE and follow the SDS.

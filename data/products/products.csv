@@ -1,0 +1,21 @@
+id,code,name,category,hazmat_class,hs_code,description
+1,CHEM-X01,Valtrane Ethyl Ester,Intermediates,,291539,Colorless liquid ester used as a coating and resin intermediate.
+2,CHEM-X02,Norphex Solvent A,Solvents,3,290519,Fast-evaporating flammable solvent for inks and cleaning formulations.
+3,CHEM-X03,Cyrolite Surfactant,Surfactants,,340213,Mild anionic surfactant for home-care detergents.
+4,CHEM-X04,Brevanol Alcohol,Solvents,3,290549,Medium-chain alcohol solvent for coatings and adhesives.
+5,CHEM-X05,Tessamide Additive,Polymer Additives,,292429,Slip and anti-block additive for polyolefin films.
+6,CHEM-X06,Lumivane Antioxidant,Polymer Additives,,293090,Hindered phenolic antioxidant powder for plastics.
+7,CHEM-X07,Orpentil Acid,Intermediates,8,291619,Corrosive organic acid used in synthesis of specialty esters.
+8,CHEM-X08,Kelvane Amine,Agro Intermediates,8,292119,Corrosive amine intermediate for crop-protection actives.
+9,CHEM-X09,Drovex Preservative,Personal Care Actives,,293299,Broad-spectrum preservative for leave-on cosmetics.
+10,CHEM-X10,Marlonate Emollient,Personal Care Actives,,291590,"Light, fast-spreading emollient ester for skin care."
+11,CHEM-X11,Quindrel Chloride,Agro Intermediates,6.1,293399,Toxic chlorinated heterocycle intermediate for agrochemical synthesis.
+12,CHEM-X12,Solvitrex Glycol Ether,Solvents,,290944,Low-odor glycol ether coalescing solvent for water-based paints.
+13,CHEM-X13,Haldoran Stabilizer,Polymer Additives,,292690,Light stabilizer for PVC and engineering plastics.
+14,CHEM-X14,Ixaprene Monomer,Intermediates,3,290129,Flammable specialty monomer for resin manufacture.
+15,CHEM-X15,Zenthalic Anhydride,Intermediates,8,291736,Corrosive cyclic anhydride used in alkyd resins.
+16,CHEM-X16,Pelloran Wetting Agent,Surfactants,,340212,Non-ionic wetting agent for agrochemical and coating formulations.
+17,CHEM-X17,Brontex Plasticizer,Polymer Additives,,291736,Non-phthalate plasticizer for flexible PVC.
+18,CHEM-X18,Aulmeric Acid,Personal Care Actives,,291814,Exfoliating hydroxy acid used in skin-care actives.
+19,CHEM-X19,Trevalone Intermediate,Agro Intermediates,6.1,293499,Toxic nitrogen heterocycle intermediate for herbicide synthesis.
+20,CHEM-X20,Corvane Co-solvent,Solvents,3,290919,Flammable co-solvent for industrial cleaners and degreasers.

@@ -1,0 +1,21 @@
+id,origin_country,dest_port,dest_country,mode,rate_per_kg,min_charge,transit_days,hazmat_surcharge_pct
+1,India,Houston,United States,sea,0.0962,1100,28,0.2
+2,India,Los Angeles,United States,sea,0.1792,900,32,0.25
+3,India,Savannah,United States,sea,0.131,900,34,0.3
+4,India,Rotterdam,Netherlands,sea,0.1672,900,35,0.3
+5,Saudi Arabia,Houston,United States,sea,0.151,1500,25,0.35
+6,Saudi Arabia,Los Angeles,United States,sea,0.1776,1100,23,0.35
+7,Saudi Arabia,Savannah,United States,sea,0.1731,1500,30,0.25
+8,Saudi Arabia,Rotterdam,Netherlands,sea,0.1662,1300,26,0.2
+9,South Korea,Houston,United States,sea,0.1225,1100,36,0.3
+10,South Korea,Los Angeles,United States,sea,0.1451,1500,40,0.25
+11,South Korea,Savannah,United States,sea,0.1516,1100,40,0.2
+12,South Korea,Rotterdam,Netherlands,sea,0.1197,1300,31,0.25
+13,Thailand,Houston,United States,sea,0.1742,1100,40,0.25
+14,Thailand,Los Angeles,United States,sea,0.1006,900,31,0.35
+15,Thailand,Savannah,United States,sea,0.1656,900,35,0.35
+16,Thailand,Rotterdam,Netherlands,sea,0.2041,1100,39,0.35
+17,Vietnam,Houston,United States,sea,0.1492,1100,31,0.2
+18,Vietnam,Los Angeles,United States,sea,0.205,900,41,0.35
+19,Vietnam,Savannah,United States,sea,0.1106,1500,29,0.25
+20,Vietnam,Rotterdam,Netherlands,sea,0.2084,900,36,0.25

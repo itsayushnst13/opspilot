@@ -1,0 +1,14 @@
+Supplier profile - Deccan Specialty Intermediates
+=================================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Supplier code: S04
+Supplier name: Deccan Specialty Intermediates
+Location: Pune, India
+Certifications: ISO 9001:2015, ISO 14001:2015, ISO 45001.
+Standard lead time: 22 days from purchase order to ex-works readiness.
+Minimum order quantity: 500 kg.
+Internal rating: 4.0 / 5.
+Products supplied: CHEM-X04, CHEM-X06, CHEM-X09, CHEM-X10, CHEM-X13, CHEM-X17.
+Notes: Dedicated hazmat packing line available.

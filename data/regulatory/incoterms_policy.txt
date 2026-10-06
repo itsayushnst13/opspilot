@@ -1,0 +1,8 @@
+Incoterms policy
+================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Default incoterm is CIF destination port when the customer does not state one.
+FOB quotes exclude ocean freight, hazmat surcharge and insurance.
+Other incoterms are treated as CIF and flagged for review.

@@ -1,0 +1,26 @@
+Aulmeric Acid (CHEM-X18) - Specification Sheet
+==============================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Product code: CHEM-X18
+Product name: Aulmeric Acid
+Category: Personal Care Actives
+HS code (synthetic): 291814
+Transport classification: Not regulated for transport
+
+Description: Exfoliating hydroxy acid used in skin-care actives.
+Typical applications: ink and cleaning products, plastics compounding.
+
+Specification limits:
+- purity: >= 99.0 % (critical, review margin 0.1)
+- moisture: <= 0.1 % (non-critical, review margin 0.02)
+- color_apha: <= 15 APHA (non-critical, review margin 5)
+- ph: 6.0 - 7.5 (non-critical, review margin 0.2)
+- heavy_metals_ppm: <= 5 ppm (critical, review margin 1)
+
+Storage: Store at ambient temperature in sealed drums.
+Standard packaging: 1000 kg IBC totes.
+Shelf life: 24 months in unopened original packaging.
+Incompatible with: mineral acids.
+Handling note for Aulmeric Acid (CHEM-X18): use appropriate PPE and follow the SDS.

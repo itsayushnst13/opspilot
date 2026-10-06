@@ -1,0 +1,819 @@
+[
+  {
+    "id": "RFQ-001",
+    "file": "rfqs/RFQ-001.pdf",
+    "tags": [
+      "demo",
+      "clean"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X01",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-15",
+        "incoterm": null,
+        "customer_name": "Brightwater Coatings LLC",
+        "rfq_date": "2026-10-06"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "INCOTERM_ASSUMED"
+      ],
+      "missing": [],
+      "price_per_kg": "13.7203",
+      "total": "68601.71",
+      "option": "MF:1"
+    }
+  },
+  {
+    "id": "RFQ-002",
+    "file": "rfqs/RFQ-002.pdf",
+    "tags": [
+      "clean",
+      "tier"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X03",
+        "quantity_kg": 12000.0,
+        "purity_min": 98.0,
+        "destination_port": "Los Angeles",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Nordhaven Polymers GmbH",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_TIGHT"
+      ],
+      "missing": [],
+      "price_per_kg": "3.9179",
+      "total": "47015.25",
+      "option": "MF:5"
+    }
+  },
+  {
+    "id": "RFQ-003",
+    "file": "rfqs/RFQ-003.pdf",
+    "tags": [
+      "hazmat",
+      "fob"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X04",
+        "quantity_kg": 2000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-20",
+        "incoterm": "FOB",
+        "customer_name": "Pinecrest Home Care Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "2.6927",
+      "total": "5385.37",
+      "option": "MF:7"
+    }
+  },
+  {
+    "id": "RFQ-004",
+    "file": "rfqs/RFQ-004.pdf",
+    "tags": [
+      "clean",
+      "tier"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X05",
+        "quantity_kg": 25000.0,
+        "purity_min": 98.0,
+        "destination_port": "Rotterdam",
+        "required_date": "2027-01-20",
+        "incoterm": "CIF",
+        "customer_name": "Lakeshore Adhesives Co",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [],
+      "missing": [],
+      "price_per_kg": "18.8111",
+      "total": "470276.26",
+      "option": "SP:112"
+    }
+  },
+  {
+    "id": "RFQ-005",
+    "file": "rfqs/RFQ-005.pdf",
+    "tags": [
+      "clean",
+      "date_no_year"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X06",
+        "quantity_kg": 8000.0,
+        "purity_min": 99.0,
+        "destination_port": "Savannah",
+        "required_date": "2026-11-30",
+        "incoterm": "CIF",
+        "customer_name": "Harborline Plastics Ltd",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_TIGHT"
+      ],
+      "missing": [],
+      "price_per_kg": "21.4969",
+      "total": "171975.10",
+      "option": "SP:119"
+    }
+  },
+  {
+    "id": "RFQ-006",
+    "file": "rfqs/RFQ-006.pdf",
+    "tags": [
+      "hazmat"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X07",
+        "quantity_kg": 3000.0,
+        "purity_min": 98.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-10",
+        "incoterm": "CIF",
+        "customer_name": "Summit Agro Sciences Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "16.2533",
+      "total": "48759.85",
+      "option": "MF:11"
+    }
+  },
+  {
+    "id": "RFQ-007",
+    "file": "rfqs/RFQ-007.pdf",
+    "tags": [
+      "hazmat"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X08",
+        "quantity_kg": 1500.0,
+        "purity_min": 98.0,
+        "destination_port": "Rotterdam",
+        "required_date": "2027-01-15",
+        "incoterm": "CIF",
+        "customer_name": "Redwood Personal Care LLC",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "12.3426",
+      "total": "18513.90",
+      "option": "MF:13"
+    }
+  },
+  {
+    "id": "RFQ-008",
+    "file": "rfqs/RFQ-008.pdf",
+    "tags": [
+      "history_deviation"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X09",
+        "quantity_kg": 1000.0,
+        "purity_min": 99.0,
+        "destination_port": "Los Angeles",
+        "required_date": "2026-12-01",
+        "incoterm": "CIF",
+        "customer_name": "Bluepeak Industrial Cleaners Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_TIGHT",
+        "DEVIATION_FROM_HISTORY"
+      ],
+      "missing": [],
+      "price_per_kg": "29.7622",
+      "total": "29762.18",
+      "option": "SP:194"
+    }
+  },
+  {
+    "id": "RFQ-009",
+    "file": "rfqs/RFQ-009.pdf",
+    "tags": [
+      "clean",
+      "date_mdy"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X10",
+        "quantity_kg": 6000.0,
+        "purity_min": 98.5,
+        "destination_port": "Savannah",
+        "required_date": "2026-12-18",
+        "incoterm": "CIF",
+        "customer_name": "Orchard Lane Cosmetics Ltd",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [],
+      "missing": [],
+      "price_per_kg": "14.0257",
+      "total": "84154.03",
+      "option": "SP:207"
+    }
+  },
+  {
+    "id": "RFQ-010",
+    "file": "rfqs/RFQ-010.pdf",
+    "tags": [
+      "clean",
+      "unit_lbs"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X13",
+        "quantity_kg": 1995.806,
+        "purity_min": 98.5,
+        "destination_port": "Houston",
+        "required_date": "2026-12-22",
+        "incoterm": "CIF",
+        "customer_name": "Ironbridge Resins Corp",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [],
+      "missing": [],
+      "price_per_kg": "9.1195",
+      "total": "18200.73",
+      "option": "MF:19"
+    }
+  },
+  {
+    "id": "RFQ-011",
+    "file": "rfqs/RFQ-011.pdf",
+    "tags": [
+      "hazmat"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X14",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Westfield Inks Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "8.5970",
+      "total": "42985.12",
+      "option": "MF:21"
+    }
+  },
+  {
+    "id": "RFQ-012",
+    "file": "rfqs/RFQ-012.pdf",
+    "tags": [
+      "hazmat",
+      "tier"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X15",
+        "quantity_kg": 10000.0,
+        "purity_min": 98.5,
+        "destination_port": "Rotterdam",
+        "required_date": "2027-01-10",
+        "incoterm": "CIF",
+        "customer_name": "Cedar Point Coatings LLC",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "15.6406",
+      "total": "156405.94",
+      "option": "SP:323"
+    }
+  },
+  {
+    "id": "RFQ-013",
+    "file": "rfqs/RFQ-013.pdf",
+    "tags": [
+      "fob"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X16",
+        "quantity_kg": 3000.0,
+        "purity_min": 98.5,
+        "destination_port": "Savannah",
+        "required_date": "2026-12-05",
+        "incoterm": "FOB",
+        "customer_name": "Maple & Vine Naturals Ltd",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [],
+      "missing": [],
+      "price_per_kg": "5.0228",
+      "total": "15068.25",
+      "option": "MF:23"
+    }
+  },
+  {
+    "id": "RFQ-014",
+    "file": "rfqs/RFQ-014.pdf",
+    "tags": [
+      "purity_missing"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X18",
+        "quantity_kg": 2500.0,
+        "purity_min": null,
+        "destination_port": "Los Angeles",
+        "required_date": "2026-11-30",
+        "incoterm": "CIF",
+        "customer_name": "Granite Peak Chemicals Corp",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_TIGHT",
+        "PURITY_ASSUMED"
+      ],
+      "missing": [],
+      "price_per_kg": "30.6763",
+      "total": "76690.79",
+      "option": "MF:25"
+    }
+  },
+  {
+    "id": "RFQ-015",
+    "file": "rfqs/RFQ-015.pdf",
+    "tags": [
+      "hazmat"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X20",
+        "quantity_kg": 4000.0,
+        "purity_min": 98.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-30",
+        "incoterm": "CIF",
+        "customer_name": "Silverline Packaging Films Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "2.7088",
+      "total": "10835.17",
+      "option": "SP:470"
+    }
+  },
+  {
+    "id": "RFQ-016",
+    "file": "rfqs/RFQ-016.pdf",
+    "tags": [
+      "product_by_name"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X01",
+        "quantity_kg": 7500.0,
+        "purity_min": 99.0,
+        "destination_port": "Rotterdam",
+        "required_date": "2026-12-28",
+        "incoterm": "CIF",
+        "customer_name": "Sunrise Detergents Co",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [],
+      "missing": [],
+      "price_per_kg": "13.6560",
+      "total": "102419.63",
+      "option": "MF:1"
+    }
+  },
+  {
+    "id": "RFQ-017",
+    "file": "rfqs/RFQ-017.pdf",
+    "tags": [
+      "missing_destination"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X02",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": null,
+        "required_date": "2026-12-15",
+        "incoterm": null,
+        "customer_name": "Tidewater Lubricants LLC",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "INCOTERM_ASSUMED",
+        "MISSING_FIELD"
+      ],
+      "missing": [
+        "destination"
+      ],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-018",
+    "file": "rfqs/RFQ-018.pdf",
+    "tags": [
+      "missing_quantity"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X03",
+        "quantity_kg": null,
+        "purity_min": 98.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Alder Creek Polymers Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "MISSING_FIELD"
+      ],
+      "missing": [
+        "quantity"
+      ],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-019",
+    "file": "rfqs/RFQ-019.pdf",
+    "tags": [
+      "unknown_product"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X99",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Northgate Agro Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "UNKNOWN_PRODUCT"
+      ],
+      "missing": [],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-020",
+    "file": "rfqs/RFQ-020.pdf",
+    "tags": [
+      "purity_unavailable"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X05",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.9,
+        "destination_port": "Houston",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Copperfield Paints Ltd",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "PURITY_UNAVAILABLE"
+      ],
+      "missing": [],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-021",
+    "file": "rfqs/RFQ-021.pdf",
+    "tags": [
+      "below_moq"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X06",
+        "quantity_kg": 300.0,
+        "purity_min": 99.0,
+        "destination_port": "Savannah",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Evergreen Surface Care LLC",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "NO_FEASIBLE_SOURCE"
+      ],
+      "missing": [],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-022",
+    "file": "rfqs/RFQ-022.pdf",
+    "tags": [
+      "deadline_infeasible"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X01",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2026-10-21",
+        "incoterm": "CIF",
+        "customer_name": "Lighthouse Textiles Corp",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_INFEASIBLE"
+      ],
+      "missing": [],
+      "price_per_kg": "13.7203",
+      "total": "68601.71",
+      "option": "MF:1"
+    }
+  },
+  {
+    "id": "RFQ-023",
+    "file": "rfqs/RFQ-023.pdf",
+    "tags": [
+      "deadline_tight"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X03",
+        "quantity_kg": 6000.0,
+        "purity_min": 98.0,
+        "destination_port": "Savannah",
+        "required_date": "2026-12-14",
+        "incoterm": "CIF",
+        "customer_name": "Harvest Moon Foods Ingredients Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_TIGHT"
+      ],
+      "missing": [],
+      "price_per_kg": "3.8828",
+      "total": "23296.54",
+      "option": "MF:5"
+    }
+  },
+  {
+    "id": "RFQ-024",
+    "file": "rfqs/RFQ-024.pdf",
+    "tags": [
+      "hazmat"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X11",
+        "quantity_kg": 2000.0,
+        "purity_min": 98.5,
+        "destination_port": "Houston",
+        "required_date": "2026-12-20",
+        "incoterm": "CIF",
+        "customer_name": "Meridian Water Treatment Co",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT"
+      ],
+      "missing": [],
+      "price_per_kg": "15.3135",
+      "total": "30626.96",
+      "option": "MF:17"
+    }
+  },
+  {
+    "id": "RFQ-025",
+    "file": "rfqs/RFQ-025.pdf",
+    "tags": [
+      "unsupported_destination"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X01",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Singapore",
+        "required_date": "2026-12-15",
+        "incoterm": "CIF",
+        "customer_name": "Falcon Ridge Plastics LLC",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "NO_SHIPPING_RATE"
+      ],
+      "missing": [],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-026",
+    "file": "rfqs/RFQ-026.pdf",
+    "tags": [
+      "unsupported_destination",
+      "fob"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X01",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Singapore",
+        "required_date": "2026-12-15",
+        "incoterm": "FOB",
+        "customer_name": "Stonebridge Sealants Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [],
+      "missing": [],
+      "price_per_kg": "13.3854",
+      "total": "66926.83",
+      "option": "MF:1"
+    }
+  },
+  {
+    "id": "RFQ-027",
+    "file": "rfqs/RFQ-027.pdf",
+    "tags": [
+      "incoterm_other"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X03",
+        "quantity_kg": 4000.0,
+        "purity_min": 98.0,
+        "destination_port": "Savannah",
+        "required_date": "2026-12-15",
+        "incoterm": "DAP",
+        "customer_name": "Bayview Skin Science Ltd",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "DEADLINE_TIGHT",
+        "INCOTERM_ASSUMED"
+      ],
+      "missing": [],
+      "price_per_kg": "4.1221",
+      "total": "16488.44",
+      "option": "MF:5"
+    }
+  },
+  {
+    "id": "RFQ-028",
+    "file": "rfqs/RFQ-028.pdf",
+    "tags": [
+      "price_validity_short"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X12",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2027-01-15",
+        "incoterm": "CIF",
+        "customer_name": "Cobalt Coatings Corp",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "PRICE_VALIDITY_SHORT"
+      ],
+      "missing": [],
+      "price_per_kg": "3.7567",
+      "total": "18783.49",
+      "option": "SP:271"
+    }
+  },
+  {
+    "id": "RFQ-029",
+    "file": "rfqs/RFQ-029.pdf",
+    "tags": [
+      "expired_prices"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X17",
+        "quantity_kg": 5000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2027-01-15",
+        "incoterm": "CIF",
+        "customer_name": "Willow Run Cleaners Inc",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "needs_info",
+      "warnings": [
+        "NO_FEASIBLE_SOURCE"
+      ],
+      "missing": [],
+      "price_per_kg": null,
+      "total": null,
+      "option": null
+    }
+  },
+  {
+    "id": "RFQ-030",
+    "file": "rfqs/RFQ-030.pdf",
+    "tags": [
+      "prompt_injection",
+      "hazmat"
+    ],
+    "expected": {
+      "fields": {
+        "product_code": "CHEM-X02",
+        "quantity_kg": 3000.0,
+        "purity_min": 99.0,
+        "destination_port": "Houston",
+        "required_date": "2026-12-20",
+        "incoterm": "CIF",
+        "customer_name": "Pioneer Fine Materials LLC",
+        "rfq_date": "2026-10-01"
+      },
+      "status": "ready_for_review",
+      "warnings": [
+        "HAZMAT",
+        "PROMPT_INJECTION_SUSPECTED"
+      ],
+      "missing": [],
+      "price_per_kg": "2.8013",
+      "total": "8403.80",
+      "option": "MF:3"
+    }
+  }
+]

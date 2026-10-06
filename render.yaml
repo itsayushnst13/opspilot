@@ -1,0 +1,19 @@
+# Render Blueprint: one Docker web service (UI + API). Database: create a free Neon/Supabase Postgres and paste its URL
+# into DATABASE_URL (Render's own free Postgres expires after 30 days).
+services:
+  - type: web
+    name: opspilot
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false            # paste your Neon/Supabase connection string in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ENV
+        value: prod
+      - key: REFERENCE_DATE
+        value: "2026-10-01"
+      - key: GEMINI_API_KEY
+        sync: false            # optional: enables LLM mode

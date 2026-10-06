@@ -1,0 +1,25 @@
+Corvane Co-solvent (CHEM-X20) - Specification Sheet
+===================================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Product code: CHEM-X20
+Product name: Corvane Co-solvent
+Category: Solvents
+HS code (synthetic): 290919
+Transport classification: Class 3
+
+Description: Flammable co-solvent for industrial cleaners and degreasers.
+Typical applications: industrial coatings, plastics compounding.
+
+Specification limits:
+- purity: >= 98.0 % (critical, review margin 0.1)
+- moisture: <= 0.5 % (non-critical, review margin 0.02)
+- color_apha: <= 30 APHA (non-critical, review margin 5)
+- residual_solvent_ppm: <= 1000 ppm (non-critical, review margin 50)
+
+Storage: Store below 25 C in a dry, ventilated area.
+Standard packaging: 250 kg steel drums.
+Shelf life: 12 months in unopened original packaging.
+Incompatible with: mineral acids.
+Handling note for Corvane Co-solvent (CHEM-X20): use appropriate PPE and follow the SDS.

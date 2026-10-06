@@ -1,0 +1,8 @@
+Class 6.1 toxic substances - shipping notes
+===========================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Class 6.1 products require toxic labels, restricted-access storage and a trained handler.
+Additional consignee verification is required before booking.
+Products affected in the synthetic catalogue: CHEM-X11, CHEM-X19.

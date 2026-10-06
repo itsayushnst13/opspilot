@@ -1,0 +1,14 @@
+Supplier profile - Konkan Coastal Organics
+==========================================
+
+SYNTHETIC DOCUMENT - fictional data generated for the OpsPilot prototype. Not a real specification.
+
+Supplier code: S15
+Supplier name: Konkan Coastal Organics
+Location: Vadodara, India
+Certifications: ISO 14001:2015, ISO 45001, REACH pre-registered.
+Standard lead time: 14 days from purchase order to ex-works readiness.
+Minimum order quantity: 2000 kg.
+Internal rating: 4.2 / 5.
+Products supplied: CHEM-X01, CHEM-X06, CHEM-X12, CHEM-X16.
+Notes: Offers batch-wise COA with every shipment.

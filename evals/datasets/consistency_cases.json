@@ -1,0 +1,929 @@
+[
+  {
+    "id": "DOC-001",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0001",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Brightwater Coatings LLC",
+          "address": "100 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X01",
+          "name": "Valtrane Ethyl Ester",
+          "hs_code": "291539"
+        },
+        "net_quantity_kg": 5000.0,
+        "unit_price_per_kg": 3.1234,
+        "total_value": 15617.0,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Houston"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0001",
+        "invoice_no": "INV-2026-0001",
+        "consignee": {
+          "name": "Brightwater Coatings LLC",
+          "address": "100 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X01",
+          "name": "Valtrane Ethyl Ester",
+          "hs_code": "291539"
+        },
+        "net_quantity_kg": 5000.0,
+        "gross_weight_kg": 5040.0,
+        "package_type": "250 kg steel drum",
+        "packages_count": 20,
+        "net_weight_per_package_kg": 250.0,
+        "origin_country": "India",
+        "destination_port": "Houston"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0001",
+        "consignee": {
+          "name": "Brightwater Coatings LLC",
+          "address": "100 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X01",
+          "name": "Valtrane Ethyl Ester",
+          "hs_code": "291539"
+        },
+        "net_quantity_kg": 5000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0001",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Brightwater Coatings LLC",
+          "address": "100 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X01",
+          "name": "Valtrane Ethyl Ester",
+          "hs_code": "291539"
+        },
+        "net_quantity_kg": 5000.0,
+        "gross_weight_kg": 5040.0,
+        "packages_count": 20,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Houston",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [],
+    "note": "clean"
+  },
+  {
+    "id": "DOC-002",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0002",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Pinecrest Home Care Inc",
+          "address": "101 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X03",
+          "name": "Cyrolite Surfactant",
+          "hs_code": "340213"
+        },
+        "net_quantity_kg": 12000.0,
+        "unit_price_per_kg": 3.4934,
+        "total_value": 41920.8,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Los Angeles"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0002",
+        "invoice_no": "INV-2026-0002",
+        "consignee": {
+          "name": "Pinecrest Home Care Inc",
+          "address": "101 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X03",
+          "name": "Cyrolite Surfactant",
+          "hs_code": "340213"
+        },
+        "net_quantity_kg": 12000.0,
+        "gross_weight_kg": 12080.0,
+        "package_type": "200 kg HDPE drum",
+        "packages_count": 60,
+        "net_weight_per_package_kg": 200.0,
+        "origin_country": "India",
+        "destination_port": "Los Angeles"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0002",
+        "consignee": {
+          "name": "Pinecrest Home Care Inc",
+          "address": "101 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X03",
+          "name": "Cyrolite Surfactant",
+          "hs_code": "340213"
+        },
+        "net_quantity_kg": 12000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0002",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Pinecrest Home Care Inc",
+          "address": "101 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X03",
+          "name": "Cyrolite Surfactant",
+          "hs_code": "340213"
+        },
+        "net_quantity_kg": 12000.0,
+        "gross_weight_kg": 12080.0,
+        "packages_count": 60,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Los Angeles",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [],
+    "note": "clean"
+  },
+  {
+    "id": "DOC-003",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0003",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Orchard Lane Cosmetics Ltd",
+          "address": "102 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X10",
+          "name": "Marlonate Emollient",
+          "hs_code": "291590"
+        },
+        "net_quantity_kg": 6000.0,
+        "unit_price_per_kg": 3.8634,
+        "total_value": 23180.4,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Savannah"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0003",
+        "invoice_no": "INV-2026-0003",
+        "consignee": {
+          "name": "Orchard Lane Cosmetics Ltd",
+          "address": "102 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X10",
+          "name": "Marlonate Emollient",
+          "hs_code": "291590"
+        },
+        "net_quantity_kg": 6000.0,
+        "gross_weight_kg": 6020.0,
+        "package_type": "1000 kg IBC tote",
+        "packages_count": 6,
+        "net_weight_per_package_kg": 1000.0,
+        "origin_country": "India",
+        "destination_port": "Savannah"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0003",
+        "consignee": {
+          "name": "Orchard Lane Cosmetics Ltd",
+          "address": "102 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X10",
+          "name": "Marlonate Emollient",
+          "hs_code": "291590"
+        },
+        "net_quantity_kg": 6000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0003",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Orchard Lane Cosmetics Ltd",
+          "address": "102 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X10",
+          "name": "Marlonate Emollient",
+          "hs_code": "291590"
+        },
+        "net_quantity_kg": 6000.0,
+        "gross_weight_kg": 6020.0,
+        "packages_count": 6,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Savannah",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [],
+    "note": "clean"
+  },
+  {
+    "id": "DOC-004",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0004",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Lakeshore Adhesives Co",
+          "address": "103 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X04",
+          "name": "Brevanol Alcohol",
+          "hs_code": "290549"
+        },
+        "net_quantity_kg": 2000.0,
+        "unit_price_per_kg": 4.2334,
+        "total_value": 8466.8,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Houston"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0004",
+        "invoice_no": "INV-2026-0004",
+        "consignee": {
+          "name": "Lakeshore Adhesives Co",
+          "address": "103 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X04",
+          "name": "Brevanol Alcohol",
+          "hs_code": "290549"
+        },
+        "net_quantity_kg": 2200.0,
+        "gross_weight_kg": 2220.0,
+        "package_type": "200 kg steel drum",
+        "packages_count": 10,
+        "net_weight_per_package_kg": 220.00000000000003,
+        "origin_country": "India",
+        "destination_port": "Houston"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0004",
+        "consignee": {
+          "name": "Lakeshore Adhesives Co",
+          "address": "103 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X04",
+          "name": "Brevanol Alcohol",
+          "hs_code": "290549"
+        },
+        "net_quantity_kg": 2000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0004",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Lakeshore Adhesives Co",
+          "address": "103 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X04",
+          "name": "Brevanol Alcohol",
+          "hs_code": "290549"
+        },
+        "net_quantity_kg": 2000.0,
+        "gross_weight_kg": 2020.0,
+        "packages_count": 10,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Houston",
+        "incoterm": "CIF",
+        "hazmat_class": "3"
+      }
+    },
+    "expected_fields": [
+      "gross_weight_kg",
+      "net_quantity_kg"
+    ],
+    "note": "packing list quantity (and gross weight) differ by 200 kg"
+  },
+  {
+    "id": "DOC-005",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0005",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Nordhaven Polymers GmbH",
+          "address": "104 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X13",
+          "name": "Haldoran Stabilizer",
+          "hs_code": "292690"
+        },
+        "net_quantity_kg": 4000.0,
+        "unit_price_per_kg": 4.6034,
+        "total_value": 18413.6,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Rotterdam"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0005",
+        "invoice_no": "INV-2026-0005",
+        "consignee": {
+          "name": "Nordhaven Polymers GmbH",
+          "address": "104 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X13",
+          "name": "Haldoran Stabilizer",
+          "hs_code": "292690"
+        },
+        "net_quantity_kg": 4000.0,
+        "gross_weight_kg": 4180.0,
+        "package_type": "25 kg multiwall bag",
+        "packages_count": 160,
+        "net_weight_per_package_kg": 25.0,
+        "origin_country": "India",
+        "destination_port": "Rotterdam"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0005",
+        "consignee": {
+          "name": "Nordhaven Polymers GmbH",
+          "address": "104 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X13",
+          "name": "Haldoran Stabilizer",
+          "hs_code": "292690"
+        },
+        "net_quantity_kg": 4000.0,
+        "origin_country": "India",
+        "destination_country": "Netherlands"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0005",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Nordhaven Polymer GmbH",
+          "address": "104 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X13",
+          "name": "Haldoran Stabilizer",
+          "hs_code": "292690"
+        },
+        "net_quantity_kg": 4000.0,
+        "gross_weight_kg": 4180.0,
+        "packages_count": 160,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Rotterdam",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [
+      "consignee.name"
+    ],
+    "note": "consignee typo on shipping instruction"
+  },
+  {
+    "id": "DOC-006",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0006",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Summit Agro Sciences Inc",
+          "address": "105 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X16",
+          "name": "Pelloran Wetting Agent",
+          "hs_code": "340212"
+        },
+        "net_quantity_kg": 3000.0,
+        "unit_price_per_kg": 4.9734,
+        "total_value": 14920.2,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Savannah"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0006",
+        "invoice_no": "INV-2026-0006",
+        "consignee": {
+          "name": "Summit Agro Sciences Inc",
+          "address": "105 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X16",
+          "name": "Pelloran Wetting Agent",
+          "hs_code": "340212"
+        },
+        "net_quantity_kg": 3000.0,
+        "gross_weight_kg": 3020.0,
+        "package_type": "250 kg steel drum",
+        "packages_count": 12,
+        "net_weight_per_package_kg": 250.0,
+        "origin_country": "India",
+        "destination_port": "Savannah"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0006",
+        "consignee": {
+          "name": "Summit Agro Sciences Inc",
+          "address": "105 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X16",
+          "name": "Pelloran Wetting Agent",
+          "hs_code": "999999"
+        },
+        "net_quantity_kg": 3000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0006",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Summit Agro Sciences Inc",
+          "address": "105 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X16",
+          "name": "Pelloran Wetting Agent",
+          "hs_code": "340212"
+        },
+        "net_quantity_kg": 3000.0,
+        "gross_weight_kg": 3020.0,
+        "packages_count": 12,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Savannah",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [
+      "product.hs_code"
+    ],
+    "note": "HS code differs on certificate of origin"
+  },
+  {
+    "id": "DOC-007",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0007",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Harborline Plastics Ltd",
+          "address": "106 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X06",
+          "name": "Lumivane Antioxidant",
+          "hs_code": "293090"
+        },
+        "net_quantity_kg": 8000.0,
+        "unit_price_per_kg": 5.3434,
+        "total_value": 44884.56,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Houston"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0007",
+        "invoice_no": "INV-2026-0007",
+        "consignee": {
+          "name": "Harborline Plastics Ltd",
+          "address": "106 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X06",
+          "name": "Lumivane Antioxidant",
+          "hs_code": "293090"
+        },
+        "net_quantity_kg": 8000.0,
+        "gross_weight_kg": 8340.0,
+        "package_type": "25 kg multiwall bag",
+        "packages_count": 320,
+        "net_weight_per_package_kg": 25.0,
+        "origin_country": "India",
+        "destination_port": "Houston"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0007",
+        "consignee": {
+          "name": "Harborline Plastics Ltd",
+          "address": "106 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X06",
+          "name": "Lumivane Antioxidant",
+          "hs_code": "293090"
+        },
+        "net_quantity_kg": 8000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0007",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Harborline Plastics Ltd",
+          "address": "106 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X06",
+          "name": "Lumivane Antioxidant",
+          "hs_code": "293090"
+        },
+        "net_quantity_kg": 8000.0,
+        "gross_weight_kg": 8340.0,
+        "packages_count": 320,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Houston",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [
+      "invoice_total_arithmetic"
+    ],
+    "note": "invoice total is not quantity x unit price"
+  },
+  {
+    "id": "DOC-008",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0008",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Redwood Personal Care LLC",
+          "address": "107 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X09",
+          "name": "Drovex Preservative",
+          "hs_code": "293299"
+        },
+        "net_quantity_kg": 1000.0,
+        "unit_price_per_kg": 5.7134,
+        "total_value": 5713.4,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Los Angeles"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0008",
+        "invoice_no": "INV-2026-0008",
+        "consignee": {
+          "name": "Redwood Personal Care LLC",
+          "address": "107 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X09",
+          "name": "Drovex Preservative",
+          "hs_code": "293299"
+        },
+        "net_quantity_kg": 1000.0,
+        "gross_weight_kg": 1060.0,
+        "package_type": "20 kg pail",
+        "packages_count": 51,
+        "net_weight_per_package_kg": 20.0,
+        "origin_country": "India",
+        "destination_port": "Los Angeles"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0008",
+        "consignee": {
+          "name": "Redwood Personal Care LLC",
+          "address": "107 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X09",
+          "name": "Drovex Preservative",
+          "hs_code": "293299"
+        },
+        "net_quantity_kg": 1000.0,
+        "origin_country": "India",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0008",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Redwood Personal Care LLC",
+          "address": "107 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X09",
+          "name": "Drovex Preservative",
+          "hs_code": "293299"
+        },
+        "net_quantity_kg": 1000.0,
+        "gross_weight_kg": 1060.0,
+        "packages_count": 50,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Los Angeles",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [
+      "package_weight_arithmetic",
+      "packages_count"
+    ],
+    "note": "package count off by one"
+  },
+  {
+    "id": "DOC-009",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0009",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Westfield Inks Inc",
+          "address": "108 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X05",
+          "name": "Tessamide Additive",
+          "hs_code": "292429"
+        },
+        "net_quantity_kg": 5000.0,
+        "unit_price_per_kg": 6.0834,
+        "total_value": 30417.0,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Rotterdam"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0009",
+        "invoice_no": "INV-2026-0009",
+        "consignee": {
+          "name": "Westfield Inks Inc",
+          "address": "108 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X05",
+          "name": "Tessamide Additive",
+          "hs_code": "292429"
+        },
+        "net_quantity_kg": 5000.0,
+        "gross_weight_kg": 5220.0,
+        "package_type": "25 kg multiwall bag",
+        "packages_count": 200,
+        "net_weight_per_package_kg": 25.0,
+        "origin_country": "India",
+        "destination_port": "Rotterdam"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0009",
+        "consignee": {
+          "name": "Westfield Inks Inc",
+          "address": "108 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X05",
+          "name": "Tessamide Additive",
+          "hs_code": "292429"
+        },
+        "net_quantity_kg": 5000.0,
+        "origin_country": "India",
+        "destination_country": "Netherlands"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0009",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Westfield Inks Inc",
+          "address": "108 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X05",
+          "name": "Tessamide Additive",
+          "hs_code": "292429"
+        },
+        "net_quantity_kg": 5000.0,
+        "gross_weight_kg": 5220.0,
+        "packages_count": 200,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Los Angeles",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [
+      "destination_port"
+    ],
+    "note": "destination port differs on shipping instruction"
+  },
+  {
+    "id": "DOC-010",
+    "docs": {
+      "commercial_invoice": {
+        "doc_type": "commercial_invoice",
+        "invoice_no": "INV-2026-0010",
+        "date": "2026-10-06",
+        "seller": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Bayview Skin Science Ltd",
+          "address": "109 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X18",
+          "name": "Aulmeric Acid",
+          "hs_code": "291814"
+        },
+        "net_quantity_kg": 2500.0,
+        "unit_price_per_kg": 6.4534,
+        "total_value": 16133.5,
+        "currency": "USD",
+        "incoterm": "CIF",
+        "origin_country": "India",
+        "destination_port": "Los Angeles"
+      },
+      "packing_list": {
+        "doc_type": "packing_list",
+        "packing_list_no": "PL-2026-0010",
+        "invoice_no": "INV-2026-0010",
+        "consignee": {
+          "name": "Bayview Skin Science Ltd",
+          "address": "109 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X18",
+          "name": "Aulmeric Acid",
+          "hs_code": "291814"
+        },
+        "net_quantity_kg": 2500.0,
+        "gross_weight_kg": 2620.0,
+        "package_type": "25 kg multiwall bag",
+        "packages_count": 100,
+        "net_weight_per_package_kg": 25.0,
+        "origin_country": "India",
+        "destination_port": "Los Angeles"
+      },
+      "certificate_of_origin": {
+        "doc_type": "certificate_of_origin",
+        "coo_no": "CO-2026-0010",
+        "consignee": {
+          "name": "Bayview Skin Science Ltd",
+          "address": "109 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X18",
+          "name": "Aulmeric Acid",
+          "hs_code": "291814"
+        },
+        "net_quantity_kg": 2500.0,
+        "origin_country": "Thailand",
+        "destination_country": "United States"
+      },
+      "shipping_instruction": {
+        "doc_type": "shipping_instruction",
+        "si_no": "SI-2026-0010",
+        "shipper": {
+          "name": "Seller Trading Co (synthetic)"
+        },
+        "consignee": {
+          "name": "Bayview Skin Science Ltd",
+          "address": "109 Example Street, Sample City"
+        },
+        "product": {
+          "code": "CHEM-X18",
+          "name": "Aulmeric Acid",
+          "hs_code": "291814"
+        },
+        "net_quantity_kg": 2450.0,
+        "gross_weight_kg": 2620.0,
+        "packages_count": 100,
+        "port_of_loading": "Nhava Sheva",
+        "destination_port": "Los Angeles",
+        "incoterm": "CIF",
+        "hazmat_class": null
+      }
+    },
+    "expected_fields": [
+      "net_quantity_kg",
+      "origin_country"
+    ],
+    "note": "origin and quantity mismatches"
+  }
+]
