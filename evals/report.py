@@ -13,6 +13,22 @@ def _table(title: str, d: dict, skip=("failures", "not_top1", "scenarios", "case
     return f"### {title}\n\n| Metric | Result |\n|---|---|\n" + "\n".join(rows) + "\n"
 
 
+def llm_usage_banner(u: dict) -> list[str]:
+    """Say plainly which path actually ran, so a rules fallback is never read as an LLM result."""
+    out = []
+    if u["configured_mode"] == "llm" and u["runs_that_used_the_model"] == 0:
+        out.append("> **These are NOT language-model numbers.** The run was configured for `llm` mode, but "
+                   f"0 of {u['rfq_runs']} RFQ runs reached the model: every one fell back to the deterministic "
+                   "rules path, so the results below measure rules mode. Fix the model access and re-run "
+                   "before quoting any of this as LLM-mode accuracy.\n")
+    elif u["configured_mode"] == "llm" and u["runs_that_fell_back_to_rules"]:
+        out.append(f"> **Partial LLM run.** {u['runs_that_used_the_model']} of {u['rfq_runs']} RFQ runs used the "
+                   f"model and {u['runs_that_fell_back_to_rules']} fell back to rules, so the figures below are "
+                   "a mixture of the two paths.\n")
+    out.append(_table("Which path actually ran", {k: v for k, v in u.items() if k != "extraction_method"}))
+    return out
+
+
 def write_report(o: dict) -> str:
     m, s = o["meta"], o["suites"]
     out = [f"# OpsPilot evaluation report\n",
@@ -35,6 +51,8 @@ def write_report(o: dict) -> str:
         out.append(f"### Agent guardrails (scripted misbehaving model) — {_r(g)}\n\n| Scenario | Result | Detail |\n|---|---|---|\n"
                    + "\n".join(f"| {x['scenario']} | {'PASS' if x['passed'] else 'FAIL'} | {x['note']} |" for x in g["scenarios"]) + "\n")
     out.append(_table("Grounding / hallucination", s["grounding"]))
+    if "llm_usage" in s:
+        out.extend(llm_usage_banner(s["llm_usage"]))
     L = s["latency"]
     out.append("### Latency\n\n| Measure | p50 | p95 | max |\n|---|---|---|---|\n"
                f"| RFQ end-to-end ({L['rfq_end_to_end_ms']['n']} runs) ms | {L['rfq_end_to_end_ms']['p50']} | {L['rfq_end_to_end_ms']['p95']} | {L['rfq_end_to_end_ms']['max']} |\n"

@@ -9,6 +9,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from ..agents.llm import active_model, llm_status
 from ..core.config import get_settings
 from ..core.db import get_db
 from ..core.security import get_current_user
@@ -64,11 +65,21 @@ def dashboard(user: User = Depends(get_current_user), db: Session = Depends(get_
                          .order_by(WorkflowRun.created_at)).all()
     quotes = {q.run_id: q for q in db.scalars(select(Quote).where(Quote.run_id.in_([r.id for r in pending])))} if pending else {}
     s = get_settings()
-    return {"mode": s.effective_mode, "model": s.gemini_model if s.effective_mode == "llm" else None,
+    return {"mode": s.effective_mode, "model": active_model(s) if s.effective_mode == "llm" else None,
+            "llm": _llm_block(s),
             "metrics": compute_metrics(db), "recent": [runs.run_summary(r) for r in recent],
             "pending_approvals": [{**runs.run_summary(r), "total": str(quotes[r.id].total) if r.id in quotes else None,
                                     "warnings": [w["code"] for w in quotes[r.id].warnings] if r.id in quotes else []}
                                    for r in pending]}
+
+
+def _llm_block(s) -> dict:
+    """Honest view of the language model: configured vs actually verified in this process."""
+    if s.effective_mode != "llm":
+        return {"configured": False, "verified": False, "model": None, "last_error": None, "category": None}
+    st = llm_status()
+    return {"configured": True, "verified": bool(st["verified"]), "model": st["model"] or active_model(s),
+            "last_error": st["error"], "category": st["category"]}
 
 
 def results_path() -> Path:

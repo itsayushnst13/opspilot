@@ -62,7 +62,8 @@ def _extract(db: Session, text: str, llm: LLMClient | None) -> tuple[RawRFQ, str
             raw, usage = extract_raw_llm(text, llm)
             return raw, "llm", usage, notes
         except (LLMError, ValueError) as exc:
-            notes.append(f"LLM extraction failed ({exc.__class__.__name__}); regex rules were used instead")
+            notes.append(f"LLM extraction failed ({getattr(exc, 'category', exc.__class__.__name__)}: "
+                         f"{str(exc)[:200]}); regex rules were used instead")
     return extract_raw_rules(text, names, ports), "rules", {}, notes
 
 

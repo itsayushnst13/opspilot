@@ -1,6 +1,6 @@
 # OpsPilot evaluation report
 
-Generated 2026-10-06T10:04:01+00:00 · mode **rules** · embedder `hashing-768` · reference date 2026-10-01 · run took 3.8 s
+Generated 2026-10-11T18:24:15+00:00 · mode **rules** · embedder `hashing-768` · reference date 2026-10-01 · run took 3.8 s
 
 Datasets: rfq=30, coa=15, consistency=10, retrieval=30. All data is synthetic.
 
@@ -115,14 +115,24 @@ Confusion (expected → got): PASS: {'PASS': 7}; FAIL: {'FAIL': 5}; REVIEW REQUI
 | no_price_invented_for_incomplete_rfqs | 7/7 (100.0%) |
 | prompt_injection_flagged_and_price_unaffected | 1/1 (100.0%) |
 
+### Which path actually ran
+
+| Metric | Result |
+|---|---|
+| configured_mode | rules |
+| rfq_runs | 30 |
+| runs_that_used_the_model | 0 |
+| runs_that_fell_back_to_rules | 0 |
+| llm_calls_total | 0 |
+
 ### Latency
 
 | Measure | p50 | p95 | max |
 |---|---|---|---|
-| RFQ end-to-end (30 runs) ms | 29 | 58 | 82 |
-| COA end-to-end (15 runs) ms | 17 | 22 | 22 |
+| RFQ end-to-end (30 runs) ms | 27 | 89 | 112 |
+| COA end-to-end (15 runs) ms | 14 | 16 | 20 |
 
-Tool time p50 11.2 ms · LLM time p50 0.0 ms · tokens 0. SQLite on a shared sandbox CPU; indicative only. In rules mode there are no model calls, so no LLM time or tokens.
+Tool time p50 10.8 ms · LLM time p50 0.0 ms · tokens 0. SQLite on a shared sandbox CPU; indicative only. Zero LLM time with a non-zero end-to-end time means the calls were attempted and failed, and the run fell back to rules.
 
 ### Known failures (not hidden)
 

@@ -72,7 +72,9 @@ def create_app() -> FastAPI:
         with SessionLocal() as db:
             db.execute(text("select 1"))
             products = db.scalar(select(func.count()).select_from(Product))
-        return {"status": "ok", "mode": s.effective_mode, "products": products, "version": app.version}
+        from .api.metrics import _llm_block
+        return {"status": "ok", "mode": s.effective_mode, "products": products, "version": app.version,
+                "llm": _llm_block(s)}
 
     if s.static_dir and Path(s.static_dir).is_dir():
         root = Path(s.static_dir).resolve()

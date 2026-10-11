@@ -28,7 +28,7 @@ def test_generate_sends_key_in_header_and_parses_function_call():
     assert "SECRET" not in seen["url"] and seen["key"] == "SECRET"
     assert seen["body"]["systemInstruction"]["parts"][0]["text"] == "sys"
     assert seen["body"]["tools"][0]["functionDeclarations"][0]["name"] == "search_product"
-    assert seen["body"]["generationConfig"]["temperature"] == 0.0
+    assert "generationConfig" not in seen["body"]  # temperature left at the model default
 
 
 def test_json_schema_mode_and_text_parse():
@@ -56,13 +56,42 @@ def test_retries_then_raises_without_leaking_key(monkeypatch):
 
 
 def test_client_error_and_blocked_response():
-    c = GeminiClient("k", "m", transport=transport(lambda r: httpx.Response(400, json={"error": "bad"})))
-    with pytest.raises(LLMError):
-        c.generate([{"role": "user", "parts": [{"text": "x"}]}])
-    c = GeminiClient("k", "m", transport=transport(lambda r: httpx.Response(200, json={"promptFeedback": {"blockReason": "SAFETY"}})))
-    with pytest.raises(LLMError):
+    c = GeminiClient(
+        "SECRET",
+        "m",
+        transport=transport(
+            lambda r: httpx.Response(
+                400,
+                json={
+                    "error": {
+                        "code": 400,
+                        "status": "INVALID_ARGUMENT",
+                        "message": "Model configuration is invalid",
+                    }
+                },
+            )
+        ),
+    )
+    with pytest.raises(LLMError) as exc:
         c.generate([{"role": "user", "parts": [{"text": "x"}]}])
 
+    assert "400" in str(exc.value)
+    assert "INVALID_ARGUMENT" in str(exc.value)
+    assert "Model configuration is invalid" in str(exc.value)
+    assert "SECRET" not in str(exc.value)
+
+    c = GeminiClient(
+        "k",
+        "m",
+        transport=transport(
+            lambda r: httpx.Response(
+                200,
+                json={"promptFeedback": {"blockReason": "SAFETY"}},
+            )
+        ),
+    )
+    with pytest.raises(LLMError):
+        c.generate([{"role": "user", "parts": [{"text": "x"}]}])
 
 def test_thought_parts_are_not_returned_as_text():
     body = {"candidates": [{"content": {"parts": [{"text": "thinking...", "thought": True}, {"text": "answer"}]}}]}

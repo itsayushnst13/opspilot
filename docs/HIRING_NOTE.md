@@ -12,8 +12,8 @@ COAs against specs and generates export documents that refuse to render when the
 The design rule I cared most about: **the model never invents a number.** Prices come only from tested Python tools;
 validated inputs are pinned so the model cannot change them; every step is audited in a hash-chained log.
 
-- Live demo: [LIVE_DEMO_URL] (login is one click; submit as analyst, approve as approver)
-- Code: [GITHUB_URL] · API docs: [API_DOCS_URL]
+- Live demo: https://opspilot-69g5.onrender.com/ (login is one click; submit as analyst, approve as approver)
+- Code: https://github.com/itsayushnst13/opspilot · API docs: https://opspilot-69g5.onrender.com/docs
 - Evals: 30 RFQ / 15 COA / 10 document-set / 30 retrieval cases, run by `python evals/run_all.py`. Numbers are in the README
   together with the caveats (synthetic data, tuned extractor, LLM mode needs your own key to measure).
 

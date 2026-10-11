@@ -5,7 +5,11 @@ from evals.harness import rate, run_coa_file
 
 
 def run_all(cases: list[dict]) -> dict[str, dict]:
-    return {c["id"]: run_coa_file(c["file"]) for c in cases}
+    out = {}
+    for i, c in enumerate(cases, 1):
+        print(f"  COA {i}/{len(cases)} {c['id']}", flush=True)
+        out[c["id"]] = run_coa_file(c["file"])
+    return out
 
 
 def evaluate(cases: list[dict], runs: dict[str, dict]) -> dict:

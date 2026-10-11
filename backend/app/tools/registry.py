@@ -83,6 +83,9 @@ class ToolRegistry:
             result = tool.fn(self.db, parsed)
         except ToolError as exc:
             ok, error, result = False, str(exc), {"error": str(exc)}
+        except Exception as exc:  # noqa: BLE001 - one tool must never kill the whole workflow
+            msg = f"{exc.__class__.__name__}: {exc}"[:300]
+            ok, error, result = False, msg, {"error": msg}
         duration = (time.perf_counter() - started) * 1000
         self.total_ms += duration
         if self.recorder:

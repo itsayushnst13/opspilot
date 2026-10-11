@@ -104,3 +104,13 @@ def test_listing_and_dashboard_and_metrics(client, analyst):
     assert dash["mode"] == "rules" and dash["metrics"]["runs_total"] >= 1
     assert dash["metrics"]["latency_ms"]["p50"] is not None
     assert client.get("/api/health").json()["status"] == "ok"
+
+
+def test_health_and_dashboard_state_whether_the_model_is_verified(client, analyst):
+    health = client.get("/api/health").json()
+    dash = client.get("/api/dashboard", headers=analyst).json()
+    for block in (health["llm"], dash["llm"]):
+        # the test suite runs in rules mode: configured must be False and never "verified"
+        assert block == {"configured": False, "verified": False, "model": None,
+                         "last_error": None, "category": None}
+    assert health["mode"] == "rules" and dash["model"] is None

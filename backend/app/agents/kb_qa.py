@@ -23,7 +23,11 @@ def answer(db: Session, question: str, llm: LLMClient | None, k: int = 5) -> dic
             r = llm.generate([{"role": "user", "parts": [{"text": f"Question: {question}\n\nPassages:\n{ctx}"}]}], system=PROMPT)
             if r.text:
                 return {"answer": r.text.strip(), "mode": "llm", "passages": passages}
-        except LLMError:
-            pass
+        except LLMError as exc:
+            # Never report a model failure as "no model configured": say which it was.
+            return {"answer": "The language model could not be reached, so the top matching passages are "
+                              "listed below without a generated answer.",
+                    "mode": "retrieval-only", "passages": passages,
+                    "llm_error": {"category": exc.category, "detail": str(exc)[:300]}}
     return {"answer": "Top matching passages are listed below (no language model configured, so no generated answer).",
             "mode": "retrieval-only", "passages": passages}

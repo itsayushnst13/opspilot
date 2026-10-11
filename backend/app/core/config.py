@@ -34,11 +34,22 @@ class Settings(BaseSettings):
 
     # LLM (Gemini). If no key is set the system runs in deterministic "rules" mode.
     gemini_api_key: Optional[str] = Field(default=None)
-    gemini_model: str = "gemini-2.5-flash"
+    gemini_model: str = "gemini-3.6-flash"
+    # Tried in order if the primary model name is rejected as not found (model names get retired).
+    gemini_fallback_models: str = "gemini-3.8-flash,gemini-2.5-flash"
+    # None = model default. Gemini 3 models recommend the default; set 0 for 2.x models if you want determinism.
+    gemini_temperature: Optional[float] = None
     gemini_embed_model: str = "gemini-embedding-001"
+    # auto = Gemini embeddings when a key is set; hashing = always the deterministic local embedder.
+    # Embeddings have their own quota, so a shared demo on a free key is steadier on "hashing".
+    embedder: str = "auto"  # auto | hashing | gemini
     embed_dim: int = 768
+    # Optional reasoning depth ("minimal" | "low" | "medium" | "high"). Unset = the model's own default.
+    # Sent as generationConfig.thinkingLevel; if a model rejects it the client retries once without it.
+    gemini_thinking_level: Optional[str] = None
     llm_mode: str = "auto"  # auto | llm | rules
-    llm_timeout_s: float = 60.0
+    llm_timeout_s: float = 60.0          # per HTTP request
+    llm_total_budget_s: float = 90.0     # whole call: retries across every fallback model
     agent_max_steps: int = 12
 
     # Pin 'today' for RFQ processing. The synthetic price lists are valid until a fixed date, so a public demo

@@ -8,3 +8,4 @@ frontend/dist/
 .venv/
 *.pyc
 evals/results/latest_llm.json
+.DS_Store

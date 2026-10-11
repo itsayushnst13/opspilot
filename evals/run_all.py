@@ -8,6 +8,7 @@ Nothing here is hard-coded: every number in the report is computed from this run
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import datetime as dt
 import json
 import platform
@@ -24,10 +25,17 @@ from evals import harness  # noqa: E402
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--llm", action="store_true", help="use Gemini (needs GEMINI_API_KEY)")
+    ap.add_argument("--limit", type=int, default=0,
+                    help="only run the first N RFQ and COA cases (a quick llm-mode sample)")
+    ap.add_argument("--rpm", type=float, default=0,
+                    help="space runs out to this many per minute (free-tier quotas, e.g. --rpm 8)")
+    ap.add_argument("--gemini-embeddings", action="store_true",
+                    help="with --llm, also embed with Gemini (separate quota; retrieval is then not comparable)")
     ap.add_argument("--out", default=str(ROOT / "evals" / "results"))
     args = ap.parse_args()
     started = time.perf_counter()
-    harness.setup(use_llm=args.llm)
+    harness.setup(use_llm=args.llm, gemini_embeddings=args.gemini_embeddings)
+    harness.set_rate_limit(args.rpm)
 
     from evals.report import write_report
     from evals.suites import coa, consistency, guardrails, retrieval, rfq
@@ -35,6 +43,10 @@ def main() -> int:
     from app.core.config import get_settings
 
     rfq_cases, coa_cases = harness.load("rfq_cases"), harness.load("coa_cases")
+    if args.limit:
+        rfq_cases, coa_cases = rfq_cases[:args.limit], coa_cases[:args.limit]
+        print(f"subset: {len(rfq_cases)} RFQ and {len(coa_cases)} COA cases "
+              "- accuracy from a subset is a sample, not the headline number")
     print(f"running {len(rfq_cases)} RFQs ...", flush=True)
     rfq_runs = rfq.run_all(rfq_cases)
     print(f"running {len(coa_cases)} COAs ...", flush=True)
@@ -55,16 +67,33 @@ def main() -> int:
     clat = [r["run"]["latency_ms"] for r in coa_runs.values()]
     tool_ms = [r["run"]["metrics"].get("tool_ms", 0) for r in rfq_runs.values()]
     llm_ms = [r["run"]["metrics"].get("llm_ms", 0) for r in rfq_runs.values()]
+    def _codes(r):
+        return {w["code"] for w in ((r.get("quote") or {}).get("warnings") or [])}
+
+    used_llm = [r for r in rfq_runs.values() if r["run"]["mode"] == "llm"]
+    fell_back = [r for r in rfq_runs.values() if "LLM_UNAVAILABLE" in _codes(r)]
+    extraction = Counter((r.get("extraction") or {}).get("method") for r in rfq_runs.values())
+    suites["llm_usage"] = {
+        "configured_mode": get_settings().effective_mode,
+        "rfq_runs": len(rfq_runs),
+        "runs_that_used_the_model": len(used_llm),
+        "runs_that_fell_back_to_rules": len(fell_back),
+        "extraction_method": dict(extraction),
+        "llm_calls_total": sum(r["run"]["metrics"].get("llm_calls", 0) for r in rfq_runs.values()),
+    }
     suites["latency"] = {
         "rfq_end_to_end_ms": {"n": len(lat), "p50": harness.pct(lat, .5), "p95": harness.pct(lat, .95), "max": max(lat)},
         "coa_end_to_end_ms": {"n": len(clat), "p50": harness.pct(clat, .5), "p95": harness.pct(clat, .95), "max": max(clat)},
         "rfq_tool_ms_p50": harness.pct(tool_ms, .5), "rfq_llm_ms_p50": harness.pct(llm_ms, .5),
         "tokens_total": sum(r["run"]["metrics"].get("prompt_tokens", 0) + r["run"]["metrics"].get("output_tokens", 0) for r in rfq_runs.values()),
-        "note": "SQLite on a shared sandbox CPU; indicative only. In rules mode there are no model calls, so no LLM time or tokens.",
+        "note": "SQLite on a shared sandbox CPU; indicative only. Zero LLM time with a non-zero end-to-end "
+                "time means the calls were attempted and failed, and the run fell back to rules.",
     }
     s = get_settings()
     out = {
-        "meta": {"generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "mode": s.effective_mode,
+        "meta": {"generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+                 "mode": s.effective_mode,
+                 "model_actually_used": suites["llm_usage"]["runs_that_used_the_model"] > 0,
                  "model": s.gemini_model if s.effective_mode == "llm" else None, "embedder": suites["retrieval"]["embedder"],
                  "python": platform.python_version(), "reference_date": harness.REFERENCE_DATE,
                  "datasets": {"rfq": len(rfq_cases), "coa": len(coa_cases), "consistency": suites["consistency"]["cases"],

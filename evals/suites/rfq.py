@@ -14,7 +14,11 @@ def _norm(v):
 
 
 def run_all(cases: list[dict]) -> dict[str, dict]:
-    return {c["id"]: run_rfq_file(c["file"]) for c in cases}
+    out = {}
+    for i, c in enumerate(cases, 1):
+        print(f"  RFQ {i}/{len(cases)} {c['id']}", flush=True)
+        out[c["id"]] = run_rfq_file(c["file"])
+    return out
 
 
 def _calc(detail):

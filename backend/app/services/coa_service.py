@@ -60,7 +60,8 @@ def process_run(run_id: str, llm="default") -> None:
                 raw, usage = extract_raw_llm(parsed.text, client)
                 method = "llm"
             except (LLMError, ValueError) as exc:
-                note = f"LLM extraction failed ({exc.__class__.__name__}); regex rules were used instead"
+                note = (f"LLM extraction failed ({getattr(exc, 'category', exc.__class__.__name__)}: "
+                        f"{str(exc)[:200]}); regex rules were used instead")
         if raw is None:
             raw = extract_raw_rules(parsed.text, [n for (n,) in db.execute(select(Product.name))])
         norm = normalize_coa(raw, db)

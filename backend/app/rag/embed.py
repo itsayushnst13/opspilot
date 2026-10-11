@@ -88,23 +88,40 @@ class GeminiEmbedder:
         self.name = f"gemini-{model}-{dim}"
         self._client = httpx.Client(timeout=timeout, transport=transport)
 
+    MAX_ATTEMPTS = 4
+    MAX_BACKOFF_S = 30.0
+
+    @staticmethod
+    def _retry_after(r: httpx.Response) -> float | None:
+        """Seconds the API asks us to wait (RetryInfo), if it said so."""
+        try:
+            for d in ((r.json().get("error") or {}).get("details") or []):
+                delay = str(d.get("retryDelay", ""))
+                if delay.endswith("s") and delay[:-1].replace(".", "", 1).isdigit():
+                    return float(delay[:-1])
+        except (ValueError, AttributeError):
+            pass
+        return None
+
     def _post(self, path: str, body: dict) -> dict:
         last: Exception | None = None
-        for attempt in range(3):
+        for attempt in range(self.MAX_ATTEMPTS):
             try:
                 r = self._client.post(f"{self.BASE}/{path}", json=body,
                                       headers={"x-goog-api-key": self.api_key})
                 if r.status_code in (429, 500, 502, 503, 504):
                     last = EmbeddingError(f"Gemini returned {r.status_code}")
-                    time.sleep(0.5 * (2 ** attempt))
+                    # Per-minute quotas need real patience, not 0.5 s.
+                    wait = self._retry_after(r) or min(2.0 * (2 ** attempt), self.MAX_BACKOFF_S)
+                    time.sleep(min(wait, self.MAX_BACKOFF_S))
                     continue
                 if r.status_code >= 400:
                     raise EmbeddingError(f"Gemini embedding error {r.status_code}")
                 return r.json()
             except httpx.HTTPError as exc:
                 last = exc
-                time.sleep(0.5 * (2 ** attempt))
-        raise EmbeddingError(f"Gemini embedding request failed: {last}")
+                time.sleep(min(2.0 * (2 ** attempt), self.MAX_BACKOFF_S))
+        raise EmbeddingError(f"Gemini embedding request failed after {self.MAX_ATTEMPTS} attempts: {last}")
 
     def _embed(self, texts: list[str], task: str) -> list[list[float]]:
         out: list[list[float]] = []
@@ -134,9 +151,11 @@ _cached: dict[str, Embedder] = {}
 
 def get_embedder(settings: Settings | None = None) -> Embedder:
     s = settings or get_settings()
-    key = f"{s.gemini_api_key is not None}-{s.gemini_embed_model}-{s.embed_dim}-{s.llm_mode}"
+    key = f"{s.gemini_api_key is not None}-{s.gemini_embed_model}-{s.embed_dim}-{s.llm_mode}-{s.embedder}"
     if key not in _cached:
-        if s.gemini_api_key and s.llm_mode != "rules":
+        if s.embedder == "hashing":
+            _cached[key] = HashingEmbedder(s.embed_dim)
+        elif s.gemini_api_key and (s.embedder == "gemini" or s.llm_mode != "rules"):
             _cached[key] = GeminiEmbedder(s.gemini_api_key, s.gemini_embed_model, s.embed_dim, s.llm_timeout_s)
         else:
             _cached[key] = HashingEmbedder(s.embed_dim)

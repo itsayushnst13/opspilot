@@ -8,15 +8,16 @@ export documents that refuse to render when they contradict each other.
 
 | | |
 |---|---|
-| Live demo | `LIVE_DEMO_URL` (fill in after deploying, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)) |
-| API docs | `API_DOCS_URL` (`/docs` on the deployed API) |
-| Code | `GITHUB_URL` |
+| Live demo | https://opspilot-69g5.onrender.com/ (see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)) |
+| API docs | https://opspilot-69g5.onrender.com/docs |
+| Code | https://github.com/itsayushnst13/opspilot |
 | Demo script | [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) (2 minutes) |
 
-> **Status, honestly.** Built and tested locally (backend tests on SQLite and PostgreSQL 16, real-browser run of the whole UI).
-> **Not yet deployed** by the author: deployment configs are included and the production layout was simulated, but the Docker image
-> could not be built in the build environment. LLM (Gemini) mode is implemented and tested against a mock transport and a scripted
-> fake model only; **it has not been run against the live Gemini API**. All reported metrics are for the deterministic "rules" mode.
+> **Status, honestly.** Built and tested locally (backend tests on SQLite and PostgreSQL 16, real-browser run of the whole UI) and
+> deployed on Render. The Docker image could not be built in the build environment; the production layout was simulated and the
+> Render deploy runs the same app. LLM (Gemini) mode is implemented and tested against a mock transport and a scripted fake model only;
+> **it has not been run successfully against the live Gemini API**. A first live attempt (October 2026) failed and the app fell back to
+> rules mode as designed. All reported metrics are for the deterministic "rules" mode.
 
 ---
 
@@ -75,6 +76,40 @@ About 4,300 lines of backend, 1,100 of frontend, 600 of tests, 1,900 of evals an
 * **rules mode** (default, no API key): regex extractor + fixed tool plan. Deterministic and what the metrics measure.
 * **llm mode** (Gemini key set): the model extracts literal fields (JSON schema) and drives a function-calling loop.
 
+Model names get retired, so the client takes a primary model (`GEMINI_MODEL`) and an ordered fallback list
+(`GEMINI_FALLBACK_MODELS`), remembers the one that answered, and forgets it again once it stops working.
+`python scripts/check_gemini.py` lists the models the account can actually call and makes one real
+generation request; it reads the key from `.env` and never prints it.
+
+Every failure is classified so a rules fallback is never mistaken for a successful model run:
+
+| Category | What happens |
+|---|---|
+| `auth` (401/403) | Stops immediately - another model cannot fix a rejected key |
+| `model_missing` (404, or a 400 naming the model) | Tries the next configured model, and forgets a cached one |
+| `rate_limit` (429), `outage` (5xx), `timeout`, `network` | Up to 3 attempts with backoff, then the next model |
+| `invalid_request` (other 4xx) | Stops immediately; an optional `thinkingLevel` is dropped and retried once |
+| `blocked` | Stops immediately (a safety block is not a transport problem) |
+
+A whole call is bounded by `LLM_TOTAL_BUDGET_S` (default 90 s) so an outage cannot multiply into minutes of
+retries. `/api/health` and `/api/dashboard` report `llm.configured` and `llm.verified` separately, with the
+last error category, so "a key is set" is never shown as "the model works".
+
+**Live measurements** (one real call each, personal free-tier key, 11 October 2026, `--compare`). Thinking
+tokens dominate the latency of a trivial call, and the default model matters more than anything else:
+
+| Model | `GEMINI_THINKING_LEVEL` | Latency | Thinking tokens | Total tokens |
+|---|---|---|---|---|
+| `gemini-3.6-flash` | `minimal` | **1,420 ms** | 0 | 9 |
+| `gemini-3.6-flash` | `low` | 1,421 ms | 66 | 75 |
+| `gemini-3.6-flash` | default | 1,829 ms | 90 | 99 |
+| `gemini-3.8-flash` | default | 6,320 ms | 92 | 101 |
+| `gemini-3.8-flash` | default (first call of a session) | 49,875 - 76,136 ms | 85 - 95 | 94 - 104 |
+
+So the defaults are `GEMINI_MODEL=gemini-3.6-flash` with `gemini-3.8-flash` and `gemini-2.5-flash` behind it.
+`thinkingLevel` has to be nested under `generationConfig.thinkingConfig`; sent flat the API rejects it, which
+the client detects, drops and retries once, and `check_gemini.py` prints when that happens.
+
 Both go through the same safety rails:
 
 | Rail | What it does |
@@ -118,12 +153,12 @@ computes every metric; nothing is hard-coded. Datasets live in `evals/datasets/`
 * **Pricing ground truth** comes from an *independent reference implementation* (`scripts/datagen/reference.py`) that does not share
   code with the production engine.
 * **Agent guardrail scenarios** use a scripted fake model that tries to tamper with arguments, skip tools, invent a price, call a forbidden tool, etc.
-* `pytest` (43 tests) covers API flows, roles, upload security, Gemini request/response handling on a mock transport, audit tamper detection and
+* `pytest` (73 tests) covers API flows, roles, upload security, Gemini request/response handling on a mock transport, audit tamper detection and
   concurrent writers. They pass on SQLite and on PostgreSQL 16. Sanity-checked by deliberately breaking the pinning logic and the audit lock: the relevant tests fail.
 
 ## 12. Real evaluation results
 <!-- RESULTS:START -->
-Mode: **rules**, generated 2026-10-06T10:04:01+00:00, embedder `hashing-768`. Full report: [`evals/results/REPORT.md`](evals/results/REPORT.md).
+Mode: **rules**, generated 2026-10-11T17:44:03+00:00, embedder `hashing-768`. Full report: [`evals/results/REPORT.md`](evals/results/REPORT.md).
 
 | Check | Cases | Result | Caveat |
 |---|---|---|---|
@@ -142,7 +177,7 @@ Mode: **rules**, generated 2026-10-06T10:04:01+00:00, embedder `hashing-768`. Fu
 | KB citations point to indexed documents | 94 citations | 94/94 (100.0%) | Checks the document exists, not that it supports the claim |
 | No price produced for incomplete RFQs | 7 | 7/7 (100.0%) |  |
 | Prompt-injection RFQ flagged, price unaffected | 1 | 1/1 (100.0%) | One case |
-| RFQ end-to-end latency p50 / p95 (ms) | 30 runs | 29 / 58 | Rules mode, SQLite, sandbox CPU. No LLM latency measured |
+| RFQ end-to-end latency p50 / p95 (ms) | 30 runs | 27 / 42 | Rules mode, SQLite, sandbox CPU. No LLM latency measured |
 <!-- RESULTS:END -->
 
 **How to read these numbers.** They show the pipeline does what it was designed to do on data it was designed around. They do **not** show
@@ -190,7 +225,8 @@ python scripts/render_readme_results.py               # refresh the results tabl
 ```
 Or `docker compose up --build` for Postgres + the app on http://localhost:8000.
 Demo logins: `analyst@opspilot.demo`, `approver@opspilot.demo`, `admin@opspilot.demo` (password from `DEMO_PASSWORD`, default `opspilot-demo`).
-Add `GEMINI_API_KEY` to `.env` to enable LLM mode.
+Add `GEMINI_API_KEY` to `.env` to enable LLM mode, then `python scripts/check_gemini.py` to confirm the key,
+the available models and one real generation call before trusting it.
 
 ## 16. Deployment
 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md): one Render web service (Dockerfile serves UI + API) with a free Neon/Supabase Postgres, or UI on Vercel + API on Render.
@@ -198,7 +234,22 @@ Add `GEMINI_API_KEY` to `.env` to enable LLM mode.
 Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 2027-03-31 and the sample RFQs are dated October 2026.
 
 ## 17. Limitations
-* **Not deployed or live-LLM-tested by the author** (see status above). The first deploy and the first Gemini run are integration tests.
+* **A fallback can look like a successful LLM run, so the report now says which path ran.** The first `--llm`
+  eval returned 100% everywhere with `mode: llm` in its header - and 0 tokens and 0 ms of model time against a
+  14 s median run, which is the signature of every call failing and falling back to rules. `LLM_UNAVAILABLE` is
+  not one of the codes the pricing eval compares, so the fallback did not show up in any score. The report now
+  counts `runs_that_used_the_model` and refuses to present a fallback as an LLM result.
+* **Gemini mode generates, but its accuracy is still unmeasured.** `scripts/check_gemini.py` now passes against
+  the live API, so the transport, model selection and fallback paths are real rather than mock-only. What is
+  *not* measured is extraction and tool-calling quality in LLM mode: every accuracy figure in this README is
+  from rules mode. `evals/results/REPORT_llm.md` is from an earlier run whose generation calls were all failing
+  (0 generation tokens), so it reflects only the Gemini embedder; see the note at its top. Run
+  `python evals/run_all.py --llm` to replace it.
+* **Free-tier rate limits.** Comparison calls and the first `--llm` eval both came back 429. Generation degrades
+  to rules mode with `LLM_UNAVAILABLE`; a rate-limited *embedding* used to abort the whole run, which is fixed -
+  the knowledge-base tool now records a failed call and the quote continues without those passages. Embeddings
+  have their own quota, so `EMBEDDER=hashing` (the default for `python evals/run_all.py --llm`, override with
+  `--gemini-embeddings`) keeps retrieval identical between the two modes and off that quota.
 * **Synthetic everything.** Prices, specs, suppliers, margins and rules are invented. Real data would need real ingestion, validation, and domain review of the rules.
 * **Extraction is brittle outside the tested formats** in rules mode (regex). LLM mode should generalise better but is unmeasured. Scanned PDFs (no text layer) are not supported; there is no OCR.
 * **Retrieval is lexical** (hashing embedder), so paraphrased questions can miss. Two of 30 eval queries do not rank first, and RET-029 is not retrieved at all.
@@ -218,4 +269,3 @@ behind the approval step; a labelled set of real (anonymised) RFQs to replace th
 ---
 Layout: `backend/` (FastAPI app + tests) · `frontend/` (React UI) · `data/` (synthetic reference data and documents) · `evals/` (datasets, runner, results) ·
 `scripts/` (data generator) · `docs/` (architecture, rules, deployment, demo, screenshots).
-# opspilot
