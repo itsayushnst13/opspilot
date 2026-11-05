@@ -21,7 +21,18 @@ function List() {
     setBusy(true); setErr(null);
     try { const r = await api.post("/api/documents/generate", body); nav(`/documents/${r.run_id}`); } catch (e: any) { setErr(e.message); } finally { setBusy(false); }
   };
-  const sample = async () => { const order = await api.get("/api/documents/sample-order"); await go({ order }); };
+  const sample = async () => {
+    setBusy(true); setErr(null);
+    try {
+      const order = await api.get("/api/documents/sample-order");
+      const r = await api.post("/api/documents/generate", { order });
+      nav(`/documents/${r.run_id}`);
+    } catch (e: any) {
+      setErr(e.message ?? "Could not generate the sample order");
+    } finally {
+      setBusy(false);
+    }
+  };
   return (
     <>
       <PageHeader title="Export documents" subtitle="Generate the invoice, packing list, certificate of origin and shipping instruction from one structured order. Cross-document mismatches block PDF generation." />
