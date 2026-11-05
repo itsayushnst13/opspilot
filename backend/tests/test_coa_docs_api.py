@@ -75,6 +75,9 @@ def test_document_edit_validation(client, analyst):
     assert bad(doc_type="packing_list", field="net_quantity_kg", value=-5) == 422
     assert bad(doc_type="nonexistent", field="net_quantity_kg", value=5) == 404
     assert bad(doc_type="certificate_of_origin", field="gross_weight_kg", value=5) == 422  # field not on that doc
+    assert bad(doc_type="packing_list", field="net_quantity_kg", value="NaN") == 422
+    assert bad(doc_type="packing_list", field="net_quantity_kg", value="Infinity") == 422
+    assert bad(doc_type="packing_list", field="packages_count", value=1.5) == 422
 
 
 def test_documents_from_quote_requires_approval(client, analyst, approver):
