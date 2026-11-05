@@ -14,7 +14,7 @@ export default function Dashboard() {
       <PageHeader title="Operations dashboard" subtitle="Live view of workflow runs, the approval queue and system health." />
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-6">
         <Kpi label="Awaiting approval" value={data.pending_approvals.length} tone={data.pending_approvals.length ? "text-amber-600" : undefined} />
-        <Kpi label="RFQs processed" value={count("rfq")} />
+        <Kpi label="RFQ runs" value={count("rfq")} />
         <Kpi label="COA checks" value={count("coa")} />
         <Kpi label="Export doc sets" value={count("export_docs")} />
         <Kpi label="Latency p50 / p95" value={`${ms(m.latency_ms.p50)}`} hint={`p95 ${ms(m.latency_ms.p95)} · ${m.latency_ms.n} runs`} />
