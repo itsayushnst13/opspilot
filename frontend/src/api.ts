@@ -41,7 +41,11 @@ export const api = {
     if (!res.ok) await parse(res);
     const url = URL.createObjectURL(await res.blob());
     const a = document.createElement("a");
-    a.href = url; a.download = filename; a.click();
-    URL.revokeObjectURL(url);
+    a.href = url; a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    // Keep the object URL alive until the browser has started the download.
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   },
 };

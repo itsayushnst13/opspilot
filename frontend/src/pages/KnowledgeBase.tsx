@@ -11,6 +11,7 @@ export default function KnowledgeBase() {
   const [q, setQ] = useState("");
   const [ans, setAns] = useState<any>(null);
   const [busy, setBusy] = useState(false);
+  const [uploadBusy, setUploadBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [filter, setFilter] = useState("all");
 
@@ -20,7 +21,10 @@ export default function KnowledgeBase() {
   };
   const upload = async (f: File) => {
     setErr(null);
-    try { await api.upload("/api/kb/upload", f); docs.reload(); } catch (e: any) { setErr(e.message); }
+    setUploadBusy(true);
+    try { await api.upload("/api/kb/upload", f); await docs.reload(); }
+    catch (e: any) { setErr(e.message ?? "Document upload failed"); }
+    finally { setUploadBusy(false); }
   };
   const types = useMemo(() => ["all", ...Array.from(new Set((docs.data ?? []).map((d) => d.doc_type)))], [docs.data]);
   const shown = (docs.data ?? []).filter((d) => filter === "all" || d.doc_type === filter);
@@ -49,7 +53,7 @@ export default function KnowledgeBase() {
         )}
       </Card>
       <div className="mt-5 grid gap-5 lg:grid-cols-3">
-        <Card title="Add a document" className="lg:col-span-1"><Dropzone accept=".pdf,.txt,.csv,.xlsx" label="Upload to the knowledge base" onFile={upload} />
+        <Card title="Add a document" className="lg:col-span-1"><Dropzone accept=".pdf,.txt,.csv,.xlsx" label="Upload to the knowledge base" onFile={upload} busy={uploadBusy} />
           <p className="mt-2 text-xs text-slate-500">Uploaded documents are chunked, embedded and become searchable immediately. Treated as untrusted text.</p></Card>
         <Card title={`Indexed documents (${shown.length})`} className="lg:col-span-2" actions={<select value={filter} onChange={(e) => setFilter(e.target.value)} className="rounded border border-slate-300 px-2 py-1 text-xs">{types.map((t) => <option key={t}>{t}</option>)}</select>}>
           {docs.loading ? <Spinner /> : <div className="max-h-96 overflow-y-auto"><Table head={["Document", "Type", "Chunks", "Products", "Ingested"]}>

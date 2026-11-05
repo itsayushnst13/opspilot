@@ -30,6 +30,8 @@ async def lifespan(app: FastAPI):
     s = get_settings()
     if s.env == "prod" and s.jwt_secret == "dev-only-secret-change-me":
         raise RuntimeError("JWT_SECRET must be set in production")
+    if s.env == "prod" and s.demo_password == "opspilot-demo":
+        raise RuntimeError("DEMO_PASSWORD must be changed from the public prototype default in production")
     bootstrap()
     yield
 

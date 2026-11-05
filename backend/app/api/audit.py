@@ -8,7 +8,6 @@ from ..core.db import get_db
 from ..core.security import get_current_user
 from ..models import AuditLog, User
 from ..services import audit as audit_svc
-from ..services import runs
 
 router = APIRouter(prefix="/api/audit", tags=["audit"])
 
@@ -17,14 +16,17 @@ router = APIRouter(prefix="/api/audit", tags=["audit"])
 def list_audit(run_id: str | None = None, action: str | None = None, actor: str | None = None, limit: int = 200,
                user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     limit = min(max(limit, 1), 1000)
-    stmt = select(AuditLog).order_by(AuditLog.id.desc()).limit(limit)
+    filters = []
     if run_id:
-        stmt = stmt.where(AuditLog.run_id == run_id)
+        filters.append(AuditLog.run_id == run_id)
     if action:
-        stmt = stmt.where(AuditLog.action == action)
+        filters.append(AuditLog.action == action)
     if actor:
-        stmt = stmt.where(AuditLog.actor == actor)
-    total = db.scalar(select(func.count()).select_from(AuditLog))
+        filters.append(AuditLog.actor == actor)
+
+    stmt = select(AuditLog).where(*filters).order_by(AuditLog.id.desc()).limit(limit)
+    total_stmt = select(func.count()).select_from(AuditLog).where(*filters)
+    total = db.scalar(total_stmt) or 0
     items = [{"id": a.id, "ts": a.ts.isoformat(), "run_id": a.run_id, "actor": a.actor, "action": a.action,
               "payload": a.payload, "prev_hash": a.prev_hash, "hash": a.hash} for a in db.scalars(stmt)]
     return {"total": total, "items": items}

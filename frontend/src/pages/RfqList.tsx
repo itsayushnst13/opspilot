@@ -24,15 +24,15 @@ export default function RfqList() {
 
   return (
     <>
-      <PageHeader title="RFQ → suggested quote" subtitle="Upload a customer RFQ. The system extracts fields, retrieves knowledge, runs deterministic pricing tools and prepares a quote for human approval." />
+      <PageHeader title="RFQ → suggested quote" subtitle="Turn customer requests into traceable, human-approved quotations. Upload a PDF or TXT file, or paste the RFQ message below." />
       <div className="grid gap-5 lg:grid-cols-2">
         <Card title="Upload RFQ (PDF or TXT)">
           <Dropzone accept=".pdf,.txt" label="Drop an RFQ document" busy={busy} onFile={(f) => submit(() => api.upload("/api/rfq", f))} />
         </Card>
         <Card title="Or paste RFQ text" actions={<Button variant="ghost" onClick={() => setText(DEMO_TEXT)}>Load demo RFQ</Button>}>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={5} maxLength={20000} placeholder="Paste an RFQ email or message…"
-            className="w-full rounded-md border border-slate-300 p-2 text-sm" />
-          <div className="mt-2 flex justify-end"><Button variant="primary" disabled={busy || !text.trim()} onClick={() => submit(() => api.post("/api/rfq/text", { text }))}>Process RFQ</Button></div>
+            className="min-h-36 w-full rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 text-sm leading-relaxed shadow-sm transition focus:border-cyan-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-600/10" />
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3"><span className="text-[10px] text-slate-400">{text.length.toLocaleString()} / 20,000 characters</span><Button variant="primary" disabled={busy || !text.trim()} onClick={() => submit(() => api.post("/api/rfq/text", { text }))}>{busy ? "Processing…" : "Process RFQ →"}</Button></div>
         </Card>
       </div>
       {err && <div className="mt-4"><ErrorBox>{err}</ErrorBox></div>}
