@@ -87,13 +87,19 @@ def _set_path(doc: dict, path: str, value) -> None:
         raise HTTPException(422, f"Field '{path}' does not exist on this document")
     if isinstance(old, (int, float)) and not isinstance(old, bool):
         try:
-            value = float(Decimal(str(value)))
+            number = Decimal(str(value))
         except (InvalidOperation, ValueError):
             raise HTTPException(422, f"'{path}' must be a number") from None
-        if value <= 0:
+        if not number.is_finite():
+            raise HTTPException(422, f"'{path}' must be a finite number")
+        if number <= 0:
             raise HTTPException(422, f"'{path}' must be positive")
         if path == "packages_count":
-            value = int(value)
+            if number != number.to_integral_value():
+                raise HTTPException(422, "'packages_count' must be a whole number")
+            value = int(number)
+        else:
+            value = float(number)
     else:
         value = str(value).strip()
         if not value or len(value) > 200:
