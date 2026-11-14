@@ -29,6 +29,9 @@ jobs:
           pip install -r backend/requirements.txt
           pip install pytest
 
+      - name: Validate dataset provenance boundaries
+        run: python scripts/validate_data_provenance.py
+
       - name: Run tests
         working-directory: backend
         env:
