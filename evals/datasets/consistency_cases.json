@@ -18,9 +18,9 @@
           "name": "Valtrane Ethyl Ester",
           "hs_code": "291539"
         },
-        "net_quantity_kg": 5000.0,
+        "net_quantity_kg": 5000,
         "unit_price_per_kg": 3.1234,
-        "total_value": 15617.0,
+        "total_value": 15617,
         "currency": "USD",
         "incoterm": "CIF",
         "origin_country": "India",
@@ -39,11 +39,11 @@
           "name": "Valtrane Ethyl Ester",
           "hs_code": "291539"
         },
-        "net_quantity_kg": 5000.0,
-        "gross_weight_kg": 5040.0,
+        "net_quantity_kg": 5000,
+        "gross_weight_kg": 5040,
         "package_type": "250 kg steel drum",
         "packages_count": 20,
-        "net_weight_per_package_kg": 250.0,
+        "net_weight_per_package_kg": 250,
         "origin_country": "India",
         "destination_port": "Houston"
       },
@@ -59,7 +59,7 @@
           "name": "Valtrane Ethyl Ester",
           "hs_code": "291539"
         },
-        "net_quantity_kg": 5000.0,
+        "net_quantity_kg": 5000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -78,8 +78,8 @@
           "name": "Valtrane Ethyl Ester",
           "hs_code": "291539"
         },
-        "net_quantity_kg": 5000.0,
-        "gross_weight_kg": 5040.0,
+        "net_quantity_kg": 5000,
+        "gross_weight_kg": 5040,
         "packages_count": 20,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Houston",
@@ -88,7 +88,15 @@
       }
     },
     "expected_fields": [],
-    "note": "clean"
+    "note": "clean",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-002",
@@ -109,7 +117,7 @@
           "name": "Cyrolite Surfactant",
           "hs_code": "340213"
         },
-        "net_quantity_kg": 12000.0,
+        "net_quantity_kg": 12000,
         "unit_price_per_kg": 3.4934,
         "total_value": 41920.8,
         "currency": "USD",
@@ -130,11 +138,11 @@
           "name": "Cyrolite Surfactant",
           "hs_code": "340213"
         },
-        "net_quantity_kg": 12000.0,
-        "gross_weight_kg": 12080.0,
+        "net_quantity_kg": 12000,
+        "gross_weight_kg": 12080,
         "package_type": "200 kg HDPE drum",
         "packages_count": 60,
-        "net_weight_per_package_kg": 200.0,
+        "net_weight_per_package_kg": 200,
         "origin_country": "India",
         "destination_port": "Los Angeles"
       },
@@ -150,7 +158,7 @@
           "name": "Cyrolite Surfactant",
           "hs_code": "340213"
         },
-        "net_quantity_kg": 12000.0,
+        "net_quantity_kg": 12000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -169,8 +177,8 @@
           "name": "Cyrolite Surfactant",
           "hs_code": "340213"
         },
-        "net_quantity_kg": 12000.0,
-        "gross_weight_kg": 12080.0,
+        "net_quantity_kg": 12000,
+        "gross_weight_kg": 12080,
         "packages_count": 60,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Los Angeles",
@@ -179,7 +187,15 @@
       }
     },
     "expected_fields": [],
-    "note": "clean"
+    "note": "clean",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-003",
@@ -200,7 +216,7 @@
           "name": "Marlonate Emollient",
           "hs_code": "291590"
         },
-        "net_quantity_kg": 6000.0,
+        "net_quantity_kg": 6000,
         "unit_price_per_kg": 3.8634,
         "total_value": 23180.4,
         "currency": "USD",
@@ -221,11 +237,11 @@
           "name": "Marlonate Emollient",
           "hs_code": "291590"
         },
-        "net_quantity_kg": 6000.0,
-        "gross_weight_kg": 6020.0,
+        "net_quantity_kg": 6000,
+        "gross_weight_kg": 6020,
         "package_type": "1000 kg IBC tote",
         "packages_count": 6,
-        "net_weight_per_package_kg": 1000.0,
+        "net_weight_per_package_kg": 1000,
         "origin_country": "India",
         "destination_port": "Savannah"
       },
@@ -241,7 +257,7 @@
           "name": "Marlonate Emollient",
           "hs_code": "291590"
         },
-        "net_quantity_kg": 6000.0,
+        "net_quantity_kg": 6000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -260,8 +276,8 @@
           "name": "Marlonate Emollient",
           "hs_code": "291590"
         },
-        "net_quantity_kg": 6000.0,
-        "gross_weight_kg": 6020.0,
+        "net_quantity_kg": 6000,
+        "gross_weight_kg": 6020,
         "packages_count": 6,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Savannah",
@@ -270,7 +286,15 @@
       }
     },
     "expected_fields": [],
-    "note": "clean"
+    "note": "clean",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-004",
@@ -291,7 +315,7 @@
           "name": "Brevanol Alcohol",
           "hs_code": "290549"
         },
-        "net_quantity_kg": 2000.0,
+        "net_quantity_kg": 2000,
         "unit_price_per_kg": 4.2334,
         "total_value": 8466.8,
         "currency": "USD",
@@ -312,8 +336,8 @@
           "name": "Brevanol Alcohol",
           "hs_code": "290549"
         },
-        "net_quantity_kg": 2200.0,
-        "gross_weight_kg": 2220.0,
+        "net_quantity_kg": 2200,
+        "gross_weight_kg": 2220,
         "package_type": "200 kg steel drum",
         "packages_count": 10,
         "net_weight_per_package_kg": 220.00000000000003,
@@ -332,7 +356,7 @@
           "name": "Brevanol Alcohol",
           "hs_code": "290549"
         },
-        "net_quantity_kg": 2000.0,
+        "net_quantity_kg": 2000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -351,8 +375,8 @@
           "name": "Brevanol Alcohol",
           "hs_code": "290549"
         },
-        "net_quantity_kg": 2000.0,
-        "gross_weight_kg": 2020.0,
+        "net_quantity_kg": 2000,
+        "gross_weight_kg": 2020,
         "packages_count": 10,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Houston",
@@ -364,7 +388,15 @@
       "gross_weight_kg",
       "net_quantity_kg"
     ],
-    "note": "packing list quantity (and gross weight) differ by 200 kg"
+    "note": "packing list quantity (and gross weight) differ by 200 kg",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-005",
@@ -385,7 +417,7 @@
           "name": "Haldoran Stabilizer",
           "hs_code": "292690"
         },
-        "net_quantity_kg": 4000.0,
+        "net_quantity_kg": 4000,
         "unit_price_per_kg": 4.6034,
         "total_value": 18413.6,
         "currency": "USD",
@@ -406,11 +438,11 @@
           "name": "Haldoran Stabilizer",
           "hs_code": "292690"
         },
-        "net_quantity_kg": 4000.0,
-        "gross_weight_kg": 4180.0,
+        "net_quantity_kg": 4000,
+        "gross_weight_kg": 4180,
         "package_type": "25 kg multiwall bag",
         "packages_count": 160,
-        "net_weight_per_package_kg": 25.0,
+        "net_weight_per_package_kg": 25,
         "origin_country": "India",
         "destination_port": "Rotterdam"
       },
@@ -426,7 +458,7 @@
           "name": "Haldoran Stabilizer",
           "hs_code": "292690"
         },
-        "net_quantity_kg": 4000.0,
+        "net_quantity_kg": 4000,
         "origin_country": "India",
         "destination_country": "Netherlands"
       },
@@ -445,8 +477,8 @@
           "name": "Haldoran Stabilizer",
           "hs_code": "292690"
         },
-        "net_quantity_kg": 4000.0,
-        "gross_weight_kg": 4180.0,
+        "net_quantity_kg": 4000,
+        "gross_weight_kg": 4180,
         "packages_count": 160,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Rotterdam",
@@ -457,7 +489,15 @@
     "expected_fields": [
       "consignee.name"
     ],
-    "note": "consignee typo on shipping instruction"
+    "note": "consignee typo on shipping instruction",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-006",
@@ -478,7 +518,7 @@
           "name": "Pelloran Wetting Agent",
           "hs_code": "340212"
         },
-        "net_quantity_kg": 3000.0,
+        "net_quantity_kg": 3000,
         "unit_price_per_kg": 4.9734,
         "total_value": 14920.2,
         "currency": "USD",
@@ -499,11 +539,11 @@
           "name": "Pelloran Wetting Agent",
           "hs_code": "340212"
         },
-        "net_quantity_kg": 3000.0,
-        "gross_weight_kg": 3020.0,
+        "net_quantity_kg": 3000,
+        "gross_weight_kg": 3020,
         "package_type": "250 kg steel drum",
         "packages_count": 12,
-        "net_weight_per_package_kg": 250.0,
+        "net_weight_per_package_kg": 250,
         "origin_country": "India",
         "destination_port": "Savannah"
       },
@@ -519,7 +559,7 @@
           "name": "Pelloran Wetting Agent",
           "hs_code": "999999"
         },
-        "net_quantity_kg": 3000.0,
+        "net_quantity_kg": 3000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -538,8 +578,8 @@
           "name": "Pelloran Wetting Agent",
           "hs_code": "340212"
         },
-        "net_quantity_kg": 3000.0,
-        "gross_weight_kg": 3020.0,
+        "net_quantity_kg": 3000,
+        "gross_weight_kg": 3020,
         "packages_count": 12,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Savannah",
@@ -550,7 +590,15 @@
     "expected_fields": [
       "product.hs_code"
     ],
-    "note": "HS code differs on certificate of origin"
+    "note": "HS code differs on certificate of origin",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-007",
@@ -571,7 +619,7 @@
           "name": "Lumivane Antioxidant",
           "hs_code": "293090"
         },
-        "net_quantity_kg": 8000.0,
+        "net_quantity_kg": 8000,
         "unit_price_per_kg": 5.3434,
         "total_value": 44884.56,
         "currency": "USD",
@@ -592,11 +640,11 @@
           "name": "Lumivane Antioxidant",
           "hs_code": "293090"
         },
-        "net_quantity_kg": 8000.0,
-        "gross_weight_kg": 8340.0,
+        "net_quantity_kg": 8000,
+        "gross_weight_kg": 8340,
         "package_type": "25 kg multiwall bag",
         "packages_count": 320,
-        "net_weight_per_package_kg": 25.0,
+        "net_weight_per_package_kg": 25,
         "origin_country": "India",
         "destination_port": "Houston"
       },
@@ -612,7 +660,7 @@
           "name": "Lumivane Antioxidant",
           "hs_code": "293090"
         },
-        "net_quantity_kg": 8000.0,
+        "net_quantity_kg": 8000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -631,8 +679,8 @@
           "name": "Lumivane Antioxidant",
           "hs_code": "293090"
         },
-        "net_quantity_kg": 8000.0,
-        "gross_weight_kg": 8340.0,
+        "net_quantity_kg": 8000,
+        "gross_weight_kg": 8340,
         "packages_count": 320,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Houston",
@@ -643,7 +691,15 @@
     "expected_fields": [
       "invoice_total_arithmetic"
     ],
-    "note": "invoice total is not quantity x unit price"
+    "note": "invoice total is not quantity x unit price",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-008",
@@ -664,7 +720,7 @@
           "name": "Drovex Preservative",
           "hs_code": "293299"
         },
-        "net_quantity_kg": 1000.0,
+        "net_quantity_kg": 1000,
         "unit_price_per_kg": 5.7134,
         "total_value": 5713.4,
         "currency": "USD",
@@ -685,11 +741,11 @@
           "name": "Drovex Preservative",
           "hs_code": "293299"
         },
-        "net_quantity_kg": 1000.0,
-        "gross_weight_kg": 1060.0,
+        "net_quantity_kg": 1000,
+        "gross_weight_kg": 1060,
         "package_type": "20 kg pail",
         "packages_count": 51,
-        "net_weight_per_package_kg": 20.0,
+        "net_weight_per_package_kg": 20,
         "origin_country": "India",
         "destination_port": "Los Angeles"
       },
@@ -705,7 +761,7 @@
           "name": "Drovex Preservative",
           "hs_code": "293299"
         },
-        "net_quantity_kg": 1000.0,
+        "net_quantity_kg": 1000,
         "origin_country": "India",
         "destination_country": "United States"
       },
@@ -724,8 +780,8 @@
           "name": "Drovex Preservative",
           "hs_code": "293299"
         },
-        "net_quantity_kg": 1000.0,
-        "gross_weight_kg": 1060.0,
+        "net_quantity_kg": 1000,
+        "gross_weight_kg": 1060,
         "packages_count": 50,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Los Angeles",
@@ -737,7 +793,15 @@
       "package_weight_arithmetic",
       "packages_count"
     ],
-    "note": "package count off by one"
+    "note": "package count off by one",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-009",
@@ -758,9 +822,9 @@
           "name": "Tessamide Additive",
           "hs_code": "292429"
         },
-        "net_quantity_kg": 5000.0,
+        "net_quantity_kg": 5000,
         "unit_price_per_kg": 6.0834,
-        "total_value": 30417.0,
+        "total_value": 30417,
         "currency": "USD",
         "incoterm": "CIF",
         "origin_country": "India",
@@ -779,11 +843,11 @@
           "name": "Tessamide Additive",
           "hs_code": "292429"
         },
-        "net_quantity_kg": 5000.0,
-        "gross_weight_kg": 5220.0,
+        "net_quantity_kg": 5000,
+        "gross_weight_kg": 5220,
         "package_type": "25 kg multiwall bag",
         "packages_count": 200,
-        "net_weight_per_package_kg": 25.0,
+        "net_weight_per_package_kg": 25,
         "origin_country": "India",
         "destination_port": "Rotterdam"
       },
@@ -799,7 +863,7 @@
           "name": "Tessamide Additive",
           "hs_code": "292429"
         },
-        "net_quantity_kg": 5000.0,
+        "net_quantity_kg": 5000,
         "origin_country": "India",
         "destination_country": "Netherlands"
       },
@@ -818,8 +882,8 @@
           "name": "Tessamide Additive",
           "hs_code": "292429"
         },
-        "net_quantity_kg": 5000.0,
-        "gross_weight_kg": 5220.0,
+        "net_quantity_kg": 5000,
+        "gross_weight_kg": 5220,
         "packages_count": 200,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Los Angeles",
@@ -830,7 +894,15 @@
     "expected_fields": [
       "destination_port"
     ],
-    "note": "destination port differs on shipping instruction"
+    "note": "destination port differs on shipping instruction",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "DOC-010",
@@ -851,7 +923,7 @@
           "name": "Aulmeric Acid",
           "hs_code": "291814"
         },
-        "net_quantity_kg": 2500.0,
+        "net_quantity_kg": 2500,
         "unit_price_per_kg": 6.4534,
         "total_value": 16133.5,
         "currency": "USD",
@@ -872,11 +944,11 @@
           "name": "Aulmeric Acid",
           "hs_code": "291814"
         },
-        "net_quantity_kg": 2500.0,
-        "gross_weight_kg": 2620.0,
+        "net_quantity_kg": 2500,
+        "gross_weight_kg": 2620,
         "package_type": "25 kg multiwall bag",
         "packages_count": 100,
-        "net_weight_per_package_kg": 25.0,
+        "net_weight_per_package_kg": 25,
         "origin_country": "India",
         "destination_port": "Los Angeles"
       },
@@ -892,7 +964,7 @@
           "name": "Aulmeric Acid",
           "hs_code": "291814"
         },
-        "net_quantity_kg": 2500.0,
+        "net_quantity_kg": 2500,
         "origin_country": "Thailand",
         "destination_country": "United States"
       },
@@ -911,8 +983,8 @@
           "name": "Aulmeric Acid",
           "hs_code": "291814"
         },
-        "net_quantity_kg": 2450.0,
-        "gross_weight_kg": 2620.0,
+        "net_quantity_kg": 2450,
+        "gross_weight_kg": 2620,
         "packages_count": 100,
         "port_of_loading": "Nhava Sheva",
         "destination_port": "Los Angeles",
@@ -924,6 +996,14 @@
       "net_quantity_kg",
       "origin_country"
     ],
-    "note": "origin and quantity mismatches"
+    "note": "origin and quantity mismatches",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   }
 ]
