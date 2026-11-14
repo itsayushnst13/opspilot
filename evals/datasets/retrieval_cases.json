@@ -5,7 +5,15 @@
     "expected_paths": [
       "specifications/CHEM-X01_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-002",
@@ -13,7 +21,15 @@
     "expected_paths": [
       "specifications/CHEM-X02_spec_sheet.txt"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-003",
@@ -21,7 +37,15 @@
     "expected_paths": [
       "specifications/CHEM-X03_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-004",
@@ -29,7 +53,15 @@
     "expected_paths": [
       "specifications/CHEM-X04_spec_sheet.txt"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-005",
@@ -37,7 +69,15 @@
     "expected_paths": [
       "specifications/CHEM-X05_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-006",
@@ -45,7 +85,15 @@
     "expected_paths": [
       "specifications/CHEM-X06_spec_sheet.txt"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-007",
@@ -53,7 +101,15 @@
     "expected_paths": [
       "specifications/CHEM-X07_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-008",
@@ -61,7 +117,15 @@
     "expected_paths": [
       "specifications/CHEM-X08_spec_sheet.txt"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-009",
@@ -69,7 +133,15 @@
     "expected_paths": [
       "specifications/CHEM-X09_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-010",
@@ -77,7 +149,15 @@
     "expected_paths": [
       "specifications/CHEM-X10_spec_sheet.txt"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-011",
@@ -85,7 +165,15 @@
     "expected_paths": [
       "specifications/CHEM-X11_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-012",
@@ -93,7 +181,15 @@
     "expected_paths": [
       "specifications/CHEM-X13_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-013",
@@ -101,7 +197,15 @@
     "expected_paths": [
       "specifications/CHEM-X15_spec_sheet.pdf"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-014",
@@ -109,7 +213,15 @@
     "expected_paths": [
       "specifications/CHEM-X18_spec_sheet.txt"
     ],
-    "kind": "spec_sheet"
+    "kind": "spec_sheet",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-015",
@@ -117,7 +229,15 @@
     "expected_paths": [
       "suppliers/supplier_S01.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-016",
@@ -125,7 +245,15 @@
     "expected_paths": [
       "suppliers/supplier_S02.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-017",
@@ -133,7 +261,15 @@
     "expected_paths": [
       "suppliers/supplier_S03.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-018",
@@ -141,7 +277,15 @@
     "expected_paths": [
       "suppliers/supplier_S04.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-019",
@@ -149,7 +293,15 @@
     "expected_paths": [
       "suppliers/supplier_S05.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-020",
@@ -157,7 +309,15 @@
     "expected_paths": [
       "suppliers/supplier_S06.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-021",
@@ -165,7 +325,15 @@
     "expected_paths": [
       "suppliers/supplier_S07.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-022",
@@ -173,7 +341,15 @@
     "expected_paths": [
       "suppliers/supplier_S08.txt"
     ],
-    "kind": "supplier"
+    "kind": "supplier",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-023",
@@ -181,7 +357,15 @@
     "expected_paths": [
       "regulatory/hazmat_class8_corrosives.txt"
     ],
-    "kind": "regulatory"
+    "kind": "regulatory",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-024",
@@ -189,7 +373,15 @@
     "expected_paths": [
       "regulatory/coa_acceptance_policy.pdf"
     ],
-    "kind": "regulatory"
+    "kind": "regulatory",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-025",
@@ -197,7 +389,15 @@
     "expected_paths": [
       "regulatory/quote_approval_policy.txt"
     ],
-    "kind": "regulatory"
+    "kind": "regulatory",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-026",
@@ -205,7 +405,15 @@
     "expected_paths": [
       "regulatory/incoterms_policy.txt"
     ],
-    "kind": "regulatory"
+    "kind": "regulatory",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-027",
@@ -213,7 +421,15 @@
     "expected_paths": [
       "regulatory/export_documentation_requirements.pdf"
     ],
-    "kind": "regulatory"
+    "kind": "regulatory",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-028",
@@ -221,7 +437,15 @@
     "expected_paths": [
       "shipping/shipping_notes.txt"
     ],
-    "kind": "shipping"
+    "kind": "shipping",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-029",
@@ -229,7 +453,15 @@
     "expected_paths": [
       "shipping/shipping_notes.txt"
     ],
-    "kind": "shipping"
+    "kind": "shipping",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   },
   {
     "id": "RET-030",
@@ -237,6 +469,14 @@
     "expected_paths": [
       "shipping/shipping_rates.csv"
     ],
-    "kind": "shipping"
+    "kind": "shipping",
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
+    }
   }
 ]
