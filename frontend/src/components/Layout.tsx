@@ -79,11 +79,7 @@ export default function Layout() {
               <div className="min-w-0"><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">OpsPilot / Workspace</p><h1 className="truncate text-[15px] font-semibold tracking-tight text-slate-900">{title}</h1></div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="hidden items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 sm:flex">
-                <span className={cx("h-1.5 w-1.5 rounded-full", health?.mode === "llm" && health.llm?.verified ? "bg-emerald-500" : "bg-amber-400")} />
-                <span className="text-[11px] font-medium text-slate-600">{health?.mode === "llm" ? (health.llm?.verified ? "AI connected" : "AI unverified") : "Rules engine"}</span>
-              </div>
-              <div className="hidden h-8 w-px bg-slate-200 sm:block" />
+
               <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-indigo-100 to-cyan-100 text-xs font-bold text-indigo-700">{user?.name?.split(" ").map((part) => part[0]).slice(0, 2).join("") ?? "U"}</div>
               <div className="hidden min-w-0 sm:block"><p className="max-w-36 truncate text-xs font-semibold text-slate-800">{user?.name}</p><p className="text-[10px] capitalize text-slate-500">{user?.role}</p></div>
               <Button variant="ghost" onClick={logout} className="text-xs">Sign out</Button>
