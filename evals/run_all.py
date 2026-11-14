@@ -90,6 +90,17 @@ def main() -> int:
                 "time means the calls were attempted and failed, and the run fell back to rules.",
     }
     s = get_settings()
+    def provenance_counts(name):
+        cases = harness.load(name)
+        counts = Counter((case.get("provenance") or {}).get("source_type", "unlabelled") for case in cases)
+        return dict(counts)
+    dataset_provenance = {
+        "rfq": provenance_counts("rfq_cases"),
+        "coa": provenance_counts("coa_cases"),
+        "consistency": provenance_counts("consistency_cases"),
+        "retrieval": provenance_counts("retrieval_cases"),
+        "interpretation": "Current operational evaluation cases are legacy synthetic fixtures; public chemical identity references are separate and are not scored as RFQ, COA, pricing, shipping or supplier evidence."
+    }
     out = {
         "meta": {"generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                  "mode": s.effective_mode,
@@ -98,6 +109,7 @@ def main() -> int:
                  "python": platform.python_version(), "reference_date": harness.REFERENCE_DATE,
                  "datasets": {"rfq": len(rfq_cases), "coa": len(coa_cases), "consistency": suites["consistency"]["cases"],
                               "retrieval": suites["retrieval"]["queries"]},
+                 "dataset_provenance": dataset_provenance,
                  "duration_s": round(time.perf_counter() - started, 1)},
         "suites": suites,
     }
