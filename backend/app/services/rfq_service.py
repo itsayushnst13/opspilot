@@ -146,7 +146,12 @@ def process_run(run_id: str, llm: LLMClient | None | str = "default") -> None:
         runs.finish(db, run, status, started, metrics={
             "extraction_ms": round(extraction_ms, 1), "agent_ms": round(agent_ms, 1),
             "tool_ms": round(registry.total_ms, 1), "tool_calls": registry.seq, "llm_calls": u["llm_calls"],
-            "llm_ms": round(u["llm_ms"], 1), "prompt_tokens": u["prompt_tokens"] + ex_usage.get("prompt_tokens", 0),
+            "llm_ms": round(u["llm_ms"], 1), "llm_wall_ms": round(u.get("llm_wall_ms", 0.0), 1),
+            "orchestration_overhead_ms": round(u.get("orchestration_overhead_ms", 0.0), 1),
+            "summary_validation_ms": round(u.get("summary_validation_ms", 0.0), 1),
+            "llm_generate_calls": u.get("llm_calls", 0), "llm_generate_attempts": u.get("llm_attempts", 0),
+            "agent_iterations": u.get("iteration_timings", []),
+            "prompt_tokens": u["prompt_tokens"] + ex_usage.get("prompt_tokens", 0),
             "output_tokens": u["output_tokens"] + ex_usage.get("output_tokens", 0),
             "extraction_method": method, "needs_info": (run.metrics or {}).get("needs_info")})
         log(logger, "rfq run finished", run_id=run_id, status=status, mode=result["mode"],
