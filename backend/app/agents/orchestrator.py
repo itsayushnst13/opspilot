@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from typing import Any
 
 from ..core.config import get_settings
@@ -86,7 +87,11 @@ class RFQOrchestrator:
         self.max_steps = max_steps or get_settings().agent_max_steps
         self.log: list[dict] = []  # {name,args,result,forced}
         self.overrides: list[dict] = []
-        self.usage = {"llm_calls": 0, "prompt_tokens": 0, "output_tokens": 0, "llm_ms": 0.0}
+        self.usage = {
+            "llm_calls": 0, "llm_attempts": 0, "prompt_tokens": 0, "output_tokens": 0,
+            "llm_ms": 0.0, "llm_wall_ms": 0.0, "orchestration_overhead_ms": 0.0,
+            "iteration_timings": [],
+        }
 
     # ----------------------------------------------------------------- helpers
     @staticmethod
@@ -157,14 +162,38 @@ class RFQOrchestrator:
         contents: list[dict] = [{"role": "user", "parts": [{"text":
             "Prepare a suggested quote for this validated RFQ:\n" + json.dumps(brief, indent=2)}]}]
         summary: str | None = None
-        for _ in range(self.max_steps):
-            resp = self.llm.generate(contents, system=SYSTEM_PROMPT, tools=decls)
+        for step in range(self.max_steps):
+            iteration_started = time.perf_counter()
+            llm_started = time.perf_counter()
+            try:
+                resp = self.llm.generate(contents, system=SYSTEM_PROMPT, tools=decls)
+            except Exception as exc:
+                elapsed_ms = (time.perf_counter() - llm_started) * 1000
+                self.usage["llm_attempts"] += 1
+                self.usage["llm_wall_ms"] += elapsed_ms
+                self.usage["iteration_timings"].append({
+                    "iteration": step + 1, "llm_wall_ms": round(elapsed_ms, 2),
+                    "post_llm_ms": 0.0, "total_ms": round((time.perf_counter() - iteration_started) * 1000, 2),
+                    "llm_ok": False, "error_type": exc.__class__.__name__,
+                })
+                raise
+            elapsed_ms = (time.perf_counter() - llm_started) * 1000
+            self.usage["llm_attempts"] += 1
+            self.usage["llm_wall_ms"] += elapsed_ms
             self.usage["llm_calls"] += 1
             self.usage["prompt_tokens"] += resp.usage.get("prompt_tokens", 0)
             self.usage["output_tokens"] += resp.usage.get("output_tokens", 0)
             self.usage["llm_ms"] += resp.latency_ms
+            post_started = time.perf_counter()
             if not resp.function_calls:
                 summary = resp.text
+                post_ms = (time.perf_counter() - post_started) * 1000
+                self.usage["iteration_timings"].append({
+                    "iteration": step + 1, "llm_wall_ms": round(elapsed_ms, 2),
+                    "post_llm_ms": round(post_ms, 2),
+                    "total_ms": round((time.perf_counter() - iteration_started) * 1000, 2),
+                    "llm_ok": True, "function_calls": 0,
+                })
                 break
             contents.append({"role": "model", "parts": resp.raw_parts})
             responses = []
@@ -177,10 +206,18 @@ class RFQOrchestrator:
                     result = self._call(name, self._pin(name, call.get("args", {}), f))
                 responses.append({"functionResponse": {"name": name, "response": {"result": _trim(result)}}})
             contents.append({"role": "user", "parts": responses})
+            post_ms = (time.perf_counter() - post_started) * 1000
+            self.usage["iteration_timings"].append({
+                "iteration": step + 1, "llm_wall_ms": round(elapsed_ms, 2),
+                "post_llm_ms": round(post_ms, 2),
+                "total_ms": round((time.perf_counter() - iteration_started) * 1000, 2),
+                "llm_ok": True, "function_calls": len(resp.function_calls),
+            })
         return summary
 
     # ----------------------------------------------------------------- public
     def run(self, f: RFQFields, extra_warnings: list[dict] | None = None) -> dict:
+        run_started = time.perf_counter()
         mode = "rules"
         summary_from_llm: str | None = None
         forced_note = False
@@ -212,9 +249,15 @@ class RFQOrchestrator:
             warnings.append(warn("AGENT_STEP_FORCED"))
         if llm_unavailable:
             warnings.append(warn("LLM_UNAVAILABLE"))
+        validation_started = time.perf_counter()
         if summary_from_llm and not summary_is_grounded(summary_from_llm, [e["result"] for e in self.log] + [self.base_args(f)]):
             summary_from_llm, summary_rejected = None, True
             warnings.append(warn("SUMMARY_REJECTED"))
+        self.usage["summary_validation_ms"] = round((time.perf_counter() - validation_started) * 1000, 2)
+        self.usage["orchestration_overhead_ms"] = round(max(
+            0.0, (time.perf_counter() - run_started) * 1000
+            - self.usage["llm_wall_ms"] - self.reg.total_ms
+        ), 2)
         warnings.sort(key=lambda w: ({"critical": 0, "warning": 1, "info": 2}[w["severity"]], w["code"]))
         spec = self._last("get_product_spec")
         knowledge: list[dict] = []
