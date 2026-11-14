@@ -63,11 +63,18 @@ function List() {
 
 function Detail({ id }: { id: string }) {
   const { data: d, error, reload } = useResource<any>(`/api/documents/${id}`);
+  const [doc, setDoc] = useState("packing_list");
+  const [field, setField] = useState("net_quantity_kg");
+  const [value, setValue] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   if (error) return <ErrorBox>{error}</ErrorBox>;
   if (!d) return <Spinner />;
   const blocked = d.run.status === "blocked";
+  const edit = async () => {
+    setBusy(true); setErr(null);
+    try { await api.patch(`/api/documents/${id}`, { doc_type: doc, field, value }); setValue(""); await reload(); } catch (e: any) { setErr(e.message); } finally { setBusy(false); }
+  };
   return (
     <>
       <PageHeader title={d.run.id} subtitle={<span className="flex items-center gap-2"><StatusBadge status={d.run.status} /> <span className="text-xs">{d.findings.length} finding(s)</span></span>}
@@ -90,6 +97,19 @@ function Detail({ id }: { id: string }) {
           </Card>
         ))}
       </div>
+      <Card title="Edit a value (simulate a manual change)" className="mt-5">
+        <div className="flex flex-wrap items-end gap-3">
+          <label className="text-sm"><span className="block text-xs text-slate-500">Document</span>
+            <select className="rounded-md border border-slate-300 px-2 py-1.5 text-sm" value={doc} onChange={(e) => setDoc(e.target.value)}>{Object.entries(TITLES).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select></label>
+          <label className="text-sm"><span className="block text-xs text-slate-500">Field</span>
+            <select className="rounded-md border border-slate-300 px-2 py-1.5 text-sm" value={field} onChange={(e) => setField(e.target.value)}>{d.editable_fields.map((f: string) => <option key={f}>{f}</option>)}</select></label>
+          <label className="text-sm"><span className="block text-xs text-slate-500">New value</span>
+            <input className="rounded-md border border-slate-300 px-2 py-1.5 text-sm" value={value} onChange={(e) => setValue(e.target.value)} placeholder="e.g. 5200" /></label>
+          <Button variant="primary" disabled={busy || !value.trim()} onClick={edit}>Apply edit</Button>
+        </div>
+        <p className="mt-2 text-xs text-slate-500">Try net_quantity_kg = 5200 on the packing list: the invoice says 5000, so the set is blocked until they match again. Every edit is written to the audit trail.</p>
+        {err && <div className="mt-3"><ErrorBox>{err}</ErrorBox></div>}
+      </Card>
       <Card title="Audit trail" className="mt-5"><ol className="space-y-1 text-xs">{d.audit.map((a: any) => <li key={a.id}><b>{a.action}</b> · {a.actor} · <span className="text-slate-400">{when(a.ts)}</span>{a.action === "document_edited" && <Badge tone="amber">{a.payload.doc_type}.{a.payload.field}: {String(a.payload.from)} → {String(a.payload.to)}</Badge>}</li>)}</ol></Card>
     </>
   );
