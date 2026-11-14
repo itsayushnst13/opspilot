@@ -9,8 +9,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X01",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2026-12-15",
         "incoterm": null,
@@ -25,6 +25,14 @@
       "price_per_kg": "13.7203",
       "total": "68601.71",
       "option": "MF:1"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -37,8 +45,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X03",
-        "quantity_kg": 12000.0,
-        "purity_min": 98.0,
+        "quantity_kg": 12000,
+        "purity_min": 98,
         "destination_port": "Los Angeles",
         "required_date": "2026-12-15",
         "incoterm": "CIF",
@@ -53,6 +61,14 @@
       "price_per_kg": "3.9179",
       "total": "47015.25",
       "option": "MF:5"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -65,8 +81,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X04",
-        "quantity_kg": 2000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 2000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2026-12-20",
         "incoterm": "FOB",
@@ -81,6 +97,14 @@
       "price_per_kg": "2.6927",
       "total": "5385.37",
       "option": "MF:7"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -93,8 +117,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X05",
-        "quantity_kg": 25000.0,
-        "purity_min": 98.0,
+        "quantity_kg": 25000,
+        "purity_min": 98,
         "destination_port": "Rotterdam",
         "required_date": "2027-01-20",
         "incoterm": "CIF",
@@ -107,6 +131,14 @@
       "price_per_kg": "18.8111",
       "total": "470276.26",
       "option": "SP:112"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -119,8 +151,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X06",
-        "quantity_kg": 8000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 8000,
+        "purity_min": 99,
         "destination_port": "Savannah",
         "required_date": "2026-11-30",
         "incoterm": "CIF",
@@ -135,6 +167,14 @@
       "price_per_kg": "21.4969",
       "total": "171975.10",
       "option": "SP:119"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -146,8 +186,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X07",
-        "quantity_kg": 3000.0,
-        "purity_min": 98.0,
+        "quantity_kg": 3000,
+        "purity_min": 98,
         "destination_port": "Houston",
         "required_date": "2026-12-10",
         "incoterm": "CIF",
@@ -162,6 +202,14 @@
       "price_per_kg": "16.2533",
       "total": "48759.85",
       "option": "MF:11"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -173,8 +221,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X08",
-        "quantity_kg": 1500.0,
-        "purity_min": 98.0,
+        "quantity_kg": 1500,
+        "purity_min": 98,
         "destination_port": "Rotterdam",
         "required_date": "2027-01-15",
         "incoterm": "CIF",
@@ -189,6 +237,14 @@
       "price_per_kg": "12.3426",
       "total": "18513.90",
       "option": "MF:13"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -200,8 +256,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X09",
-        "quantity_kg": 1000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 1000,
+        "purity_min": 99,
         "destination_port": "Los Angeles",
         "required_date": "2026-12-01",
         "incoterm": "CIF",
@@ -217,6 +273,14 @@
       "price_per_kg": "29.7622",
       "total": "29762.18",
       "option": "SP:194"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -229,7 +293,7 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X10",
-        "quantity_kg": 6000.0,
+        "quantity_kg": 6000,
         "purity_min": 98.5,
         "destination_port": "Savannah",
         "required_date": "2026-12-18",
@@ -243,6 +307,14 @@
       "price_per_kg": "14.0257",
       "total": "84154.03",
       "option": "SP:207"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -269,6 +341,14 @@
       "price_per_kg": "9.1195",
       "total": "18200.73",
       "option": "MF:19"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -280,8 +360,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X14",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2026-12-15",
         "incoterm": "CIF",
@@ -296,6 +376,14 @@
       "price_per_kg": "8.5970",
       "total": "42985.12",
       "option": "MF:21"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -308,7 +396,7 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X15",
-        "quantity_kg": 10000.0,
+        "quantity_kg": 10000,
         "purity_min": 98.5,
         "destination_port": "Rotterdam",
         "required_date": "2027-01-10",
@@ -324,6 +412,14 @@
       "price_per_kg": "15.6406",
       "total": "156405.94",
       "option": "SP:323"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -335,7 +431,7 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X16",
-        "quantity_kg": 3000.0,
+        "quantity_kg": 3000,
         "purity_min": 98.5,
         "destination_port": "Savannah",
         "required_date": "2026-12-05",
@@ -349,6 +445,14 @@
       "price_per_kg": "5.0228",
       "total": "15068.25",
       "option": "MF:23"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -360,7 +464,7 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X18",
-        "quantity_kg": 2500.0,
+        "quantity_kg": 2500,
         "purity_min": null,
         "destination_port": "Los Angeles",
         "required_date": "2026-11-30",
@@ -377,6 +481,14 @@
       "price_per_kg": "30.6763",
       "total": "76690.79",
       "option": "MF:25"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -388,8 +500,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X20",
-        "quantity_kg": 4000.0,
-        "purity_min": 98.0,
+        "quantity_kg": 4000,
+        "purity_min": 98,
         "destination_port": "Houston",
         "required_date": "2026-12-30",
         "incoterm": "CIF",
@@ -404,6 +516,14 @@
       "price_per_kg": "2.7088",
       "total": "10835.17",
       "option": "SP:470"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -415,8 +535,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X01",
-        "quantity_kg": 7500.0,
-        "purity_min": 99.0,
+        "quantity_kg": 7500,
+        "purity_min": 99,
         "destination_port": "Rotterdam",
         "required_date": "2026-12-28",
         "incoterm": "CIF",
@@ -429,6 +549,14 @@
       "price_per_kg": "13.6560",
       "total": "102419.63",
       "option": "MF:1"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -440,8 +568,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X02",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": null,
         "required_date": "2026-12-15",
         "incoterm": null,
@@ -459,6 +587,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -471,7 +607,7 @@
       "fields": {
         "product_code": "CHEM-X03",
         "quantity_kg": null,
-        "purity_min": 98.0,
+        "purity_min": 98,
         "destination_port": "Houston",
         "required_date": "2026-12-15",
         "incoterm": "CIF",
@@ -488,6 +624,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -499,8 +643,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X99",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2026-12-15",
         "incoterm": "CIF",
@@ -515,6 +659,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -526,7 +678,7 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X05",
-        "quantity_kg": 5000.0,
+        "quantity_kg": 5000,
         "purity_min": 99.9,
         "destination_port": "Houston",
         "required_date": "2026-12-15",
@@ -542,6 +694,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -553,8 +713,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X06",
-        "quantity_kg": 300.0,
-        "purity_min": 99.0,
+        "quantity_kg": 300,
+        "purity_min": 99,
         "destination_port": "Savannah",
         "required_date": "2026-12-15",
         "incoterm": "CIF",
@@ -569,6 +729,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -580,8 +748,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X01",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2026-10-21",
         "incoterm": "CIF",
@@ -596,6 +764,14 @@
       "price_per_kg": "13.7203",
       "total": "68601.71",
       "option": "MF:1"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -607,8 +783,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X03",
-        "quantity_kg": 6000.0,
-        "purity_min": 98.0,
+        "quantity_kg": 6000,
+        "purity_min": 98,
         "destination_port": "Savannah",
         "required_date": "2026-12-14",
         "incoterm": "CIF",
@@ -623,6 +799,14 @@
       "price_per_kg": "3.8828",
       "total": "23296.54",
       "option": "MF:5"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -634,7 +818,7 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X11",
-        "quantity_kg": 2000.0,
+        "quantity_kg": 2000,
         "purity_min": 98.5,
         "destination_port": "Houston",
         "required_date": "2026-12-20",
@@ -650,6 +834,14 @@
       "price_per_kg": "15.3135",
       "total": "30626.96",
       "option": "MF:17"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -661,8 +853,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X01",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Singapore",
         "required_date": "2026-12-15",
         "incoterm": "CIF",
@@ -677,6 +869,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -689,8 +889,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X01",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Singapore",
         "required_date": "2026-12-15",
         "incoterm": "FOB",
@@ -703,6 +903,14 @@
       "price_per_kg": "13.3854",
       "total": "66926.83",
       "option": "MF:1"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -714,8 +922,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X03",
-        "quantity_kg": 4000.0,
-        "purity_min": 98.0,
+        "quantity_kg": 4000,
+        "purity_min": 98,
         "destination_port": "Savannah",
         "required_date": "2026-12-15",
         "incoterm": "DAP",
@@ -731,6 +939,14 @@
       "price_per_kg": "4.1221",
       "total": "16488.44",
       "option": "MF:5"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -742,8 +958,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X12",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2027-01-15",
         "incoterm": "CIF",
@@ -758,6 +974,14 @@
       "price_per_kg": "3.7567",
       "total": "18783.49",
       "option": "SP:271"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -769,8 +993,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X17",
-        "quantity_kg": 5000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 5000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2027-01-15",
         "incoterm": "CIF",
@@ -785,6 +1009,14 @@
       "price_per_kg": null,
       "total": null,
       "option": null
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -797,8 +1029,8 @@
     "expected": {
       "fields": {
         "product_code": "CHEM-X02",
-        "quantity_kg": 3000.0,
-        "purity_min": 99.0,
+        "quantity_kg": 3000,
+        "purity_min": 99,
         "destination_port": "Houston",
         "required_date": "2026-12-20",
         "incoterm": "CIF",
@@ -814,6 +1046,14 @@
       "price_per_kg": "2.8013",
       "total": "8403.80",
       "option": "MF:3"
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   }
 ]
