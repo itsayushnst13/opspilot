@@ -15,7 +15,7 @@ from . import store
 from .chunk import chunk_document, extract_product_codes
 from .embed import Embedder
 
-KB_DIRS = ["products", "specifications", "suppliers", "pricing", "shipping", "regulatory", "historical_quotes"]
+KB_DIRS = ["products", "specifications", "suppliers", "pricing", "shipping", "regulatory", "historical_quotes", "verified"]
 KB_EXTS = {".pdf", ".txt", ".csv", ".xlsx"}
 
 
