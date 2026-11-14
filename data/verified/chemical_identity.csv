@@ -1,0 +1,7 @@
+record_id,preferred_name,cas_number,pubchem_cid,molecular_formula,molecular_weight_g_mol,source_type,source_name,source_url,verified_fields,review_status
+PUBCHEM-000180,Acetone,67-64-1,180,C3H6O,58.08,public_reference,PubChem,https://pubchem.ncbi.nlm.nih.gov/compound/180,"preferred_name;cas_number;pubchem_cid;molecular_formula;molecular_weight_g_mol",source_checked
+PUBCHEM-008857,Ethyl acetate,141-78-6,8857,C4H8O2,88.11,public_reference,PubChem,https://pubchem.ncbi.nlm.nih.gov/compound/8857,"preferred_name;cas_number;pubchem_cid;molecular_formula;molecular_weight_g_mol",source_checked
+PUBCHEM-003776,Isopropanol,67-63-0,3776,C3H8O,60.10,public_reference,PubChem,https://pubchem.ncbi.nlm.nih.gov/compound/3776,"preferred_name;cas_number;pubchem_cid;molecular_formula;molecular_weight_g_mol",source_checked
+PUBCHEM-001140,Toluene,108-88-3,1140,C7H8,92.14,public_reference,PubChem,https://pubchem.ncbi.nlm.nih.gov/compound/1140,"preferred_name;cas_number;pubchem_cid;molecular_formula;molecular_weight_g_mol",source_checked
+PUBCHEM-000753,Glycerol,56-81-5,753,C3H8O3,92.09,public_reference,PubChem,https://pubchem.ncbi.nlm.nih.gov/compound/753,"preferred_name;cas_number;pubchem_cid;molecular_formula;molecular_weight_g_mol",source_checked
+PUBCHEM-000887,Methanol,67-56-1,887,CH4O,32.042,public_reference,PubChem,https://pubchem.ncbi.nlm.nih.gov/compound/887,"preferred_name;cas_number;pubchem_cid;molecular_formula;molecular_weight_g_mol",source_checked
