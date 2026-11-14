@@ -162,8 +162,18 @@ def main() -> None:
         "public_reference_data": {
             "source_type": "public_reference",
             "path": "verified/chemical_identity.csv",
-            "scope": "chemical identity fields only",
-            "use": "RAG/reference context; excluded from pricing and operational accuracy claims"
+            "source": "PubChem",
+            "record_count": 6,
+            "scope": ["preferred_name", "CAS", "PubChem CID", "molecular_formula", "molecular_weight_g_mol"],
+            "excluded_from": ["supplier pricing", "manufacturing costs", "purity specifications",
+                              "COA acceptance limits", "shipping rates", "supplier identity claims"],
+            "use": "RAG and chemical identity lookup only"
+        },
+        "real_operational_data": {
+            "source_type": "not_yet_available",
+            "required_before_claiming_real_world_accuracy": ["permissioned anonymized RFQs",
+                "source-backed supplier quotations", "manufacturer grade specifications",
+                "authentic or permissioned COAs", "independently reviewed labels", "untouched holdout split"]
         }
     }, indent=2) + "\n", encoding="utf-8")
 
