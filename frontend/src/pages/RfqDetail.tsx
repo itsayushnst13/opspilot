@@ -181,7 +181,6 @@ export default function RfqDetail() {
                   </Table>
                 </div>
               )}
-              </dl>
             </Card>
 
             <Card title="Audit trail (this run)" actions={<Link to={`/audit?run=${run.id}`} className="text-xs text-sky-700 hover:underline">Open</Link>}>
