@@ -1,6 +1,6 @@
 # OpsPilot: AI-assisted chemical operations assistant
 
-> **This is an independent prototype built using synthetic data and does not use Mstack's proprietary information or systems.**
+> **This is an independent prototype. Its operational pricing, supplier, specification and workflow fixtures are synthetic; a separate public-reference layer contains source-backed chemical identity facts. It does not use Mstack's proprietary information or systems.**
 
 OpsPilot takes a customer RFQ (request for quotation) and turns it into a **suggested quote with sources, warnings and a full
 audit trail, waiting for human approval**. It also checks certificates of analysis (COA) against specifications and generates
@@ -156,6 +156,14 @@ computes every metric; nothing is hard-coded. Datasets live in `evals/datasets/`
 * `pytest` (73 tests) covers API flows, roles, upload security, Gemini request/response handling on a mock transport, audit tamper detection and
   concurrent writers. They pass on SQLite and on PostgreSQL 16. Sanity-checked by deliberately breaking the pinning logic and the audit lock: the relevant tests fail.
 
+## Dataset provenance and upgrade path
+
+- `data/` keeps the existing synthetic operational catalog and documents so current quote/COA demos remain deterministic.
+- `data/verified/chemical_identity.csv` adds six public-source chemical identity records from PubChem. The CSV is ingested into RAG, but is deliberately not loaded into the quote-pricing tables.
+- Each checked-in RFQ, COA, export-consistency and retrieval evaluation case carries explicit provenance: `source_type=synthetic`, `split=legacy_tuned`, and `holdout_eligible=false`.
+- Run `python scripts/validate_data_provenance.py` to validate source metadata and dataset labels.
+- Real supplier quotations, manufacturer grade specifications, real COAs and anonymized customer RFQs are not yet included. Add them only with source documents, permission to use them, human-reviewed labels and a genuinely untouched holdout split.
+
 ## 12. Real evaluation results
 <!-- RESULTS:START -->
 Mode: **rules**, generated 2026-10-11T17:44:03+00:00, embedder `hashing-768`. Full report: [`evals/results/REPORT.md`](evals/results/REPORT.md).
@@ -250,7 +258,7 @@ Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 
   the knowledge-base tool now records a failed call and the quote continues without those passages. Embeddings
   have their own quota, so `EMBEDDER=hashing` (the default for `python evals/run_all.py --llm`, override with
   `--gemini-embeddings`) keeps retrieval identical between the two modes and off that quota.
-* **Synthetic everything.** Prices, specs, suppliers, margins and rules are invented. Real data would need real ingestion, validation, and domain review of the rules.
+* **Synthetic operational evidence.** Supplier identities, supplier prices, manufacturing costs, purity specifications, shipping rates, margins, historical quotes, RFQs and COAs remain fictional. The new `data/verified/chemical_identity.csv` contains public-source identity fields (name, CAS, formula and molecular weight) only; it does not validate commercial grades, supplier claims, prices, freight, or COA limits.
 * **Extraction is brittle outside the tested formats** in rules mode (regex). LLM mode should generalise better but is unmeasured. Scanned PDFs (no text layer) are not supported; there is no OCR.
 * **Retrieval is lexical** (hashing embedder), so paraphrased questions can miss. Two of 30 eval queries do not rank first, and RET-029 is not retrieved at all.
 * **Citations prove a document was retrieved, not that it supports a claim**; in rules mode the knowledge base returns passages rather than a generated answer.
@@ -267,5 +275,5 @@ a durable job queue; Postgres trigger or external anchoring for the audit log; S
 behind the approval step; a labelled set of real (anonymised) RFQs to replace the synthetic one; regression evals in CI.
 
 ---
-Layout: `backend/` (FastAPI app + tests) · `frontend/` (React UI) · `data/` (synthetic reference data and documents) · `evals/` (datasets, runner, results) ·
+Layout: `backend/` (FastAPI app + tests) · `frontend/` (React UI) · `data/` (synthetic operational fixtures plus separately sourced public identity references) · `evals/` (datasets, runner, results) ·
 `scripts/` (data generator) · `docs/` (architecture, rules, deployment, demo, screenshots).
