@@ -159,7 +159,28 @@ export default function RfqDetail() {
                 <dt className="text-slate-500">Agent + tools</dt><dd className="num">{ms(m.agent_ms)}</dd>
                 <dt className="text-slate-500">Tool time</dt><dd className="num">{ms(m.tool_ms)}</dd>
                 <dt className="text-slate-500">LLM calls / time</dt><dd className="num">{m.llm_calls ?? 0} / {ms(m.llm_ms)}</dd>
+                <dt className="text-slate-500">LLM wall time</dt><dd className="num">{ms(m.llm_wall_ms)}</dd>
+                <dt className="text-slate-500">Orchestration overhead</dt><dd className="num">{ms(m.orchestration_overhead_ms)}</dd>
+                <dt className="text-slate-500">Summary validation</dt><dd className="num">{ms(m.summary_validation_ms)}</dd>
+                <dt className="text-slate-500">Agent iterations</dt><dd className="num">{m.agent_iterations?.length ?? 0}</dd>
                 <dt className="text-slate-500">Tokens in / out</dt><dd className="num">{m.prompt_tokens ?? 0} / {m.output_tokens ?? 0}</dd>
+              </dl>
+              {(m.agent_iterations?.length ?? 0) > 0 && (
+                <div className="mt-3 border-t pt-3">
+                  <p className="mb-2 text-xs font-semibold text-slate-600">Iteration timings</p>
+                  <Table head={["Step", "LLM wall", "After LLM", "Total", "Tool calls"]}>
+                    {m.agent_iterations.map((it: any) => (
+                      <tr key={it.iteration}>
+                        <Td className="num">{it.iteration}</Td>
+                        <Td className="num">{ms(it.llm_wall_ms)}</Td>
+                        <Td className="num">{ms(it.post_llm_ms)}</Td>
+                        <Td className="num">{ms(it.total_ms)}</Td>
+                        <Td className="num">{it.function_calls ?? (it.llm_ok ? 0 : "failed")}</Td>
+                      </tr>
+                    ))}
+                  </Table>
+                </div>
+              )}
               </dl>
             </Card>
 
