@@ -34,8 +34,8 @@ def write_report(o: dict) -> str:
     out = [f"# OpsPilot evaluation report\n",
            f"Generated {m['generated_at']} · mode **{m['mode']}**{' · model ' + m['model'] if m['model'] else ''} · embedder `{m['embedder']}` "
            f"· reference date {m['reference_date']} · run took {m['duration_s']} s\n",
-           "Datasets: " + ", ".join(f"{k}={v}" for k, v in m["datasets"].items()) + ". All data is synthetic.\n",
-           "> Every figure below is computed by `evals/run_all.py` against the real pipeline in this run. "
+           "Datasets: " + ", ".join(f"{k}={v}" for k, v in m["datasets"].items()) + ".\n",
+           "**Data provenance:** current operational evaluation cases are legacy synthetic fixtures, not a real-world holdout. Public chemical identity references are maintained separately and are excluded from pricing, supplier, COA and RFQ accuracy scores.\n",\n           "> Every figure below is computed by `evals/run_all.py` against the real pipeline in this run. "
            "See *How to read these numbers* in the README for what they do and do not prove.\n"]
     out.append(_table("RFQ field extraction", {"cases": s["rfq_extraction"]["cases"], "all_fields_exact": s["rfq_extraction"]["all_fields_exact"]}))
     out.append("| Field | Exact match |\n|---|---|\n" + "\n".join(f"| {k} | {_r(v)} |" for k, v in s["rfq_extraction"]["per_field"].items()) + "\n")
