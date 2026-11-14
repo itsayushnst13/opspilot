@@ -10,8 +10,8 @@
         "params": {
           "purity": 99.34,
           "moisture": 0.08,
-          "color_apha": 21.0,
-          "residual_solvent_ppm": 299.0
+          "color_apha": 21,
+          "residual_solvent_ppm": 299
         }
       },
       "verdict": "PASS",
@@ -21,6 +21,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -34,8 +42,8 @@
         "params": {
           "purity": 99.36,
           "moisture": 0.05,
-          "color_apha": 12.0,
-          "residual_solvent_ppm": 266.0
+          "color_apha": 12,
+          "residual_solvent_ppm": 266
         }
       },
       "verdict": "PASS",
@@ -45,6 +53,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -58,7 +74,7 @@
         "params": {
           "purity": 98.69,
           "moisture": 0.03,
-          "color_apha": 18.0,
+          "color_apha": 18,
           "ph": 5.5
         }
       },
@@ -69,6 +85,14 @@
         "color_apha": "PASS",
         "ph": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -82,8 +106,8 @@
         "params": {
           "purity": 99.38,
           "moisture": 0.14,
-          "color_apha": 6.0,
-          "residual_solvent_ppm": 692.0
+          "color_apha": 6,
+          "residual_solvent_ppm": 692
         }
       },
       "verdict": "PASS",
@@ -93,6 +117,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -106,8 +138,8 @@
         "params": {
           "purity": 98.47,
           "moisture": 0.38,
-          "color_apha": 5.0,
-          "heavy_metals_ppm": 13.0
+          "color_apha": 5,
+          "heavy_metals_ppm": 13
         }
       },
       "verdict": "PASS",
@@ -117,6 +149,14 @@
         "color_apha": "PASS",
         "heavy_metals_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -130,8 +170,8 @@
         "params": {
           "purity": 98.69,
           "moisture": 0.03,
-          "color_apha": 7.0,
-          "residual_solvent_ppm": 211.0
+          "color_apha": 7,
+          "residual_solvent_ppm": 211
         }
       },
       "verdict": "PASS",
@@ -141,6 +181,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -154,9 +202,9 @@
         "params": {
           "purity": 99.48,
           "moisture": 0.2,
-          "color_apha": 16.0,
+          "color_apha": 16,
           "ph": 6.2,
-          "heavy_metals_ppm": 6.0
+          "heavy_metals_ppm": 6
         }
       },
       "verdict": "PASS",
@@ -167,6 +215,14 @@
         "ph": "PASS",
         "heavy_metals_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -180,8 +236,8 @@
         "params": {
           "purity": 98.7,
           "moisture": 0.06,
-          "color_apha": 20.0,
-          "residual_solvent_ppm": 289.0
+          "color_apha": 20,
+          "residual_solvent_ppm": 289
         }
       },
       "verdict": "FAIL",
@@ -191,6 +247,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -204,8 +268,8 @@
         "params": {
           "purity": 98.62,
           "moisture": 0.4,
-          "color_apha": 5.0,
-          "residual_solvent_ppm": 598.0
+          "color_apha": 5,
+          "residual_solvent_ppm": 598
         }
       },
       "verdict": "FAIL",
@@ -215,6 +279,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -228,9 +300,9 @@
         "params": {
           "purity": 99.16,
           "moisture": 0.12,
-          "color_apha": 7.0,
+          "color_apha": 7,
           "ph": 6.4,
-          "heavy_metals_ppm": 40.0
+          "heavy_metals_ppm": 40
         }
       },
       "verdict": "FAIL",
@@ -241,6 +313,14 @@
         "ph": "PASS",
         "heavy_metals_ppm": "FAIL"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -254,8 +334,8 @@
         "params": {
           "purity": 97.9,
           "moisture": 0.04,
-          "color_apha": 12.0,
-          "heavy_metals_ppm": 7.0
+          "color_apha": 12,
+          "heavy_metals_ppm": 7
         }
       },
       "verdict": "FAIL",
@@ -265,6 +345,14 @@
         "color_apha": "PASS",
         "heavy_metals_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -278,8 +366,8 @@
         "params": {
           "purity": 99.35,
           "moisture": 0.03,
-          "color_apha": 12.0,
-          "residual_solvent_ppm": 700.0
+          "color_apha": 12,
+          "residual_solvent_ppm": 700
         }
       },
       "verdict": "FAIL",
@@ -289,6 +377,14 @@
         "color_apha": "PASS",
         "residual_solvent_ppm": "FAIL"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -302,7 +398,7 @@
         "params": {
           "purity": 98.45,
           "moisture": 0.1,
-          "color_apha": 9.0,
+          "color_apha": 9,
           "ph": 6.3
         }
       },
@@ -313,6 +409,14 @@
         "color_apha": "PASS",
         "ph": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -326,8 +430,8 @@
         "params": {
           "purity": 99.63,
           "moisture": 0.08,
-          "color_apha": 7.0,
-          "heavy_metals_ppm": 4.0
+          "color_apha": 7,
+          "heavy_metals_ppm": 4
         }
       },
       "verdict": "REVIEW REQUIRED",
@@ -338,6 +442,14 @@
         "ph": "REVIEW REQUIRED",
         "heavy_metals_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   },
   {
@@ -351,8 +463,8 @@
         "params": {
           "purity": 99.36,
           "moisture": 0.11,
-          "color_apha": 70.0,
-          "heavy_metals_ppm": 3.0
+          "color_apha": 70,
+          "heavy_metals_ppm": 3
         }
       },
       "verdict": "REVIEW REQUIRED",
@@ -362,6 +474,14 @@
         "color_apha": "REVIEW REQUIRED",
         "heavy_metals_ppm": "PASS"
       }
+    },
+    "provenance": {
+      "source_type": "synthetic",
+      "dataset_family": "legacy_synthetic",
+      "generator": "scripts/generate_data.py",
+      "seed": 42,
+      "split": "legacy_tuned",
+      "holdout_eligible": false
     }
   }
 ]
