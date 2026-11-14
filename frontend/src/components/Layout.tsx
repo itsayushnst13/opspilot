@@ -66,7 +66,6 @@ export default function Layout() {
         <nav className="relative flex-1 space-y-1 px-3">{navItems()}</nav>
         <div className="relative m-3 rounded-xl border border-white/[0.08] bg-white/[0.035] p-3">
           <div className="flex items-center justify-between"><span className="text-[11px] font-medium text-slate-300">Runtime mode</span><Badge tone={health?.mode === "llm" ? "violet" : "slate"}>{health?.mode ?? "checking"}</Badge></div>
-          <p className="mt-2 text-[10px] leading-relaxed text-slate-500">{health?.mode === "llm" ? (health.llm?.verified ? "Model verified in this process." : "Key configured; live model not yet verified.") : "Deterministic rules engine is active."}</p>
         </div>
         <div className="border-t border-white/[0.07] px-5 py-4 text-[10px] leading-relaxed text-slate-500">Independent prototype using synthetic data.<br />Not affiliated with any company.</div>
       </aside>
