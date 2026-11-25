@@ -77,9 +77,6 @@ def _hybrid_score(vector_score: float, meta: dict, terms: set[str],
 def _search_pgvector(db: Session, query: np.ndarray, embedder_name: str, k: int,
                      doc_types: set[str] | None, boost_codes: set[str] | None,
                      boost: float, query_text: str | None) -> list[tuple[float, dict]]:
-    # Import lazily so SQLite-only installations still use the NumPy fallback.
-    from pgvector.sqlalchemy import Vector
-
     distance = KBChunk.embedding.cosine_distance(query.tolist())
     stmt = (
         select(KBChunk, KBDocument, (1.0 - distance).label("vector_score"))
