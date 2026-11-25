@@ -124,11 +124,11 @@ Both go through the same safety rails:
 
 ## 8. RAG architecture
 Parse (PDF/TXT/CSV/XLSX) -> chunk (~900 chars, line-based with one-line overlap; table rows rendered as `column: value; ...`)
--> embed -> store in `kb_chunks` -> exact cosine search with a product-code boost -> passages with citations like
+-> embed -> store in `kb_chunks` -> hybrid scoring (75% cosine similarity + 25% query-token overlap, with product-code boost) -> passages with citations like
 `specifications/CHEM-X01_spec_sheet.pdf (page 1)`. The seeded corpus is 54 documents / 235 chunks (ingests in ~0.2 s).
 * **Embedder:** a deterministic hashing embedder (signed feature hashing of unigrams and bigrams, 768 dims) by default; a Gemini embedder is available (mock-tested only).
   The hashing embedder is **lexical, not semantic**: it works on this corpus because queries share vocabulary with documents.
-* **No pgvector** (not available where this was built, unnecessary at this size): exact search in NumPy behind one function, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+* **Vector storage/search:** PostgreSQL uses native `vector(768)` embeddings with a cosine HNSW index and hybrid lexical/product-code reranking. SQLite keeps JSON + NumPy exact search for tests and lightweight local runs. Existing PostgreSQL JSON embeddings are converted during startup; see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 * Users can upload documents into the knowledge base; they are treated as untrusted text.
 
 ## 9. Human-in-the-loop design
@@ -231,7 +231,7 @@ cd backend && pytest                                  # TEST_DATABASE_URL=postgr
 python evals/run_all.py                               # from the repo root
 python scripts/render_readme_results.py               # refresh the results table above
 ```
-Or `docker compose up --build` for Postgres + the app on http://localhost:8000.
+Or `docker compose up --build` for pgvector-enabled PostgreSQL + the app on http://localhost:8000.
 Demo logins: `analyst@opspilot.demo`, `approver@opspilot.demo`, `admin@opspilot.demo` (password from `DEMO_PASSWORD`, default `opspilot-demo`).
 Add `GEMINI_API_KEY` to `.env` to enable LLM mode, then `python scripts/check_gemini.py` to confirm the key,
 the available models and one real generation call before trusting it.
@@ -260,7 +260,7 @@ Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 
   `--gemini-embeddings`) keeps retrieval identical between the two modes and off that quota.
 * **Synthetic operational evidence.** Supplier identities, supplier prices, manufacturing costs, purity specifications, shipping rates, margins, historical quotes, RFQs and COAs remain fictional. The new `data/verified/chemical_identity.csv` contains public-source identity fields (name, CAS, formula and molecular weight) only; it does not validate commercial grades, supplier claims, prices, freight, or COA limits.
 * **Extraction is brittle outside the tested formats** in rules mode (regex). LLM mode should generalise better but is unmeasured. Scanned PDFs (no text layer) are not supported; there is no OCR.
-* **Retrieval is lexical** (hashing embedder), so paraphrased questions can miss. Two of 30 eval queries do not rank first, and RET-029 is not retrieved at all.
+* **Retrieval now combines lexical token overlap and vector similarity.** The default hashing embedder is still non-semantic, so paraphrased questions can miss. The published 30-query metrics above predate this hybrid-scoring change and must be regenerated before making an accuracy claim.
 * **Citations prove a document was retrieved, not that it supports a claim**; in rules mode the knowledge base returns passages rather than a generated answer.
 * **Audit tamper-evidence, not tamper-proofing:** the hash chain detects edits; it does not stop a DB admin rewriting the whole chain. The ORM blocks updates/deletes but there is no Postgres trigger or external anchoring.
 * Rate limiting is in-memory (single process). Auth is demo-grade (shared demo password, 8-hour tokens, no refresh/rotation, no SSO).
@@ -270,7 +270,7 @@ Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 
 * No load testing; no accessibility audit.
 
 ## 18. Future improvements
-Live Gemini evaluation and a model comparison; a real embedding model plus pgvector (or hybrid BM25 + vectors) and a reranker; OCR for scanned COAs;
+Live Gemini retrieval evaluation and a model comparison; BM25-style lexical retrieval and a cross-encoder reranker; OCR for scanned COAs;
 a durable job queue; Postgres trigger or external anchoring for the audit log; SSO and per-customer margin tiers; ERP/email integration
 behind the approval step; a labelled set of real (anonymised) RFQs to replace the synthetic one; regression evals in CI.
 

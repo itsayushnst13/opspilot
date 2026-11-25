@@ -11,3 +11,4 @@ pypdf>=4.0
 openpyxl>=3.1
 reportlab>=4.0
 numpy>=1.26
+pgvector>=0.3.6

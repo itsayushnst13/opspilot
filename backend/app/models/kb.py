@@ -1,13 +1,39 @@
-"""Knowledge-base tables for RAG. Embeddings are stored as JSON float lists."""
+"""Knowledge-base tables for RAG. PostgreSQL uses native pgvector; SQLite keeps JSON for tests."""
 from __future__ import annotations
 
 import datetime as dt
 from typing import Any, Optional
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import JSON, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy.types import TypeDecorator
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from ..core.config import get_settings
 from ..core.db import Base
+
+# Must match the configured embedder dimension for new and migrated vectors.
+EMBEDDING_DIM = get_settings().embed_dim
+
+
+class EmbeddingVector(TypeDecorator):
+    """Use pgvector on PostgreSQL and JSON arrays on SQLite.
+
+    The fallback keeps unit tests and lightweight local SQLite runs independent
+    of the PostgreSQL vector extension.
+    """
+    impl = JSON
+    cache_ok = True
+    comparator_factory = Vector.comparator_factory
+
+    def __init__(self, dimensions: int = EMBEDDING_DIM, **kwargs):
+        self.dimensions = dimensions
+        super().__init__(**kwargs)
+
+    def load_dialect_impl(self, dialect):
+        if dialect.name == "postgresql":
+            return dialect.type_descriptor(Vector(self.dimensions))
+        return dialect.type_descriptor(JSON())
 
 
 def utcnow() -> dt.datetime:
@@ -41,6 +67,6 @@ class KBChunk(Base):
     content: Mapped[str] = mapped_column(Text)
     locator: Mapped[str] = mapped_column(String(80), default="")
     product_codes: Mapped[list[Any]] = mapped_column(JSON, default=list)
-    embedding: Mapped[Optional[list[float]]] = mapped_column(JSON, nullable=True)
+    embedding: Mapped[Optional[list[float]]] = mapped_column(EmbeddingVector(), nullable=True)
 
     document: Mapped[KBDocument] = relationship(back_populates="chunks")

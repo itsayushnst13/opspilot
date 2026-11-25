@@ -8,12 +8,11 @@ record the URLs below once it is live.
 ## Option A (recommended): one Render service + Neon Postgres
 One container serves the API and the built UI, so there is no CORS to configure.
 
-1. **Database.** Create a free project at [neon.tech](https://neon.tech) (or Supabase). Copy the connection string
-   (`postgresql://...?sslmode=require`).
+1. **Database.** Create a PostgreSQL project at [neon.tech](https://neon.tech) (or Supabase) with the `vector` extension available. Copy the connection string (`postgresql://...?sslmode=require`). OpsPilot startup enables `vector`, upgrades legacy JSON embeddings to `vector(768)`, and creates the cosine HNSW index. The database role must be allowed to create the extension (or the provider must have it pre-enabled). Back up the database before deploying this schema upgrade.
 2. **Push the repo to GitHub** (make sure `.env` is not committed: `.gitignore` covers it).
 3. **Render** -> New -> Blueprint -> select the repo (reads `render.yaml`). When prompted, paste the Neon string into
-   `DATABASE_URL`. `JWT_SECRET` is generated for you.
-4. Optional: add `GEMINI_API_KEY` to turn on LLM mode. Verify it first with `python scripts/check_gemini.py`
+   `DATABASE_URL`. `JWT_SECRET` is generated for you. Set the required `DEMO_PASSWORD` to a private value; production startup rejects the public prototype default.
+4. Optional: add `GEMINI_API_KEY` to turn on LLM mode. To use dense semantic embeddings rather than the default lexical hashing embedder, also set `EMBEDDER=gemini` (the configured `GEMINI_EMBED_MODEL` defaults to `gemini-embedding-001`). Changing the embedder causes the knowledge base to be re-embedded on startup. Verify Gemini generation with `python scripts/check_gemini.py`
    (it lists the models your account can call and makes one real request). If the model your account has is not
    the default, set `GEMINI_MODEL`; `GEMINI_FALLBACK_MODELS` is tried in order when a name is retired. Check
    `/api/health` after deploying: `llm.verified` is `true` only once a model has actually answered. Optional: set `EXPOSE_DEMO_USERS=false` and `DEMO_PASSWORD` for a private deployment.
