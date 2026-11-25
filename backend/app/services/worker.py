@@ -3,13 +3,12 @@ from __future__ import annotations
 
 import logging
 import threading
-import time
 import uuid
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 
 from ..core.db import SessionLocal
-from ..models import WorkflowRun
+from ..models import COACheck, Extraction, Quote, ToolCall, WorkflowRun
 from . import job_queue
 
 logger = logging.getLogger("opspilot.worker")
@@ -54,6 +53,28 @@ class WorkflowWorker:
 
     def _execute(self, job_id: int, run_id: str, job_type: str) -> None:
         try:
+            with SessionLocal() as db:
+                run = db.get(WorkflowRun, run_id)
+                if run is None:
+                    job_queue.fail(db, job_id, "Workflow run disappeared", retry=False)
+                    return
+                # If the process died after the workflow committed but before the
+                # queue acknowledgement, reconcile instead of executing twice.
+                if run.status != "processing":
+                    if run.status == "failed":
+                        job_queue.fail(db, job_id, run.error or "Workflow failed", retry=False)
+                    else:
+                        job_queue.complete(db, job_id)
+                    return
+                # A lease-expiry retry may find partially committed extraction rows.
+                # Clear retryable outputs, but retain the append-only audit history.
+                if job_type == "rfq":
+                    for model in (ToolCall, Quote, Extraction):
+                        db.execute(delete(model).where(model.run_id == run_id))
+                elif job_type == "coa":
+                    db.execute(delete(COACheck).where(COACheck.run_id == run_id))
+                db.commit()
+
             if job_type == "rfq":
                 from .rfq_service import process_run
                 process_run(run_id)
@@ -62,6 +83,7 @@ class WorkflowWorker:
                 process_run(run_id)
             else:
                 raise ValueError(f"Unsupported workflow job type: {job_type}")
+
             with SessionLocal() as db:
                 run = db.scalar(select(WorkflowRun).where(WorkflowRun.id == run_id))
                 if run is None:
