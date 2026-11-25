@@ -16,7 +16,7 @@ flowchart TD
       T5[search_knowledge_base]
       T6[check_quality / validate_documents]
     end
-    T5 --> RAG[RAG: chunk > embed > store<br/>exact cosine search + citations]
+    T5 --> RAG[RAG: chunk > embed > store<br/>hybrid lexical/vector search + citations]
     RAG --> KB[(kb_documents / kb_chunks)]
     T1 & T2 & T3 & T4 & T6 --> REF[(Reference data<br/>products, specs, prices, shipping, margins)]
     WF --> GUARD[Guardrails<br/>pinned inputs, grounded summary,<br/>prompt-injection flag, forced steps]
@@ -48,5 +48,5 @@ extractions, tool_calls, quotes, approvals, coa_checks, export_documents, consis
 
 ## Why no pgvector
 pgvector is not installable in the build sandbox and is unnecessary at this scale (~235 chunks). Embeddings are stored as
-JSON and searched with exact cosine similarity in NumPy behind one function (`rag/store.py: search`). Swapping that function for
+JSON and searched with a hybrid score (75% cosine similarity + 25% query-token overlap, plus product-code boosts) in NumPy behind one function (`rag/store.py: search`). Swapping that function for
 a pgvector query is the intended upgrade path.
