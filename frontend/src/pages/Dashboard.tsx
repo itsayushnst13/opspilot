@@ -24,6 +24,23 @@ export default function Dashboard() {
         <div className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-50 text-emerald-700">✦</span><div><p className="text-xs font-semibold text-slate-800">Workspace status</p></div></div>
         <div className="flex flex-wrap items-center gap-2"><Badge tone={data.mode === "llm" ? "violet" : "slate"}>{data.mode === "llm" ? "LLM mode" : "Rules mode"}</Badge></div>
       </div>
+      <div className="mb-5 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm">
+          <div className="flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Queued jobs</p><span className="h-2 w-2 rounded-full bg-amber-400" /></div>
+          <p className="num mt-2 text-2xl font-semibold tracking-tight text-slate-900">{m.jobs?.queued ?? 0}</p>
+          <p className="mt-1 text-[11px] text-slate-500">Waiting for a worker</p>
+        </div>
+        <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm">
+          <div className="flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Running jobs</p><span className="h-2 w-2 animate-pulse rounded-full bg-cyan-500" /></div>
+          <p className="num mt-2 text-2xl font-semibold tracking-tight text-slate-900">{m.jobs?.running ?? 0}</p>
+          <p className="mt-1 text-[11px] text-slate-500">Claimed by the durable worker</p>
+        </div>
+        <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm">
+          <div className="flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Failed jobs</p><span className={m.jobs?.failed ? "h-2 w-2 rounded-full bg-rose-500" : "h-2 w-2 rounded-full bg-emerald-500"} /></div>
+          <p className={m.jobs?.failed ? "num mt-2 text-2xl font-semibold tracking-tight text-rose-600" : "num mt-2 text-2xl font-semibold tracking-tight text-slate-900"}>{m.jobs?.failed ?? 0}</p>
+          <p className="mt-1 text-[11px] text-slate-500">Exhausted retry attempts</p>
+        </div>
+      </div>
       <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         <Kpi label="Awaiting approval" value={data.pending_approvals?.length ?? 0} hint="Quotes requiring an approver" tone={data.pending_approvals?.length ? "text-amber-600" : undefined} />
         <Kpi label="Total workflow runs" value={totalRuns} hint="Across all operation types" />
