@@ -64,7 +64,6 @@ def _prepare_pgvector(bind: Engine) -> None:
                 ))
 
 
-
 def init_db(bind: Engine | None = None) -> None:
     from .. import models  # noqa: F401  (register tables)
 
