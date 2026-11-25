@@ -13,9 +13,10 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..models.kb import KBChunk, KBDocument
+from .embed import tokenize
 
 _lock = threading.Lock()
-_cache: dict[str, "_Index"] = {}
+_cache: dict[tuple[str, str], "_Index"] = {}
 
 
 @dataclass
@@ -42,7 +43,8 @@ def _signature(db: Session, embedder_name: str) -> tuple:
 def _load(db: Session, embedder_name: str) -> _Index:
     sig = _signature(db, embedder_name)
     with _lock:
-        cached = _cache.get(embedder_name)
+        cache_key = (sig[0], embedder_name)
+        cached = _cache.get(cache_key)
         if cached and cached.signature == sig:
             return cached
     rows = db.execute(
@@ -53,25 +55,36 @@ def _load(db: Session, embedder_name: str) -> _Index:
     ).all()
     meta = [{"chunk_id": c.id, "doc_id": d.id, "path": d.source_path, "doc_type": d.doc_type,
              "title": d.title, "locator": c.locator, "content": c.content,
-             "product_codes": set(c.product_codes or [])} for c, d in rows]
+             "product_codes": set(c.product_codes or []), "terms": set(tokenize(c.content))} for c, d in rows]
     matrix = np.asarray([c.embedding for c, _ in rows], dtype=np.float64) if rows else np.zeros((0, 1))
     idx = _Index(sig, matrix, meta)
     with _lock:
-        _cache[embedder_name] = idx
+        _cache[cache_key] = idx
     return idx
 
 
 def search(db: Session, query_vec: list[float], embedder_name: str, k: int = 5,
            doc_types: set[str] | None = None, boost_codes: set[str] | None = None,
-           boost: float = 0.2) -> list[tuple[float, dict]]:
+           boost: float = 0.2, query_text: str | None = None) -> list[tuple[float, dict]]:
     idx = _load(db, embedder_name)
-    if len(idx.meta) == 0:
+    if len(idx.meta) == 0 or k <= 0:
         return []
-    scores = idx.matrix @ np.asarray(query_vec, dtype=np.float64)
+    query = np.asarray(query_vec, dtype=np.float64)
+    if query.ndim != 1 or query.shape[0] != idx.matrix.shape[1]:
+        raise ValueError("Query embedding dimension does not match indexed embeddings")
+    if not np.isfinite(query).all():
+        raise ValueError("Query embedding contains non-finite values")
+    vector_scores = idx.matrix @ query
+    scores = vector_scores.copy()
+    terms = set(tokenize(query_text or ""))
     for i, m in enumerate(idx.meta):
         if doc_types and m["doc_type"] not in doc_types:
             scores[i] = -1e9
-        elif boost_codes and (m["product_codes"] & boost_codes):
+            continue
+        if terms:
+            lexical = len(terms & m["terms"]) / len(terms)
+            scores[i] = 0.75 * float(vector_scores[i]) + 0.25 * lexical
+        if boost_codes and (m["product_codes"] & boost_codes):
             scores[i] += boost
-    order = np.argsort(-scores)[:k]
+    order = np.argsort(-scores)[:min(k, len(scores))]
     return [(float(scores[i]), idx.meta[i]) for i in order if scores[i] > -1e8]
