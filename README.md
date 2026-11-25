@@ -124,7 +124,7 @@ Both go through the same safety rails:
 
 ## 8. RAG architecture
 Parse (PDF/TXT/CSV/XLSX) -> chunk (~900 chars, line-based with one-line overlap; table rows rendered as `column: value; ...`)
--> embed -> store in `kb_chunks` -> exact cosine search with a product-code boost -> passages with citations like
+-> embed -> store in `kb_chunks` -> hybrid scoring (75% cosine similarity + 25% query-token overlap, with product-code boost) -> passages with citations like
 `specifications/CHEM-X01_spec_sheet.pdf (page 1)`. The seeded corpus is 54 documents / 235 chunks (ingests in ~0.2 s).
 * **Embedder:** a deterministic hashing embedder (signed feature hashing of unigrams and bigrams, 768 dims) by default; a Gemini embedder is available (mock-tested only).
   The hashing embedder is **lexical, not semantic**: it works on this corpus because queries share vocabulary with documents.
@@ -260,7 +260,7 @@ Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 
   `--gemini-embeddings`) keeps retrieval identical between the two modes and off that quota.
 * **Synthetic operational evidence.** Supplier identities, supplier prices, manufacturing costs, purity specifications, shipping rates, margins, historical quotes, RFQs and COAs remain fictional. The new `data/verified/chemical_identity.csv` contains public-source identity fields (name, CAS, formula and molecular weight) only; it does not validate commercial grades, supplier claims, prices, freight, or COA limits.
 * **Extraction is brittle outside the tested formats** in rules mode (regex). LLM mode should generalise better but is unmeasured. Scanned PDFs (no text layer) are not supported; there is no OCR.
-* **Retrieval is lexical** (hashing embedder), so paraphrased questions can miss. Two of 30 eval queries do not rank first, and RET-029 is not retrieved at all.
+* **Retrieval now combines lexical token overlap and vector similarity.** The default hashing embedder is still non-semantic, so paraphrased questions can miss. The published 30-query metrics above predate this hybrid-scoring change and must be regenerated before making an accuracy claim.
 * **Citations prove a document was retrieved, not that it supports a claim**; in rules mode the knowledge base returns passages rather than a generated answer.
 * **Audit tamper-evidence, not tamper-proofing:** the hash chain detects edits; it does not stop a DB admin rewriting the whole chain. The ORM blocks updates/deletes but there is no Postgres trigger or external anchoring.
 * Rate limiting is in-memory (single process). Auth is demo-grade (shared demo password, 8-hour tokens, no refresh/rotation, no SSO).
@@ -270,7 +270,7 @@ Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 
 * No load testing; no accessibility audit.
 
 ## 18. Future improvements
-Live Gemini evaluation and a model comparison; a real embedding model plus pgvector (or hybrid BM25 + vectors) and a reranker; OCR for scanned COAs;
+Live Gemini evaluation and a model comparison; dense embeddings plus BM25 and a reranker; OCR for scanned COAs;
 a durable job queue; Postgres trigger or external anchoring for the audit log; SSO and per-customer margin tiers; ERP/email integration
 behind the approval step; a labelled set of real (anonymised) RFQs to replace the synthetic one; regression evals in CI.
 
