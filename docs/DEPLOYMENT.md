@@ -12,7 +12,7 @@ One container serves the API and the built UI, so there is no CORS to configure.
    (`postgresql://...?sslmode=require`).
 2. **Push the repo to GitHub** (make sure `.env` is not committed: `.gitignore` covers it).
 3. **Render** -> New -> Blueprint -> select the repo (reads `render.yaml`). When prompted, paste the Neon string into
-   `DATABASE_URL`. `JWT_SECRET` is generated for you.
+   `DATABASE_URL`. `JWT_SECRET` is generated for you. Set the required `DEMO_PASSWORD` to a private value; production startup rejects the public prototype default.
 4. Optional: add `GEMINI_API_KEY` to turn on LLM mode. Verify it first with `python scripts/check_gemini.py`
    (it lists the models your account can call and makes one real request). If the model your account has is not
    the default, set `GEMINI_MODEL`; `GEMINI_FALLBACK_MODELS` is tried in order when a name is retired. Check
