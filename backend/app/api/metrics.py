@@ -43,7 +43,8 @@ def compute_metrics(db: Session) -> dict:
     tools = db.execute(select(ToolCall.tool, func.count(), func.avg(ToolCall.duration_ms)).group_by(ToolCall.tool)).all()
     failed = dict(db.execute(select(ToolCall.tool, func.count()).where(ToolCall.ok.is_(False)).group_by(ToolCall.tool)).all())
     return {
-        "runs_total": len(all_runs), "by_type": by_type,\n        "jobs": {"queued": jobs.get("queued", 0), "running": jobs.get("running", 0), "completed": jobs.get("completed", 0), "failed": jobs.get("failed", 0), "total": sum(jobs.values())},
+        "runs_total": len(all_runs), "by_type": by_type,
+        "jobs": {"queued": jobs.get("queued", 0), "running": jobs.get("running", 0), "completed": jobs.get("completed", 0), "failed": jobs.get("failed", 0), "total": sum(jobs.values())},
         "failed_runs": sum(1 for r in all_runs if r.status == "failed"),
         "latency_ms": {"p50": _pct(lat, 0.5), "p95": _pct(lat, 0.95), "mean": round(statistics.fmean(lat), 1) if lat else None,
                        "n": len(lat)},
