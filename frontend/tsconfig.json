@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022", "lib": ["ES2022", "DOM", "DOM.Iterable"], "module": "ESNext", "moduleResolution": "bundler",
-    "jsx": "react-jsx", "strict": true, "noUnusedLocals": true, "noUnusedParameters": true, "skipLibCheck": true,
+    "jsx": "react-jsx", "allowJs": true, "strict": true, "noUnusedLocals": true, "noUnusedParameters": true, "skipLibCheck": true,
     "noEmit": true, "isolatedModules": true, "resolveJsonModule": true, "types": ["vite/client"]
   },
   "include": ["src"]

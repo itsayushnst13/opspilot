@@ -11,9 +11,9 @@ const NAV = [
   { to: "/knowledge-base", label: "Knowledge base", icon: "⌕", group: "Intelligence" },
   { to: "/audit", label: "Audit trail", icon: "⌁", group: "Intelligence" },
   { to: "/evaluations", label: "Evaluations", icon: "◎", group: "Intelligence" },
-] as const;
+];
 
-const TITLES: Record<string, string> = {
+const TITLES = {
   "/dashboard": "Overview",
   "/rfq": "RFQ & quotations",
   "/quality": "Quality checks",
@@ -25,7 +25,7 @@ const TITLES: Record<string, string> = {
 
 export default function Layout() {
   const { user, logout } = useAuth();
-  const { data: health } = useResource<{ mode: string; llm?: { configured?: boolean; verified?: boolean } }>("/api/health");
+  const { data: health } = useResource("/api/health");
   const location = useLocation();
   const title = Object.entries(TITLES).find(([path]) => location.pathname === path || location.pathname.startsWith(path + "/"))?.[1] ?? "Workspace";
   const groups = ["Workspace", "Intelligence"];

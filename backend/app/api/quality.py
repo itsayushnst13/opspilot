@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -9,6 +9,7 @@ from ..core.security import get_current_user
 from ..docproc.validate import UploadError
 from ..models import COACheck, User, WorkflowRun
 from ..services import coa_service, runs
+from ..services.job_queue import enqueue
 from .deps import upload_limit
 from .rfq import _read_limited
 
@@ -16,15 +17,15 @@ router = APIRouter(prefix="/api/quality", tags=["quality"])
 
 
 @router.post("/coa", status_code=202)
-async def upload_coa(background: BackgroundTasks, file: UploadFile = File(...), user: User = Depends(upload_limit),
+async def upload_coa(file: UploadFile = File(...), user: User = Depends(upload_limit),
                      db: Session = Depends(get_db)):
     content = await _read_limited(file)
     try:
         run = coa_service.create_run(db, user, file.filename, content)
     except UploadError as exc:
         raise HTTPException(exc.status_code, str(exc)) from None
-    background.add_task(coa_service.process_run, run.id)
-    return {"run_id": run.id, "status": run.status}
+    job = enqueue(db, run.id, "coa")
+    return {"run_id": run.id, "status": run.status, "job_id": job.id, "job_status": job.status}
 
 
 @router.get("")

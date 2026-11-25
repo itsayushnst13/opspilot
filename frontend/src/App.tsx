@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "./auth";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout.jsx";
 import { Spinner } from "./components/ui";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard.jsx";
 import RfqList from "./pages/RfqList";
 import RfqDetail from "./pages/RfqDetail";
 import Quality from "./pages/Quality";

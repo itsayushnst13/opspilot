@@ -4,3 +4,5 @@ from .reference import (HistoricalQuote, ManufacturingCost, MarginRule, Product,
 from .workflow import (Approval, AuditLog, COACheck, ConsistencyFinding, EvalRun,  # noqa: F401
                        ExportDocument, Extraction, Quote, ToolCall, UploadedFile, User,
                        WorkflowRun)
+
+from .jobs import WorkflowJob  # noqa: F401

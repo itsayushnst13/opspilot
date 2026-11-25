@@ -13,7 +13,7 @@ from ..agents.llm import active_model, llm_status
 from ..core.config import get_settings
 from ..core.db import get_db
 from ..core.security import get_current_user
-from ..models import Quote, ToolCall, User, WorkflowRun
+from ..models import Quote, ToolCall, User, WorkflowJob, WorkflowRun
 from ..services import runs
 
 router = APIRouter(prefix="/api", tags=["metrics"])
@@ -39,10 +39,12 @@ def compute_metrics(db: Session) -> dict:
     for r in all_runs:
         by_type.setdefault(r.type, {}).setdefault(r.status, 0)
         by_type[r.type][r.status] += 1
+    jobs = dict(db.execute(select(WorkflowJob.status, func.count()).group_by(WorkflowJob.status)).all())
     tools = db.execute(select(ToolCall.tool, func.count(), func.avg(ToolCall.duration_ms)).group_by(ToolCall.tool)).all()
     failed = dict(db.execute(select(ToolCall.tool, func.count()).where(ToolCall.ok.is_(False)).group_by(ToolCall.tool)).all())
     return {
         "runs_total": len(all_runs), "by_type": by_type,
+        "jobs": {"queued": jobs.get("queued", 0), "running": jobs.get("running", 0), "completed": jobs.get("completed", 0), "failed": jobs.get("failed", 0), "total": sum(jobs.values())},
         "failed_runs": sum(1 for r in all_runs if r.status == "failed"),
         "latency_ms": {"p50": _pct(lat, 0.5), "p95": _pct(lat, 0.95), "mean": round(statistics.fmean(lat), 1) if lat else None,
                        "n": len(lat)},

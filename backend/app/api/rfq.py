@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 from sqlalchemy import select
@@ -12,6 +12,7 @@ from ..core.security import get_current_user
 from ..docproc.validate import UploadError
 from ..models import Quote, User, WorkflowRun
 from ..services import approval_service, rfq_service, runs
+from ..services.job_queue import enqueue
 from .deps import upload_limit
 
 router = APIRouter(prefix="/api/rfq", tags=["rfq"])
@@ -35,26 +36,26 @@ async def _read_limited(file: UploadFile) -> bytes:
 
 
 @router.post("", status_code=202)
-async def upload_rfq(background: BackgroundTasks, file: UploadFile = File(...), user: User = Depends(upload_limit),
+async def upload_rfq(file: UploadFile = File(...), user: User = Depends(upload_limit),
                      db: Session = Depends(get_db)):
     content = await _read_limited(file)
     try:
         run = rfq_service.create_run_from_upload(db, user, file.filename, content)
     except UploadError as exc:
         raise HTTPException(exc.status_code, str(exc)) from None
-    background.add_task(rfq_service.process_run, run.id)
-    return {"run_id": run.id, "status": run.status}
+    job = enqueue(db, run.id, "rfq")
+    return {"run_id": run.id, "status": run.status, "job_id": job.id, "job_status": job.status}
 
 
 @router.post("/text", status_code=202)
-def submit_text(body: TextIn, background: BackgroundTasks, user: User = Depends(upload_limit),
+def submit_text(body: TextIn, user: User = Depends(upload_limit),
                 db: Session = Depends(get_db)):
     try:
         run = rfq_service.create_run_from_text(db, user, body.text)
     except UploadError as exc:
         raise HTTPException(exc.status_code, str(exc)) from None
-    background.add_task(rfq_service.process_run, run.id)
-    return {"run_id": run.id, "status": run.status}
+    job = enqueue(db, run.id, "rfq")
+    return {"run_id": run.id, "status": run.status, "job_id": job.id, "job_status": job.status}
 
 
 @router.get("")
