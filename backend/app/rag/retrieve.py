@@ -36,6 +36,6 @@ def retrieve(db: Session, query: str, embedder: Embedder, k: int = 5, product_co
     if product_code:
         codes.add(product_code.upper())
     qvec = embedder.embed_query(query)
-    results = store.search(db, qvec, embedder.name, k=k, doc_types=doc_types, boost_codes=codes or None)
+    results = store.search(db, qvec, embedder.name, k=k, doc_types=doc_types, boost_codes=codes or None, query_text=query)
     return [Hit(chunk_id=m["chunk_id"], path=m["path"], doc_type=m["doc_type"], title=m["title"],
                 locator=m["locator"], score=round(s, 4), content=m["content"]) for s, m in results]
