@@ -46,7 +46,7 @@ flowchart TD
 (reference data, each row has a `source_ref`) · `kb_documents, kb_chunks` (RAG) · `users, workflow_runs, uploaded_files,
 extractions, tool_calls, quotes, approvals, coa_checks, export_documents, consistency_findings, audit_log, eval_runs`.
 
-## Why no pgvector
-pgvector is not installable in the build sandbox and is unnecessary at this scale (~235 chunks). Embeddings are stored as
-JSON and searched with a hybrid score (75% cosine similarity + 25% query-token overlap, plus product-code boosts) in NumPy behind one function (`rag/store.py: search`). Swapping that function for
-a pgvector query is the intended upgrade path.
+## Vector storage and retrieval
+On PostgreSQL, `kb_chunks.embedding` is a native `vector(768)` column. Startup enables the `vector` extension, converts legacy JSON arrays to vectors, and creates an HNSW index using cosine distance. Retrieval asks PostgreSQL for the nearest candidate set, then applies the existing hybrid score (75% cosine similarity + 25% query-token overlap) and product-code boosts before returning citations. The query uses the indexed vector column directly so PostgreSQL can use HNSW.
+
+SQLite remains supported for tests and lightweight local development: it stores embeddings as JSON and uses exact NumPy search. The default hashing embedder is lexical rather than semantic; use a dense embedding model and regenerate the retrieval evaluation set before claiming paraphrase-quality improvements. Pinecone is not required for this architecture because PostgreSQL + pgvector keeps vectors and document metadata in one database.
