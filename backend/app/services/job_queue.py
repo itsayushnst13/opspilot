@@ -23,6 +23,19 @@ def enqueue(db: Session, run_id: str, job_type: str, max_attempts: int = 3) -> W
 def claim_next(db: Session, worker_id: str, lease_seconds: int = 1800) -> WorkflowJob | None:
     now = utcnow()
     stale_before = now - dt.timedelta(seconds=lease_seconds)
+    # A crashed worker that already used every allowed claim must not leave a
+    # permanently-running row behind.
+    db.execute(
+        update(WorkflowJob)
+        .where(
+            WorkflowJob.status == "running",
+            WorkflowJob.locked_at < stale_before,
+            WorkflowJob.attempts >= WorkflowJob.max_attempts,
+        )
+        .values(status="failed", locked_at=None, worker_id=None, finished_at=now,
+                updated_at=now, last_error="Worker lease expired after maximum attempts")
+    )
+    db.commit()
     candidate = db.scalar(
         select(WorkflowJob)
         .where(
