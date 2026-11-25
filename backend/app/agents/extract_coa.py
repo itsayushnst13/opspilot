@@ -97,8 +97,17 @@ def normalize_coa(raw: RawCOA, db) -> dict:
     if code is None:
         issues.append("Product could not be identified from the COA")
     params: dict[str, float] = {}
+    conflicts: set[str] = set()
     for p in raw.parameters:
         name = p.name.strip().lower()
-        if name in CANONICAL and p.value is not None:
-            params.setdefault(name, float(p.value))
+        if name not in CANONICAL or p.value is None or name in conflicts:
+            continue
+        value = float(p.value)
+        if name in params and params[name] != value:
+            # Contradictory lab values must never be silently resolved by taking the first.
+            params.pop(name, None)
+            conflicts.add(name)
+            issues.append(f"Conflicting measurements for {name}; manual review is required")
+        else:
+            params[name] = value
     return {"product_code": code, "batch_no": (raw.batch_no or None), "params": params, "issues": issues}
