@@ -8,8 +8,7 @@ record the URLs below once it is live.
 ## Option A (recommended): one Render service + Neon Postgres
 One container serves the API and the built UI, so there is no CORS to configure.
 
-1. **Database.** Create a free project at [neon.tech](https://neon.tech) (or Supabase). Copy the connection string
-   (`postgresql://...?sslmode=require`).
+1. **Database.** Create a PostgreSQL project at [neon.tech](https://neon.tech) (or Supabase) with the `vector` extension available. Copy the connection string (`postgresql://...?sslmode=require`). OpsPilot startup enables `vector`, upgrades legacy JSON embeddings to `vector(768)`, and creates the cosine HNSW index. The database role must be allowed to create the extension (or the provider must have it pre-enabled). Back up the database before deploying this schema upgrade.
 2. **Push the repo to GitHub** (make sure `.env` is not committed: `.gitignore` covers it).
 3. **Render** -> New -> Blueprint -> select the repo (reads `render.yaml`). When prompted, paste the Neon string into
    `DATABASE_URL`. `JWT_SECRET` is generated for you. Set the required `DEMO_PASSWORD` to a private value; production startup rejects the public prototype default.
