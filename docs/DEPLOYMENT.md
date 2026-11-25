@@ -12,7 +12,7 @@ One container serves the API and the built UI, so there is no CORS to configure.
 2. **Push the repo to GitHub** (make sure `.env` is not committed: `.gitignore` covers it).
 3. **Render** -> New -> Blueprint -> select the repo (reads `render.yaml`). When prompted, paste the Neon string into
    `DATABASE_URL`. `JWT_SECRET` is generated for you. Set the required `DEMO_PASSWORD` to a private value; production startup rejects the public prototype default.
-4. Optional: add `GEMINI_API_KEY` to turn on LLM mode. Verify it first with `python scripts/check_gemini.py`
+4. Optional: add `GEMINI_API_KEY` to turn on LLM mode. To use dense semantic embeddings rather than the default lexical hashing embedder, also set `EMBEDDER=gemini` (the configured `GEMINI_EMBED_MODEL` defaults to `gemini-embedding-001`). Changing the embedder causes the knowledge base to be re-embedded on startup. Verify Gemini generation with `python scripts/check_gemini.py`
    (it lists the models your account can call and makes one real request). If the model your account has is not
    the default, set `GEMINI_MODEL`; `GEMINI_FALLBACK_MODELS` is tried in order when a name is retired. Check
    `/api/health` after deploying: `llm.verified` is `true` only once a model has actually answered. Optional: set `EXPOSE_DEMO_USERS=false` and `DEMO_PASSWORD` for a private deployment.
