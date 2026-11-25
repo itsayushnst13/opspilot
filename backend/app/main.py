@@ -14,12 +14,13 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import func, select, text
 
-from .api import audit, auth, documents, knowledge, metrics, quality, rfq
+from .api import audit, auth, documents, jobs, knowledge, metrics, quality, rfq
 from .core.config import get_settings
 from .core.db import SessionLocal
 from .core.logging import log, setup_logging
 from .models import Product
 from .services.bootstrap import bootstrap
+from .services.worker import start_worker
 
 logger = logging.getLogger("opspilot.api")
 
@@ -33,7 +34,11 @@ async def lifespan(app: FastAPI):
     if s.env == "prod" and s.demo_password == "opspilot-demo":
         raise RuntimeError("DEMO_PASSWORD must be changed from the public prototype default in production")
     bootstrap()
-    yield
+    worker = start_worker()
+    try:
+        yield
+    finally:
+        worker.stop()
 
 
 def create_app() -> FastAPI:
@@ -66,7 +71,7 @@ def create_app() -> FastAPI:
         errs = [{"loc": [str(x) for x in e["loc"]], "msg": e["msg"]} for e in exc.errors()]
         return JSONResponse({"detail": "Invalid request", "errors": errs}, status_code=422)
 
-    for r in (auth.router, rfq.router, quality.router, documents.router, knowledge.router, audit.router, metrics.router):
+    for r in (auth.router, rfq.router, quality.router, documents.router, knowledge.router, audit.router, metrics.router, jobs.router):
         app.include_router(r)
 
     @app.get("/api/health", tags=["system"])
