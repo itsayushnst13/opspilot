@@ -5,7 +5,7 @@ import threading
 from dataclasses import dataclass
 
 import numpy as np
-from sqlalchemy import cast, func, select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..models.kb import EMBEDDING_DIM, KBChunk, KBDocument
@@ -80,7 +80,7 @@ def _search_pgvector(db: Session, query: np.ndarray, embedder_name: str, k: int,
     # Import lazily so SQLite-only installations still use the NumPy fallback.
     from pgvector.sqlalchemy import Vector
 
-    distance = cast(KBChunk.embedding, Vector(EMBEDDING_DIM)).cosine_distance(query.tolist())
+    distance = KBChunk.embedding.cosine_distance(query.tolist())
     stmt = (
         select(KBChunk, KBDocument, (1.0 - distance).label("vector_score"))
         .join(KBDocument, KBDocument.id == KBChunk.document_id)
