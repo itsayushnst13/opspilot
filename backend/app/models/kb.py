@@ -9,9 +9,11 @@ from sqlalchemy import JSON, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.types import TypeDecorator
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from ..core.config import get_settings
 from ..core.db import Base
 
-EMBEDDING_DIM = 768
+# Must match the configured embedder dimension for new and migrated vectors.
+EMBEDDING_DIM = get_settings().embed_dim
 
 
 class EmbeddingVector(TypeDecorator):
