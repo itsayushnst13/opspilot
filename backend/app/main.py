@@ -41,8 +41,12 @@ def create_app() -> FastAPI:
     app = FastAPI(title="OpsPilot API", version="1.0.0", lifespan=lifespan,
                   description="AI-assisted chemical operations prototype (synthetic data). "
                               "Independent prototype - not affiliated with any company.")
-    app.add_middleware(CORSMiddleware, allow_origins=[o.strip() for o in s.cors_origins.split(",") if o.strip()],
-                       allow_methods=["*"], allow_headers=["*"])
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[o.strip() for o in s.cors_origins.split(",") if o.strip()],
+        allow_methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["Authorization", "Content-Type", "X-Request-ID"],
+    )
 
     @app.middleware("http")
     async def request_log(request: Request, call_next):
@@ -56,6 +60,9 @@ def create_app() -> FastAPI:
         ms = (time.perf_counter() - t0) * 1000
         response.headers["X-Request-ID"] = rid
         response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
         if request.url.path.startswith("/api") and request.url.path != "/api/health":
             log(logger, "request", request_id=rid, method=request.method, path=request.url.path,
                 status=response.status_code, ms=round(ms, 1))
