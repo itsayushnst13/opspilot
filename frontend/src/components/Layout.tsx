@@ -52,7 +52,7 @@ export default function Layout() {
   ));
 
   return (
-    <div className="min-h-screen bg-[#f5f7fb] text-slate-800 md:flex">
+    <div className="min-h-screen bg-[#f5f7fb] text-slate-800 md:flex">\n      <a href="#main-content" className="sr-only z-50 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to main content</a>
       <aside className="relative hidden w-[248px] shrink-0 flex-col overflow-hidden bg-[#101c2e] text-slate-300 md:flex">
         <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="relative flex items-center gap-3 px-5 py-6">
@@ -63,9 +63,10 @@ export default function Layout() {
           <div className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,.7)]" /><span className="text-xs font-medium text-slate-200">Workspace ready</span></div>
           <p className="mt-1.5 text-[11px] leading-relaxed text-slate-500">Chemical operations · Synthetic demo environment</p>
         </div>
-        <nav className="relative flex-1 space-y-1 px-3">{navItems()}</nav>
+        <nav aria-label="Workspace navigation" className="relative flex-1 space-y-1 px-3">{navItems()}</nav>
         <div className="relative m-3 rounded-xl border border-white/[0.08] bg-white/[0.035] p-3">
           <div className="flex items-center justify-between"><span className="text-[11px] font-medium text-slate-300">Runtime mode</span><Badge tone={health?.mode === "llm" ? "violet" : "slate"}>{health?.mode ?? "checking"}</Badge></div>
+          <p className="mt-2 text-[10px] leading-relaxed text-slate-500">{health?.mode === "llm" ? (health.llm?.verified ? "Model verified in this process." : "Key configured; live model not yet verified.") : "Deterministic rules engine is active."}</p>
         </div>
         <div className="border-t border-white/[0.07] px-5 py-4 text-[10px] leading-relaxed text-slate-500">Independent prototype using synthetic data.<br />Not affiliated with any company.</div>
       </aside>
@@ -78,7 +79,11 @@ export default function Layout() {
               <div className="min-w-0"><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">OpsPilot / Workspace</p><h1 className="truncate text-[15px] font-semibold tracking-tight text-slate-900">{title}</h1></div>
             </div>
             <div className="flex items-center gap-3">
-
+              <div className="hidden items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 sm:flex">
+                <span className={cx("h-1.5 w-1.5 rounded-full", health?.mode === "llm" && health.llm?.verified ? "bg-emerald-500" : "bg-amber-400")} />
+                <span className="text-[11px] font-medium text-slate-600">{health?.mode === "llm" ? (health.llm?.verified ? "AI connected" : "AI unverified") : "Rules engine"}</span>
+              </div>
+              <div className="hidden h-8 w-px bg-slate-200 sm:block" />
               <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-indigo-100 to-cyan-100 text-xs font-bold text-indigo-700">{user?.name?.split(" ").map((part) => part[0]).slice(0, 2).join("") ?? "U"}</div>
               <div className="hidden min-w-0 sm:block"><p className="max-w-36 truncate text-xs font-semibold text-slate-800">{user?.name}</p><p className="text-[10px] capitalize text-slate-500">{user?.role}</p></div>
               <Button variant="ghost" onClick={logout} className="text-xs">Sign out</Button>
@@ -86,7 +91,7 @@ export default function Layout() {
           </div>
           <nav aria-label="Primary navigation" className="flex gap-1 overflow-x-auto border-t border-slate-100 px-3 py-2 md:hidden">{navItems(true)}</nav>
         </header>
-        <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"><Outlet /></main>
+        <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 outline-none sm:px-6 lg:px-8 lg:py-8"><Outlet /></main>
         <footer className="px-6 pb-5 text-center text-[10px] text-slate-400">OpsPilot · Human-approved workflows · All demo reference data is synthetic</footer>
       </div>
     </div>
