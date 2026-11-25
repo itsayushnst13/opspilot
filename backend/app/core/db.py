@@ -62,11 +62,7 @@ def _prepare_pgvector(bind: Engine) -> None:
                     "USING CASE WHEN embedding IS NULL THEN NULL "
                     "ELSE embedding::text::vector END"
                 ))
-        if inspector.has_table("kb_chunks"):
-            conn.execute(text(
-                "CREATE INDEX IF NOT EXISTS ix_kb_chunks_embedding_hnsw "
-                "ON kb_chunks USING hnsw (embedding vector_cosine_ops)"
-            ))
+
 
 
 def init_db(bind: Engine | None = None) -> None:
@@ -76,3 +72,9 @@ def init_db(bind: Engine | None = None) -> None:
     if target.dialect.name == "postgresql":
         _prepare_pgvector(target)
     Base.metadata.create_all(target)
+    if target.dialect.name == "postgresql":
+        with target.begin() as conn:
+            conn.execute(text(
+                "CREATE INDEX IF NOT EXISTS ix_kb_chunks_embedding_hnsw "
+                "ON kb_chunks USING hnsw (embedding vector_cosine_ops)"
+            ))
