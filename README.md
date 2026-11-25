@@ -231,7 +231,7 @@ cd backend && pytest                                  # TEST_DATABASE_URL=postgr
 python evals/run_all.py                               # from the repo root
 python scripts/render_readme_results.py               # refresh the results table above
 ```
-Or `docker compose up --build` for Postgres + the app on http://localhost:8000.
+Or `docker compose up --build` for pgvector-enabled PostgreSQL + the app on http://localhost:8000.
 Demo logins: `analyst@opspilot.demo`, `approver@opspilot.demo`, `admin@opspilot.demo` (password from `DEMO_PASSWORD`, default `opspilot-demo`).
 Add `GEMINI_API_KEY` to `.env` to enable LLM mode, then `python scripts/check_gemini.py` to confirm the key,
 the available models and one real generation call before trusting it.
