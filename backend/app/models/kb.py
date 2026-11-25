@@ -22,6 +22,7 @@ class EmbeddingVector(TypeDecorator):
     """
     impl = JSON
     cache_ok = True
+    comparator_factory = Vector.comparator_factory
 
     def __init__(self, dimensions: int = EMBEDDING_DIM, **kwargs):
         self.dimensions = dimensions
