@@ -85,6 +85,8 @@ class RFQOrchestrator:
         self.reg = registry
         self.llm = llm
         self.max_steps = max_steps or get_settings().agent_max_steps
+        # Bound tool execution independently: one model response can request many tools.
+        self.max_tool_calls = max(1, self.max_steps * 4)
         self.log: list[dict] = []  # {name,args,result,forced}
         self.overrides: list[dict] = []
         self.usage = {
@@ -162,6 +164,7 @@ class RFQOrchestrator:
         contents: list[dict] = [{"role": "user", "parts": [{"text":
             "Prepare a suggested quote for this validated RFQ:\n" + json.dumps(brief, indent=2)}]}]
         summary: str | None = None
+        tool_calls_used = 0
         for step in range(self.max_steps):
             iteration_started = time.perf_counter()
             llm_started = time.perf_counter()
@@ -199,11 +202,15 @@ class RFQOrchestrator:
             responses = []
             for call in resp.function_calls:
                 name = call["name"]
-                if name not in RFQ_AGENT_TOOLS:
-                    result = {"error": f"Tool '{name}' is not available"}
-                    self.reg.call(name, call.get("args", {}))  # recorded as a rejected call
+                if tool_calls_used >= self.max_tool_calls:
+                    result = {"error": "Agent tool-call budget exhausted; continue with the available evidence"}
                 else:
-                    result = self._call(name, self._pin(name, call.get("args", {}), f))
+                    tool_calls_used += 1
+                    if name not in RFQ_AGENT_TOOLS:
+                        result = {"error": f"Tool '{name}' is not available"}
+                        self.reg.call(name, call.get("args", {}))  # recorded as a rejected call
+                    else:
+                        result = self._call(name, self._pin(name, call.get("args", {}), f))
                 responses.append({"functionResponse": {"name": name, "response": {"result": _trim(result)}}})
             contents.append({"role": "user", "parts": responses})
             post_ms = (time.perf_counter() - post_started) * 1000
