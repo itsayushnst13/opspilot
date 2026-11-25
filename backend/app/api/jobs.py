@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from ..core.db import get_db
 from ..core.security import get_current_user
-from ..models import WorkflowJob, User
+from ..models import WorkflowJob, WorkflowRun, User
 from ..services.job_queue import snapshot
 
 router = APIRouter(prefix="/api/jobs", tags=["jobs"])
@@ -16,5 +16,8 @@ router = APIRouter(prefix="/api/jobs", tags=["jobs"])
 def get_job(job_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     job = db.scalar(select(WorkflowJob).where(WorkflowJob.id == job_id))
     if job is None:
+        raise HTTPException(404, "Workflow job not found")
+    run = db.get(WorkflowRun, job.run_id)
+    if run is None or (user.role != "admin" and run.created_by != user.email):
         raise HTTPException(404, "Workflow job not found")
     return snapshot(job)
