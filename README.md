@@ -128,7 +128,7 @@ Parse (PDF/TXT/CSV/XLSX) -> chunk (~900 chars, line-based with one-line overlap;
 `specifications/CHEM-X01_spec_sheet.pdf (page 1)`. The seeded corpus is 54 documents / 235 chunks (ingests in ~0.2 s).
 * **Embedder:** a deterministic hashing embedder (signed feature hashing of unigrams and bigrams, 768 dims) by default; a Gemini embedder is available (mock-tested only).
   The hashing embedder is **lexical, not semantic**: it works on this corpus because queries share vocabulary with documents.
-* **No pgvector** (not available where this was built, unnecessary at this size): exact search in NumPy behind one function, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+* **Vector storage/search:** PostgreSQL uses native `vector(768)` embeddings with a cosine HNSW index and hybrid lexical/product-code reranking. SQLite keeps JSON + NumPy exact search for tests and lightweight local runs. Existing PostgreSQL JSON embeddings are converted during startup; see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 * Users can upload documents into the knowledge base; they are treated as untrusted text.
 
 ## 9. Human-in-the-loop design
@@ -270,7 +270,7 @@ Pin `REFERENCE_DATE` for a long-lived demo: the synthetic price lists expire on 
 * No load testing; no accessibility audit.
 
 ## 18. Future improvements
-Live Gemini evaluation and a model comparison; dense embeddings plus BM25 and a reranker; OCR for scanned COAs;
+Live Gemini retrieval evaluation and a model comparison; BM25-style lexical retrieval and a cross-encoder reranker; OCR for scanned COAs;
 a durable job queue; Postgres trigger or external anchoring for the audit log; SSO and per-customer margin tiers; ERP/email integration
 behind the approval step; a labelled set of real (anonymised) RFQs to replace the synthetic one; regression evals in CI.
 
