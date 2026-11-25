@@ -8,7 +8,7 @@ export default function Dashboard() {
   if (error || !data) return <ErrorBox>{error ?? "No dashboard data available"}</ErrorBox>;
   const m = data.metrics ?? {};
   const t = m.by_type ?? {};
-  const count = (type: string) => Object.values(t[type] ?? {}).reduce((a, b) => a + b, 0);
+  const count = (type) => Object.values(t[type] ?? {}).reduce((a, b) => a + b, 0);
   const totalRuns = Number(m.runs_total ?? 0);
   const successRuns = Object.values(t).reduce((sum, statuses) => sum + (statuses.completed ?? 0) + (statuses.approved ?? 0), 0);
   const successRate = totalRuns ? Math.round((successRuns / totalRuns) * 100) : 0;
@@ -56,7 +56,7 @@ export default function Dashboard() {
                 <tr key={r.id}>
                   <Td><Link className="font-mono text-xs font-semibold text-cyan-800 hover:underline" to={`/rfq/${r.id}`}>{r.id}</Link></Td>
                   <Td className="num font-semibold">{r.total ? Number(r.total).toLocaleString("en-US", { maximumFractionDigits: 2 }) : "—"} <span className="text-[10px] font-normal text-slate-400">USD</span></Td>
-                  <Td><div className="flex flex-wrap gap-1">{(r.warnings ?? []).filter((w) => w !== "UNIT_CONVERTED").map((w: string) => <Badge key={w} tone="amber">{w}</Badge>)}</div></Td>
+                  <Td><div className="flex flex-wrap gap-1">{(r.warnings ?? []).filter((w) => w !== "UNIT_CONVERTED").map((w) => <Badge key={w} tone="amber">{w}</Badge>)}</div></Td>
                   <Td className="whitespace-nowrap text-[11px] text-slate-500">{when(r.created_at)}</Td>
                 </tr>
               ))}
@@ -84,7 +84,7 @@ export default function Dashboard() {
       <div className="mt-5 grid gap-5 xl:grid-cols-2">
         <Card title="Recent activity" actions={<span className="text-[10px] text-slate-400">LATEST 10 RUNS</span>}>
           {!data.recent?.length ? <Empty>No workflow runs recorded yet.</Empty> : <Table head={["Workflow", "Type", "Status", "Duration"]}>
-            {data.recent.map((r: any) => (
+            {data.recent.map((r) => (
               <tr key={r.id}>
                 <Td><Link className="font-mono text-[11px] font-semibold text-cyan-800 hover:underline" to={`/${r.type === "rfq" ? "rfq" : r.type === "coa" ? "quality" : "documents"}/${r.id}`}>{r.id}</Link></Td>
                 <Td><span className="text-xs capitalize">{r.type === "export_docs" ? "Export docs" : r.type}</span></Td>
